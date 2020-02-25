@@ -1382,8 +1382,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 30}
+  m_AnchoredPosition: {x: -172.9, y: 241.5}
+  m_SizeDelta: {x: 174.8, y: 22.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1986005093
 MonoBehaviour:
@@ -1397,15 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b88c3d8ec0556a4690df7638918c8a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barImage: {fileID: 0}
-  damagedBarImage: {fileID: 0}
-  damagedColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  damagedHealthFadeTimer: 0
-  healthSystem: {fileID: 0}
 --- !u!114 &1986005094
 MonoBehaviour:
   m_ObjectHideFlags: 0
