@@ -58,6 +58,7 @@
      <Compile Include="Assets\HSPackages\InfiniteGround\Script\Ground.cs" />
      <Compile Include="Assets\Scripts\DestroyCollision.cs" />
      <Compile Include="Assets\Scripts\HealthBarAni.cs" />
+     <Compile Include="Assets\Scripts\HealthFall.cs" />
      <Compile Include="Assets\Scripts\HealthSystemPlayer.cs" />
      <Compile Include="Assets\Scripts\PlayerBoundaries.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />

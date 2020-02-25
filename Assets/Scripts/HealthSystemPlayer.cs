@@ -21,6 +21,8 @@ public class HealthSystemPlayer : MonoBehaviour
         return health; 
     }
 
+ 
+
     public void Damage(int dmgAmount) //Function to take damage.
     {
         health -= dmgAmount;
