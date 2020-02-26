@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
         //when player collides with an BasicEnemy
         if (collision.gameObject.tag == "BasicEnemy")
         {
+            PlayerHealth.health -= 1;
             Destroy(collision.gameObject);
         }
     }
