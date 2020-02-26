@@ -31,5 +31,11 @@ public class DestroyCollision : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if(other.transform.tag == "Player")
+        {
+            PlayerHealth.health -= 1;
+            Destroy(this.gameObject);
+        }
     }
 }
