@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\HealthFall.cs" />
      <Compile Include="Assets\Scripts\HealthSystemPlayer.cs" />
      <Compile Include="Assets\Scripts\PlayerBoundaries.cs" />
+     <Compile Include="Assets\Scripts\PlayerCollisions.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerShoot.cs" />
      <Compile Include="Assets\Scripts\ScoreCount.cs" />

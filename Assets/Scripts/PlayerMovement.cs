@@ -31,4 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         player.Translate(direction * speed * Time.deltaTime);
     }
+
+    
+   
 }

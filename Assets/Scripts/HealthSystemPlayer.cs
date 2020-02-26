@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class HealthSystemPlayer : MonoBehaviour
+
+//Gonna be how we handle the player Health system in the game. Right now it's percentage based, we can change this if needed
+//Also can modify this if we want enemies to have health (For instance, bosses) and what not.
+
+public class HealthSystemPlayer
 {
     public event EventHandler onDamaged;
     public event EventHandler onHealed;
@@ -12,7 +16,7 @@ public class HealthSystemPlayer : MonoBehaviour
     private int healthMax;
 
     public HealthSystemPlayer(int health) { //Constructor for the health system.
-        healthMax = health;
+        healthMax = health; 
         this.health = health;
     }
 

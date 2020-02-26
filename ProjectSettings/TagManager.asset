@@ -7,6 +7,7 @@ TagManager:
   - BasicEnemy
   - Despawner
   - player Wall
+  - Canvas
   layers:
   - Default
   - TransparentFX

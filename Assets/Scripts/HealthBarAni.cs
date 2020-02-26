@@ -26,9 +26,9 @@ public class HealthBarAni : MonoBehaviour
         
     }
 
-    private void FixedUpdate()
+    public void Setup(HealthSystemPlayer healthSystem)
     {
-       
+        this.healthSystem = healthSystem;
     }
     
 
@@ -40,6 +40,8 @@ public class HealthBarAni : MonoBehaviour
 
     private void HealthSystem_onDamaged(object sender, System.EventArgs e)
     {
+
+        //This is for the animation of the health falling/being reduced.
         float beforeDMGFill = barImage.fillAmount;
         setHealth(healthSystem.GetHealthNormalized());
         Transform damagedBar = Instantiate(damagedBarTemplate, transform);
