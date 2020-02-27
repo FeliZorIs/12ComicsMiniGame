@@ -17,6 +17,21 @@ public class Player : MonoBehaviour
     private float       nextFire;
     private float       shot_time = 0f;
 
+
+    //Invincibility after hit
+    Renderer rend;
+    Color color;
+
+    //For gameOver Button
+    public GameObject gameOverPrefab;
+
+
+    void Start()
+    {
+        rend = GetComponent<Renderer>();
+        color = rend.material.color;
+       
+    }
     void FixedUpdate()
     {
         Movement();
@@ -65,7 +80,40 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "BasicEnemy")
         {
             PlayerHealth.health -= 1;
+            if (PlayerHealth.health > 0)
+            {
+                StartCoroutine("PlayerInvince");
+            }
+            if(PlayerHealth.health<= 0)
+            {
+                gameOver();
+            }
             Destroy(collision.gameObject);
         }
     }
+
+    //Invincibility state when getting hit.
+    IEnumerator PlayerInvince()
+    {
+        Physics2D.IgnoreLayerCollision(0, 0, true);
+        color.a = 0.5f;
+        rend.material.color = color;
+        yield return new WaitForSeconds(2.4f);
+        Physics2D.IgnoreLayerCollision(0,0, false);
+        color.a = 1f;
+        rend.material.color = color;
+    }
+
+    //======================================
+    //              PlayerDeath
+    //======================================
+
+    private void gameOver() 
+    {
+        PlayerHealth.health = 0;
+        GameObject gameOverButton = GameObject.Instantiate(gameOverPrefab, new Vector3(250,350,0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Destroy(gameObject);
+    }
+    
+    
 }

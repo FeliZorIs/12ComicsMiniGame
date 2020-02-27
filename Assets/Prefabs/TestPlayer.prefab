@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4615894405718055738}
   - component: {fileID: 4615894405718055878}
   - component: {fileID: 101939583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TestPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  shot: {fileID: 0}
+  shot_spawn: {fileID: 0}
+  fireRate: 0
 --- !u!1 &4615894407035091054
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615894407035091055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ShotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
