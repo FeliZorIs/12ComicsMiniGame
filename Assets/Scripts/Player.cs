@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -15,8 +16,12 @@ public class Player : MonoBehaviour
     public Transform    shot_spawn;
     public float        fireRate;
     private float       nextFire;
-    private float       shot_time = 0f;
+    private float       myTime = 0f;
 
+    int                 bultype = 1;
+    public Vector3      bullet_rotation1;
+    public Vector3      bullet_rotation2;
+    public Text         shot_Text;
 
     //Invincibility after hit
     Renderer rend;
@@ -30,7 +35,7 @@ public class Player : MonoBehaviour
     {
         rend = GetComponent<Renderer>();
         color = rend.material.color;
-       
+        gameOverPrefab.SetActive(false);
     }
     void FixedUpdate()
     {
@@ -55,19 +60,49 @@ public class Player : MonoBehaviour
     }
 
     /*
-     * @brief shooting the basic ammo type
+     * @brief shooting and switching the ammo types
      */
     void shoot()
     {
-        shot_time = shot_time + Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && shot_time > nextFire)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            nextFire = shot_time + fireRate;
-            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
-
-            nextFire = nextFire - shot_time;
-            shot_time = 0f;
+            bultype = 1;
+            shot_Text.text = "Shot Type: basic";
         }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            bultype = 2;
+            shot_Text.text = "Shot Type: 3 split";
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            bultype = 3;
+            shot_Text.text = "Shot Type: N/A";
+        }
+
+        myTime = myTime + Time.deltaTime;
+        if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
+        {   
+            switch (bultype)
+            {
+                case 1:
+                    nextFire = myTime + fireRate;
+                    Instantiate(shot, shot_spawn.position, shot_spawn.rotation);                    
+                    break;
+
+                case 2:
+                    nextFire = myTime + fireRate;
+                    Instantiate(shot, shot_spawn.position, Quaternion.identity);
+                    GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
+                    GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+                    break;
+
+                case 3:
+                    break;
+            }
+        }
+        nextFire = nextFire - myTime;
+        myTime = 0f;
     }
 
     //======================================
@@ -76,7 +111,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //when player collides with an BasicEnemy
+        //when player collides with a BasicEnemy
         if (collision.gameObject.tag == "BasicEnemy")
         {
             PlayerHealth.health -= 1;
@@ -111,9 +146,7 @@ public class Player : MonoBehaviour
     private void gameOver() 
     {
         PlayerHealth.health = 0;
-        GameObject gameOverButton = GameObject.Instantiate(gameOverPrefab, new Vector3(250,350,0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        gameOverPrefab.SetActive(true);
         Destroy(gameObject);
-    }
-    
-    
+    }        
 }
