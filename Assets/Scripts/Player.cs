@@ -130,11 +130,11 @@ public class Player : MonoBehaviour
     //Invincibility state when getting hit.
     IEnumerator PlayerInvince()
     {
-        Physics2D.IgnoreLayerCollision(0, 0, true);
+        Physics2D.IgnoreLayerCollision(0, 10, true);
         color.a = 0.5f;
         rend.material.color = color;
         yield return new WaitForSeconds(2.4f);
-        Physics2D.IgnoreLayerCollision(0,0, false);
+        Physics2D.IgnoreLayerCollision(0,10, false);
         color.a = 1f;
         rend.material.color = color;
     }
