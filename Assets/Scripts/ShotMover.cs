@@ -7,7 +7,7 @@ using UnityEngine;
 public class ShotMover : MonoBehaviour
 {
     float timer;
-    public float ttk = 10;
+    public float ttk = 2;
     public  float speed; //Speed the shot will travel.
     // Start is called before the first frame update
 
