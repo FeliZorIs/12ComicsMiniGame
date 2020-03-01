@@ -8,6 +8,7 @@ TagManager:
   - Despawner
   - player Wall
   - Canvas
+  - player_shot
   layers:
   - Default
   - TransparentFX
