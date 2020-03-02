@@ -120,6 +120,7 @@ public class Player : MonoBehaviour
         //when player collides with a BasicEnemy
         if (collision.gameObject.tag == "BasicEnemy")
         {
+            collision.gameObject.GetComponent<enemy>().onDeath();
             PlayerHealth.health -= 1;
             if (PlayerHealth.health > 0)
             {

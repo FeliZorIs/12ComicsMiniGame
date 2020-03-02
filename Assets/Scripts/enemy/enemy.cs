@@ -10,6 +10,7 @@ public class enemy : MonoBehaviour
     private void Start()
     {
         enemyManager = GameObject.Find("EnemyManager");
+        enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
     }
 
     // Update is called once per frame
@@ -18,22 +19,30 @@ public class enemy : MonoBehaviour
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
+    public void onDeath()
+    {
+        enemyManager.GetComponent<enemy_manager>().active_enemies.Remove(this);
+        Destroy(this.gameObject);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            Destroy(this.gameObject);
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled += 1;
+            onDeath();
         }
 
         if (collision.tag == "player_shot")
         {
             ScoreCount.scoreValue += 10;
-            Destroy(this.gameObject);
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled += 1;
+            onDeath();
         }
 
         if (collision.tag == "Despawner")
         {
-            Destroy(this.gameObject);
+            onDeath();
         }
     }
 }

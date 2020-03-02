@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class enemy_manager : MonoBehaviour
 {
-    public GameObject[] active_enemies;
+    public List<enemy> active_enemies;
+
+    public int enemiesKilled = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +16,5 @@ public class enemy_manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }
