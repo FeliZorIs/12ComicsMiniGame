@@ -5,11 +5,12 @@ using UnityEngine;
 public class DestroyCollision : MonoBehaviour
 {
     public float speed = 2;
+    public static int scoreMulti;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        scoreMulti = PlayerStats.multiLevel;
     }
 
     // Update is called once per frame
@@ -20,16 +21,22 @@ public class DestroyCollision : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (true) //For whatever reason, other.gameObject.CompareTag("BasicEnemy") isn't working. Check it out so the projectiles don't destroy boundaries.
+        if (true) 
         {
-            ScoreCount.scoreValue += 10;
             Destroy(gameObject);
         }
 
+        if(other.transform.tag == "playerShot")
+        {
+            //Calculate score on enemy death determined by base of 10 times whatever the current multiplier is. (WE CAN CHANGE THIS WHEN BALANCING, DON'T WORRY!)
+            ScoreCount.scoreValue += (10*scoreMulti);
+            Destroy(gameObject);
+        }
        
         if (other.transform.tag == "Despawner")
         {
             Destroy(this.gameObject);
         }
+
     }
 }

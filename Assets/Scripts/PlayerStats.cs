@@ -29,6 +29,7 @@ public class PlayerStats : MonoBehaviour
         healthText.text = "Health level: " + healthLevel;
         ammoText.text = "Ammo level: " + ammoLevel;
         superMeterText.text = "SuperMeter level: " + superMeterLevel;
+        multiplierText.text = "Multiplier level: " + multiLevel;
         pointsRemainingText.text = "Points remaining: " + pointsRemaining;
     }
 
