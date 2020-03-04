@@ -762,7 +762,7 @@ MonoBehaviour:
   x_position: 8.5
   y_zone: 4
   timeInBetween: 0.5
-  waveKills: 0
+  waveKills: 35
 --- !u!1 &692613394
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1109,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 743534388, guid: f21e9b0bf667ab54fb20898885cf9dd0, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: adbeecbd8e9944f4c8c2e3cc1d28745a, type: 2}
     - target: {fileID: 3111868435304163216, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1168,6 +1172,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boss1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163217, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}

@@ -26,7 +26,7 @@ public class Boss : MonoBehaviour
         if (health <= 0)
             Destroy(this.gameObject);
 
-        movement();
+        //movement();
     }
 
     void movement()
@@ -46,7 +46,7 @@ public class Boss : MonoBehaviour
     {
         renderer.material.color = Color.white;
         yield return new WaitForSeconds(.1f);
-        renderer.material.color = Color.clear;
+        renderer.material.color = new Color(255,255,255, 125);
         yield return new WaitForSeconds(.1f);
         renderer.material.color = Color.white;        
     }
