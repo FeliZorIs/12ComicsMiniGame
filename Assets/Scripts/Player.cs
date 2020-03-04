@@ -19,8 +19,8 @@ public class Player : MonoBehaviour
     private float       myTime = 0f;
 
     int                 bultype = 1;
-    public Vector3      bullet_rotation1;
-    public Vector3      bullet_rotation2;
+    Vector3      bullet_rotation1;
+    Vector3      bullet_rotation2;
     public Text         shot_Text;
 
     //Invincibility after hit
@@ -36,11 +36,17 @@ public class Player : MonoBehaviour
         rend = GetComponent<Renderer>();
         color = rend.material.color;
         gameOverPrefab.SetActive(false);
+        bullet_rotation1 = new Vector3(0, 0, 12);
+        bullet_rotation2 = new Vector3(0, 0, -12);
     }
     void FixedUpdate()
     {
         Movement();
         shoot();
+
+        transform.position = new Vector2(
+            Mathf.Clamp(transform.position.x, -7.7f, 4.7f),
+            Mathf.Clamp(transform.position.y, -4.2f, 4.2f));
     }
 
     //====================================
@@ -114,6 +120,7 @@ public class Player : MonoBehaviour
         //when player collides with a BasicEnemy
         if (collision.gameObject.tag == "BasicEnemy")
         {
+            collision.gameObject.GetComponent<enemy>().onDeath();
             PlayerHealth.health -= 1;
             if (PlayerHealth.health > 0)
             {
@@ -128,7 +135,7 @@ public class Player : MonoBehaviour
     }
 
     //Invincibility state when getting hit.
-    IEnumerator PlayerInvince()
+    public IEnumerator PlayerInvince()
     {
         Physics2D.IgnoreLayerCollision(0, 10, true);
         color.a = 0.5f;

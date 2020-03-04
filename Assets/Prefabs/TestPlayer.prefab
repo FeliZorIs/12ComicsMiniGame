@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4615894405718055736}
   - component: {fileID: 4615894405718055739}
-  - component: {fileID: 4615894405718055738}
+  - component: {fileID: 6145556587813983382}
   - component: {fileID: 4615894405718055878}
   - component: {fileID: 101939583}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: TestPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,8 +85,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &4615894405718055738
-BoxCollider2D:
+--- !u!58 &6145556587813983382
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,19 +98,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.08, y: 1.84}
-    newSize: {x: 2.08, y: 1.84}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0.09, y: 0}
   serializedVersion: 2
-  m_Size: {x: 2.08, y: 1.84}
-  m_EdgeRadius: 0
+  m_Radius: 0.89
 --- !u!50 &4615894405718055878
 Rigidbody2D:
   serializedVersion: 4
@@ -148,6 +138,8 @@ MonoBehaviour:
   shot: {fileID: 0}
   shot_spawn: {fileID: 0}
   fireRate: 0
+  shot_Text: {fileID: 0}
+  gameOverPrefab: {fileID: 0}
 --- !u!1 &4615894407035091054
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4615894407035091055}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: ShotSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
