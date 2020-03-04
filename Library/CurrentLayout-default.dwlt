@@ -20,8 +20,13 @@ MonoBehaviour:
     height: 685
   m_ShowMode: 4
   m_Title: 
+<<<<<<< HEAD
   m_RootView: {fileID: 9}
   m_MinSize: {x: 875, y: 300}
+=======
+  m_RootView: {fileID: 8}
+  m_MinSize: {x: 875, y: 542}
+>>>>>>> Week3CustomizeBranch
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -41,11 +46,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 816
     y: 0
+<<<<<<< HEAD
     width: 274
     height: 364
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
+=======
+    width: 398
+    height: 415
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 20}
+>>>>>>> Week3CustomizeBranch
   m_Panes:
   - {fileID: 19}
   m_Selected: 0
@@ -66,6 +79,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 0
     width: 816
     height: 364
@@ -78,6 +92,15 @@ MonoBehaviour:
   - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 1
+=======
+    y: 532
+    width: 1368
+    height: 415
+  m_MinSize: {x: 333, y: 271}
+  m_MaxSize: {x: 14003, y: 10021}
+  vertical: 0
+  controlID: 95
+>>>>>>> Week3CustomizeBranch
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -122,6 +145,7 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 364
     width: 1090
     height: 271
@@ -134,6 +158,15 @@ MonoBehaviour:
 =======
   controlID: 140
 >>>>>>> OrisBranch
+=======
+    y: 30
+    width: 1920
+    height: 947
+  m_MinSize: {x: 677, y: 492}
+  m_MaxSize: {x: 18003, y: 14042}
+  vertical: 0
+  controlID: 136
+>>>>>>> Week3CustomizeBranch
 --- !u!114 &5
 =======
   controlID: 126
@@ -180,11 +213,19 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1090
     y: 0
+<<<<<<< HEAD
     width: 276
     height: 635
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
+=======
+    width: 402
+    height: 532
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 17}
+>>>>>>> Week3CustomizeBranch
   m_Panes:
   - {fileID: 18}
   m_Selected: 0
@@ -303,6 +344,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1090
     height: 635
   m_MinSize: {x: 403, y: 342}
@@ -310,6 +352,15 @@ MonoBehaviour:
   vertical: 1
   controlID: 99
 --- !u!114 &13
+=======
+    width: 1368
+    height: 947
+  m_MinSize: {x: 402, y: 492}
+  m_MaxSize: {x: 14003, y: 14042}
+  vertical: 1
+  controlID: 137
+--- !u!114 &12
+>>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -328,6 +379,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
+<<<<<<< HEAD
     width: 1090
     height: 364
   m_MinSize: {x: 403, y: 221}
@@ -335,6 +387,15 @@ MonoBehaviour:
   vertical: 0
   controlID: 100
 --- !u!114 &14
+=======
+    width: 1368
+    height: 532
+  m_MinSize: {x: 402, y: 221}
+  m_MaxSize: {x: 8002, y: 4021}
+  vertical: 0
+  controlID: 138
+--- !u!114 &13
+>>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -342,9 +403,15 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
+<<<<<<< HEAD
   m_EditorHideFlags: 0
   m_Script: {fileID: 12071, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
+=======
+  m_EditorHideFlags: 1
+  m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: SceneView
+>>>>>>> Week3CustomizeBranch
   m_EditorClassIdentifier: 
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 4000, y: 4000}
@@ -355,6 +422,7 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 0
     y: 437
     width: 781
@@ -445,6 +513,22 @@ MonoBehaviour:
   m_LayerEditor:
     m_SelectedLayerIndex: 1
 --- !u!114 &16
+=======
+    x: 402
+    y: 0
+    width: 966
+    height: 532
+  m_MinSize: {x: 202, y: 221}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 18}
+  m_Panes:
+  - {fileID: 18}
+  - {fileID: 19}
+  - {fileID: 14}
+  m_Selected: 0
+  m_LastSelected: 1
+--- !u!114 &14
+>>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -509,17 +593,28 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
+<<<<<<< HEAD
     - Assets/Animations
+=======
+    - Assets/Scenes
+>>>>>>> Week3CustomizeBranch
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
+<<<<<<< HEAD
   - Assets/Animations
   m_LastFoldersGridSize: 65
   m_LastProjectPath: C:\Users\deadr\git\12ComicsMiniGame
+=======
+  - Assets/Scenes
+  m_LastFoldersGridSize: -1
+  m_LastProjectPath: E:\Backups\Rutgers Newark stuff\NJIT Courses\cs 491\Github project\12ComicsMiniGame
+>>>>>>> Week3CustomizeBranch
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 34350000
@@ -535,6 +630,11 @@ MonoBehaviour:
     m_LastClickedID: 15336
     m_ExpandedIDs: 000000004e350000503500007c35000000ca9a3b
 >>>>>>> OrisBranch
+=======
+    m_SelectedIDs: 4a350000
+    m_LastClickedID: 13642
+    m_ExpandedIDs: 00000000223500002435000000ca9a3b
+>>>>>>> Week3CustomizeBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -564,6 +664,7 @@ MonoBehaviour:
     m_LastClickedID: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 000000000a3500000c350000
 =======
     m_ExpandedIDs: 00000000183500001a350000
@@ -571,6 +672,9 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 000000004e35000050350000
 >>>>>>> OrisBranch
+=======
+    m_ExpandedIDs: 000000002235000024350000
+>>>>>>> Week3CustomizeBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -695,6 +799,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       m_SelectedIDs: e0320000
       m_LastClickedID: 0
       m_ExpandedIDs: 6efbffff
@@ -708,6 +813,11 @@ MonoBehaviour:
       m_LastClickedID: 13386
       m_ExpandedIDs: 6efbffff28340000
 >>>>>>> OrisBranch
+=======
+      m_SelectedIDs: ea690000
+      m_LastClickedID: 27114
+      m_ExpandedIDs: 3a8affff9492ffffc092ffff829dffff209fffff9a9fffffc4b6ffffa4c9ffff0cd4ffffb4dbffff5eddffffe8dfffffa4e0ffffd8e0ffff70e4ffffbaebffffa4f2ffffd8f4ffff6efbffff4e3e000056490000364b0000604b0000904b0000f64b0000984f0000245f0000445f0000885f00005c620000ca620000446a00006e6a0000
+>>>>>>> Week3CustomizeBranch
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -752,10 +862,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
+<<<<<<< HEAD
     x: 0
     y: 73
     width: 815
     height: 343
+=======
+    x: 402
+    y: 73
+    width: 964
+    height: 511
+>>>>>>> Week3CustomizeBranch
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 5de1c456473a5f3409181d001d53d729
@@ -767,6 +884,7 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_Target: {x: 585.5838, y: 287.0636, z: -33.799747}
@@ -782,6 +900,11 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -32.59246, y: -4.966996, z: -261.70615}
 >>>>>>> OrisBranch
+=======
+    m_Target: {x: 539.2133, y: 289.47983, z: -203.25}
+    speed: 2
+    m_Value: {x: 539.2133, y: 289.47983, z: -203.25}
+>>>>>>> Week3CustomizeBranch
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -833,6 +956,7 @@ MonoBehaviour:
   m_Size:
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: 641.5134
     speed: 2
     m_Value: 641.5134
@@ -846,6 +970,11 @@ MonoBehaviour:
     speed: 2
     m_Value: 44.5085
 >>>>>>> OrisBranch
+=======
+    m_Target: 541.92896
+    speed: 2
+    m_Value: 541.92896
+>>>>>>> Week3CustomizeBranch
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -8,7 +8,11 @@ TagManager:
   - Despawner
   - player Wall
   - Canvas
+<<<<<<< HEAD
   - player_shot
+=======
+  - playerShot
+>>>>>>> Week3CustomizeBranch
   layers:
   - Default
   - TransparentFX

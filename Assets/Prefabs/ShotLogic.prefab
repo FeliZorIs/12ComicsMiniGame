@@ -94,7 +94,11 @@ GameObject:
   - component: {fileID: 1498820099058235162}
   m_Layer: 0
   m_Name: ShotLogic
+<<<<<<< HEAD
   m_TagString: player_shot
+=======
+  m_TagString: playerShot
+>>>>>>> Week3CustomizeBranch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
