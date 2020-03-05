@@ -7,15 +7,11 @@ public class ScoreCount : MonoBehaviour
 {
 
     public static int scoreValue = 0;
-    public Text scoreText;
-    public Text multiplierText;
-    public static int currentMulti;
+    Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
-        currentMulti = PlayerStats.multiLevel;
-        multiplierText.text = "Multiplier: x" + currentMulti;
-        scoreText.text = "Score: " + scoreValue;
+        scoreText = GetComponent<Text>();
     }
 
     // Update is called once per frame
