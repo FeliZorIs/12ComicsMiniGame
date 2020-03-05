@@ -20,11 +20,7 @@ MonoBehaviour:
     height: 685
   m_ShowMode: 4
   m_Title: 
-<<<<<<< HEAD
   m_RootView: {fileID: 9}
-=======
-  m_RootView: {fileID: 8}
->>>>>>> Week3CustomizeBranch
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
@@ -43,19 +39,11 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 816
     y: 0
     width: 274
     height: 364
   m_MinSize: {x: 202, y: 221}
-=======
-    x: 690
-    y: 0
-    width: 283
-    height: 278
-  m_MinSize: {x: 102, y: 121}
->>>>>>> Week3CustomizeBranch
   m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 19}
   m_Panes:
@@ -78,7 +66,6 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 0
     width: 816
     height: 364
@@ -91,15 +78,6 @@ MonoBehaviour:
   - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 1
-=======
-    y: 357
-    width: 973
-    height: 278
-  m_MinSize: {x: 333, y: 271}
-  m_MaxSize: {x: 14003, y: 10021}
-  vertical: 0
-  controlID: 105
->>>>>>> Week3CustomizeBranch
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +122,6 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 364
     width: 1090
     height: 271
@@ -157,15 +134,6 @@ MonoBehaviour:
 =======
   controlID: 140
 >>>>>>> OrisBranch
-=======
-    y: 30
-    width: 1366
-    height: 635
-  m_MinSize: {x: 677, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
-  vertical: 0
-  controlID: 142
->>>>>>> Week3CustomizeBranch
 --- !u!114 &5
 =======
   controlID: 126
@@ -187,7 +155,6 @@ MonoBehaviour:
   - {fileID: 7}
   m_Position:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 0
     y: 30
     width: 1366
@@ -197,20 +164,6 @@ MonoBehaviour:
   vertical: 0
   controlID: 98
 --- !u!114 &7
-=======
-    x: 973
-    y: 0
-    width: 393
-    height: 635
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 16}
-  m_Panes:
-  - {fileID: 16}
-  m_Selected: 0
-  m_LastSelected: 0
---- !u!114 &6
->>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -227,19 +180,11 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1090
     y: 0
-<<<<<<< HEAD
     width: 276
     height: 635
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 18}
-=======
-    width: 286
-    height: 357
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 17}
->>>>>>> Week3CustomizeBranch
   m_Panes:
   - {fileID: 18}
   m_Selected: 0
@@ -261,17 +206,10 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 782
     height: 271
   m_MinSize: {x: 101, y: 121}
   m_MaxSize: {x: 4001, y: 4021}
-=======
-    width: 690
-    height: 278
-  m_MinSize: {x: 231, y: 271}
-  m_MaxSize: {x: 10001, y: 10021}
->>>>>>> Week3CustomizeBranch
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 17}
@@ -365,7 +303,6 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1090
     height: 635
   m_MinSize: {x: 403, y: 342}
@@ -373,15 +310,6 @@ MonoBehaviour:
   vertical: 1
   controlID: 99
 --- !u!114 &13
-=======
-    width: 973
-    height: 635
-  m_MinSize: {x: 402, y: 492}
-  m_MaxSize: {x: 14003, y: 14042}
-  vertical: 1
-  controlID: 104
---- !u!114 &12
->>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,7 +328,6 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-<<<<<<< HEAD
     width: 1090
     height: 364
   m_MinSize: {x: 403, y: 221}
@@ -408,15 +335,6 @@ MonoBehaviour:
   vertical: 0
   controlID: 100
 --- !u!114 &14
-=======
-    width: 973
-    height: 357
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
-  vertical: 0
-  controlID: 38
---- !u!114 &13
->>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -437,7 +355,6 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 0
     y: 437
     width: 781
@@ -528,22 +445,6 @@ MonoBehaviour:
   m_LayerEditor:
     m_SelectedLayerIndex: 1
 --- !u!114 &16
-=======
-    x: 286
-    y: 0
-    width: 687
-    height: 357
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 18}
-  m_Panes:
-  - {fileID: 18}
-  - {fileID: 19}
-  - {fileID: 14}
-  m_Selected: 0
-  m_LastSelected: 1
---- !u!114 &14
->>>>>>> Week3CustomizeBranch
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -591,15 +492,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-<<<<<<< HEAD
     y: 437
     width: 781
     height: 250
-=======
-    y: 430
-    width: 689
-    height: 257
->>>>>>> Week3CustomizeBranch
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -614,27 +509,17 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-<<<<<<< HEAD
     - Assets/Animations
-=======
-    - Assets/Scripts
->>>>>>> Week3CustomizeBranch
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-<<<<<<< HEAD
   - Assets/Animations
   m_LastFoldersGridSize: 65
-=======
-  - Assets/Scripts
-  m_LastFoldersGridSize: -1
->>>>>>> Week3CustomizeBranch
   m_LastProjectPath: C:\Users\deadr\git\12ComicsMiniGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     m_SelectedIDs: 34350000
@@ -650,11 +535,6 @@ MonoBehaviour:
     m_LastClickedID: 15336
     m_ExpandedIDs: 000000004e350000503500007c35000000ca9a3b
 >>>>>>> OrisBranch
-=======
-    m_SelectedIDs: 88350000
-    m_LastClickedID: 13704
-    m_ExpandedIDs: 00000000623500006435000000ca9a3b
->>>>>>> Week3CustomizeBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -684,7 +564,6 @@ MonoBehaviour:
     m_LastClickedID: 0
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
     m_ExpandedIDs: 000000000a3500000c350000
 =======
     m_ExpandedIDs: 00000000183500001a350000
@@ -692,9 +571,6 @@ MonoBehaviour:
 =======
     m_ExpandedIDs: 000000004e35000050350000
 >>>>>>> OrisBranch
-=======
-    m_ExpandedIDs: 000000006235000064350000
->>>>>>> Week3CustomizeBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -719,17 +595,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-<<<<<<< HEAD
     m_SelectedInstanceIDs: f63b0000
     m_LastClickedInstanceID: 15350
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c623000000000000123d0000ea340000
-=======
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c623000000000000
->>>>>>> Week3CustomizeBranch
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -778,15 +647,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 1090
     y: 73
     width: 275
-=======
-    x: 973
-    y: 73
-    width: 392
->>>>>>> Week3CustomizeBranch
     height: 614
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
@@ -824,18 +687,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 816
     y: 73
-<<<<<<< HEAD
     width: 272
     height: 343
-=======
-    width: 285
-    height: 336
->>>>>>> Week3CustomizeBranch
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       m_SelectedIDs: e0320000
@@ -851,11 +708,6 @@ MonoBehaviour:
       m_LastClickedID: 13386
       m_ExpandedIDs: 6efbffff28340000
 >>>>>>> OrisBranch
-=======
-      m_SelectedIDs: e6320000
-      m_LastClickedID: 0
-      m_ExpandedIDs: c6faffff
->>>>>>> Week3CustomizeBranch
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -900,17 +752,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 0
     y: 73
     width: 815
     height: 343
-=======
-    x: 286
-    y: 73
-    width: 685
-    height: 336
->>>>>>> Week3CustomizeBranch
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
   m_WindowGUID: 5de1c456473a5f3409181d001d53d729
@@ -1172,15 +1017,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-<<<<<<< HEAD
     x: 782
     y: 437
     width: 306
     height: 250
-=======
-    x: 690
-    y: 430
-    width: 281
-    height: 257
->>>>>>> Week3CustomizeBranch
   m_ViewDataDictionary: {fileID: 0}
