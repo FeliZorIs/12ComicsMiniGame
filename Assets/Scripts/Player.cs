@@ -77,7 +77,7 @@ public class Player : MonoBehaviour
     void shoot()
     {
 
-        //Temp statement just to show that different ammo levels affect the type of shots you can use.
+        //Temp statement just to show that different ammo levels affect the type of shots you can use
         //This can probably be condensed. Let me know if you guys figure out a way to do so.
         switch (ammolvl)
         {
