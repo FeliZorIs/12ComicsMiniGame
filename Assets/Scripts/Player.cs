@@ -27,15 +27,27 @@ public class Player : MonoBehaviour
     Renderer rend;
     Color color;
 
-    //For gameOver Button
+    //For gameOver Buttons
     public GameObject gameOverPrefab;
+    public GameObject returnCustomButton;
 
+    //Customization stats being accounted for here.
+    static public int ammolvl;
+    static public int supermeterlvl;
+    static public int multiplierlvl;
 
     void Start()
     {
+
+        ammolvl = PlayerStats.ammoLevel;
+        supermeterlvl = PlayerStats.superMeterLevel;
+        multiplierlvl = PlayerStats.multiLevel;
+
+
         rend = GetComponent<Renderer>();
         color = rend.material.color;
         gameOverPrefab.SetActive(false);
+        returnCustomButton.SetActive(false);
         bullet_rotation1 = new Vector3(0, 0, 12);
         bullet_rotation2 = new Vector3(0, 0, -12);
     }
@@ -70,6 +82,100 @@ public class Player : MonoBehaviour
      */
     void shoot()
     {
+
+        //Temp statement just to show that different ammo levels affect the type of shots you can use
+        //This can probably be condensed. Let me know if you guys figure out a way to do so.
+        switch (ammolvl)
+        {
+
+            //Level 1, only access to basic shot.
+            case 1:
+                bultype = 1;
+                shot_Text.text = "Shot Type: basic";
+
+                myTime = myTime + Time.deltaTime;
+                if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
+                {
+                    nextFire = myTime + fireRate;
+                    Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                    break;
+                }
+                break;
+
+            //Level 2, access to basic shot and split shot.
+            case 2:
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    bultype = 1;
+                    shot_Text.text = "Shot Type: basic";
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    bultype = 2;
+                    shot_Text.text = "Shot Type: 3 split";
+                }
+                myTime = myTime + Time.deltaTime;
+                if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
+                {
+                    switch (bultype)
+                    {
+                        case 1:
+                            nextFire = myTime + fireRate;
+                            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                            break;
+
+                        case 2:
+                            nextFire = myTime + fireRate;
+                            Instantiate(shot, shot_spawn.position, Quaternion.identity);
+                            GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
+                            GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+                            break;
+                    }
+                }
+                break;
+
+            //Level 3, access to third shot type as well.
+            case 3:
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                {
+                    bultype = 1;
+                    shot_Text.text = "Shot Type: basic";
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                {
+                    bultype = 2;
+                    shot_Text.text = "Shot Type: 3 split";
+                }
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                {
+                    bultype = 3;
+                    shot_Text.text = "Shot Type: N/A";
+                }
+                myTime = myTime + Time.deltaTime;
+                if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
+                {
+                    switch (bultype)
+                    {
+                        case 1:
+                            nextFire = myTime + fireRate;
+                            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                            break;
+
+                        case 2:
+                            nextFire = myTime + fireRate;
+                            Instantiate(shot, shot_spawn.position, Quaternion.identity);
+                            GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
+                            GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+                            break;
+                        case 3:
+                            break;
+                    }
+                }
+                break;
+
+        }
+
+        /*
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             bultype = 1;
@@ -107,6 +213,8 @@ public class Player : MonoBehaviour
                     break;
             }
         }
+         * 
+         */
         nextFire = nextFire - myTime;
         myTime = 0f;
     }
@@ -154,6 +262,7 @@ public class Player : MonoBehaviour
     {
         PlayerHealth.health = 0;
         gameOverPrefab.SetActive(true);
+        returnCustomButton.SetActive(true);
         Destroy(gameObject);
     }        
 }

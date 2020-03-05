@@ -12,8 +12,8 @@ public class PlayerStats : MonoBehaviour
     static public int ammoLevel = 1;
     static public int superMeterLevel = 1;
     static public int multiLevel = 1;
-    public int maxPoints;
-    public int pointsRemaining = 3;
+    static public int maxPoints;
+    static public int pointsRemaining = 10;
 
 
     public Text healthText;
@@ -27,9 +27,9 @@ public class PlayerStats : MonoBehaviour
     {
         //Check the DB here for the grades and correspond that to the points given to student.
         healthText.text = "Health level: " + healthLevel;
-       // ammoText.text = "Ammo level: " + ammoLevel;
-        //superMeterText.text = "SuperMeter level: " + superMeterLevel;
-        //multiplierText.text = "Multiplier level: " + multiLevel;
+        ammoText.text = "Ammo level: " + ammoLevel;
+        superMeterText.text = "SuperMeter level: " + superMeterLevel;
+        multiplierText.text = "Multiplier level: " + multiLevel;
         pointsRemainingText.text = "Points remaining: " + pointsRemaining;
     }
 

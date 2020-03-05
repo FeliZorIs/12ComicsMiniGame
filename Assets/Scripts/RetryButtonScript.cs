@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class RetryButtonScript : MonoBehaviour
 {
+
+    public Button retryButton;
+    public Button customButton;
     public void restartScene()
     {
         gameObject.SetActive(false);
@@ -13,5 +16,11 @@ public class RetryButtonScript : MonoBehaviour
         ScoreCount.scoreValue = 0;
         PlayerHealth.health = 3;
         SceneManager.LoadScene("TestMap");
+    }
+
+    public void returnToCustom()
+    {
+        gameObject.SetActive(false);
+        SceneManager.LoadScene("PlayerCustomization");
     }
 }

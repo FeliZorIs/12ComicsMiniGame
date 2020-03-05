@@ -6,11 +6,12 @@ public class enemy : MonoBehaviour
 {
     public GameObject enemyManager;
     public float speed = 2;
-
+    static public int multiBonus;
     private void Start()
     {
         enemyManager = GameObject.Find("EnemyManager");
         enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
+        multiBonus = PlayerStats.multiLevel;
     }
 
     // Update is called once per frame
@@ -35,7 +36,8 @@ public class enemy : MonoBehaviour
 
         if (collision.tag == "player_shot")
         {
-            ScoreCount.scoreValue += 10;
+            //Calculate score based on current multiplier. If multiplier will change throughout gameplay, we will need to use another reference than PlayerStats.multiLevel to store the multiplier.
+            ScoreCount.scoreValue += (10*multiBonus);
             enemyManager.GetComponent<enemy_manager>().enemiesKilled += 1;
             onDeath();
         }
