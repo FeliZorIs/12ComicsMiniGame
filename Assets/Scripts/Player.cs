@@ -33,16 +33,23 @@ public class Player : MonoBehaviour
 
     //Customization stats being accounted for here.
     static public int ammolvl;
-    static public int supermeterlvl;
+    
     static public int multiplierlvl;
 
+    //Supermeter vars
+    static public int supermeterlvl;
+    public int superMeterCurrent;
+    public Text superMeterText;
+
+  
     void Start()
     {
 
         ammolvl = PlayerStats.ammoLevel;
         supermeterlvl = PlayerStats.superMeterLevel;
         multiplierlvl = PlayerStats.multiLevel;
-
+        superMeterCurrent = 0;
+        superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
 
         rend = GetComponent<Renderer>();
         color = rend.material.color;
@@ -55,6 +62,7 @@ public class Player : MonoBehaviour
     {
         Movement();
         shoot();
+        superMeterUse();
 
         transform.position = new Vector2(
             Mathf.Clamp(transform.position.x, -7.7f, 4.7f),
@@ -175,46 +183,6 @@ public class Player : MonoBehaviour
 
         }
 
-        /*
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            bultype = 1;
-            shot_Text.text = "Shot Type: basic";
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            bultype = 2;
-            shot_Text.text = "Shot Type: 3 split";
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            bultype = 3;
-            shot_Text.text = "Shot Type: N/A";
-        }
-
-        myTime = myTime + Time.deltaTime;
-        if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
-        {   
-            switch (bultype)
-            {
-                case 1:
-                    nextFire = myTime + fireRate;
-                    Instantiate(shot, shot_spawn.position, shot_spawn.rotation);                    
-                    break;
-
-                case 2:
-                    nextFire = myTime + fireRate;
-                    Instantiate(shot, shot_spawn.position, Quaternion.identity);
-                    GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
-                    GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
-                    break;
-
-                case 3:
-                    break;
-            }
-        }
-         * 
-         */
         nextFire = nextFire - myTime;
         myTime = 0f;
     }
@@ -264,5 +232,51 @@ public class Player : MonoBehaviour
         gameOverPrefab.SetActive(true);
         returnCustomButton.SetActive(true);
         Destroy(gameObject);
-    }        
+    }
+
+
+    //======================================
+    //              SuperMeter
+    //======================================
+
+    //Charge the supermeter based on the superMeter level.
+    //Since we're doing shot collision seperately i'm making this public. We'll change it to private later.
+    public void superMeterCharge(int s)
+    {
+        if (superMeterCurrent < 100) 
+        {
+            superMeterCurrent += s*supermeterlvl;
+            if (superMeterCurrent >= 100)
+            {
+                superMeterCurrent = 100;
+            }
+            superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
+        }
+        else
+        {
+            superMeterCurrent = 100;
+            superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
+        }
+    }
+
+    //Use the supermeter and reset it's value.
+    private void superMeterUse()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Alpha4)){
+            if(superMeterCurrent >= 100) {
+                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
+                 foreach (GameObject target in enemies)
+                 {
+                    GameObject.Destroy(target);
+                 }
+                 superMeterCurrent = 0;
+                 superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
+            }
+            else {
+                Debug.Log("Supermeter isn't full yet!");
+            }
+        }
+    }
+    
 }

@@ -7,10 +7,13 @@ public class enemy : MonoBehaviour
     public GameObject enemyManager;
     public float speed = 2;
     static public int multiBonus;
+    public GameObject player;
+    
     private void Start()
     {
         enemyManager = GameObject.Find("EnemyManager");
         enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
+        player = GameObject.Find("TestPlayer");
         multiBonus = PlayerStats.multiLevel;
     }
 
@@ -38,6 +41,7 @@ public class enemy : MonoBehaviour
         {
             //Calculate score based on current multiplier. If multiplier will change throughout gameplay, we will need to use another reference than PlayerStats.multiLevel to store the multiplier.
             ScoreCount.scoreValue += (10*multiBonus);
+            player.GetComponent<Player>().superMeterCharge(2);
             enemyManager.GetComponent<enemy_manager>().enemiesKilled += 1;
             onDeath();
         }
@@ -47,4 +51,6 @@ public class enemy : MonoBehaviour
             onDeath();
         }
     }
+
+
 }
