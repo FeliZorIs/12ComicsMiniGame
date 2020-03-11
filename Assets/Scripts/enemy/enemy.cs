@@ -8,6 +8,7 @@ public class enemy : MonoBehaviour
     public float speed = 2;
     static public int multiBonus;
     public GameObject player;
+    public GameObject city;
     
     private void Start()
     {
@@ -15,6 +16,7 @@ public class enemy : MonoBehaviour
         enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
         player = GameObject.Find("TestPlayer");
         multiBonus = PlayerStats.multiLevel;
+        city = GameObject.Find("Despawn_Enemy");
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class enemy : MonoBehaviour
 
         if (collision.tag == "Despawner")
         {
+            city.GetComponent<City>().city_health -= 1;
             onDeath();
         }
     }

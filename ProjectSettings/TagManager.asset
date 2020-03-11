@@ -9,6 +9,7 @@ TagManager:
   - player Wall
   - Canvas
   - player_shot
+  - Boss
   layers:
   - Default
   - TransparentFX

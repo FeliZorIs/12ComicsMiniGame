@@ -208,6 +208,21 @@ public class Player : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "Boss")
+        {
+            PlayerHealth.health -= 1;
+            collision.gameObject.GetComponent<Boss>().health -= 1;
+            this.transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
+            if (PlayerHealth.health > 0)
+            {
+                StartCoroutine("PlayerInvince");
+            }
+            if (PlayerHealth.health <= 0)
+            {
+                gameOver();
+            }
+        }
     }
 
     //Invincibility state when getting hit.
@@ -226,7 +241,7 @@ public class Player : MonoBehaviour
     //              PlayerDeath
     //======================================
 
-    private void gameOver() 
+    public void gameOver() 
     {
         PlayerHealth.health = 0;
         gameOverPrefab.SetActive(true);

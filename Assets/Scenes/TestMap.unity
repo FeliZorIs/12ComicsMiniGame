@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 88149788}
   - component: {fileID: 88149789}
   - component: {fileID: 88149790}
+  - component: {fileID: 88149791}
   m_Layer: 0
   m_Name: Despawn_Enemy
   m_TagString: Despawner
@@ -200,6 +201,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &88149791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 88149787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43016b81aa777cc4fa08b1b681430bcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  city_health: 3
 --- !u!1 &288647139
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,7 +409,7 @@ GameObject:
   m_Component:
   - component: {fileID: 349689412}
   m_Layer: 0
-  m_Name: Despawn colliders
+  m_Name: City
   m_TagString: Despawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -950,7 +964,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active_enemies: []
-  enemiesKilled: 0
+  enemiesKilled_total: 0
+  enemiesKilled_current: 0
 --- !u!1 &743534380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3111868435304163217, guid: f21e9b0bf667ab54fb20898885cf9dd0,
@@ -1660,6 +1675,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163217, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163218, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
       propertyPath: myPositions.Array.size
@@ -1689,6 +1714,11 @@ PrefabInstance:
         type: 3}
       propertyPath: lerpTime
       value: 1.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: health
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f21e9b0bf667ab54fb20898885cf9dd0, type: 3}

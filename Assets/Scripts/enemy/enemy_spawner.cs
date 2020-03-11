@@ -39,19 +39,16 @@ public class enemy_spawner : MonoBehaviour
         switch (waveState)
         {
             case WaveState.ENEMY:
-                Debug.Log("1");
                 spawn_wave();
                 spawn_boss_check();
                 break;
 
             case WaveState.BOSS:
-                Debug.Log("2");
                 if (Boss.GetComponent<Boss>().isAlive_check() == false)
                     waveState = WaveState.RESET;
                 break;
 
             case WaveState.RESET:
-                Debug.Log("3");
                 waveKills *= 1.5f;
                 Boss.GetComponent<Boss>().reset_boss();
                 enemyManager.GetComponent<enemy_manager>().enemiesKilled_current = 0;
