@@ -6,7 +6,8 @@ public class enemy_manager : MonoBehaviour
 {
     public List<enemy> active_enemies;
 
-    public int enemiesKilled = 0;
+    public int enemiesKilled_total = 0;
+    public int enemiesKilled_current = 0;
     // Start is called before the first frame update
     void Start()
     {

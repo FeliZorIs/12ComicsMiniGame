@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField] [Range (0f, 5f)] float lerpTime;
-    [SerializeField] Vector2[] myPositions;
-    int posIndex = 0;
-    int length;
-    float t = 0;
-
     Renderer renderer;
     public int health;
+    int maxHealth;
     public bool invince;
+    bool isAlive;
 
     // Start is called before the first frame update
     void Start()
     {
+        isAlive = true;
+        maxHealth = health;
         renderer = GetComponent<Renderer>();
     }
 
@@ -24,22 +22,23 @@ public class Boss : MonoBehaviour
     void Update()
     {
         if (health <= 0)
-            Destroy(this.gameObject);
-
-        //movement();
+        {
+            isAlive = false;
+            this.gameObject.SetActive(false);
+        }
     }
 
-    void movement()
+    //is called in enemy_spawner
+    public bool isAlive_check()
     {
-        transform.position = Vector2.Lerp(transform.position, myPositions[posIndex], lerpTime * Time.deltaTime);
+        return isAlive;
+    }
 
-        t = Mathf.Lerp(t, 1f, lerpTime * Time.deltaTime);
-        if (t > .9f)
-        {
-            t = 0f;
-            posIndex++;
-            posIndex = (posIndex >= length) ? 0 : posIndex;
-        }
+    //is called in enemy_spawner
+    public void reset_boss()
+    {
+        health = maxHealth;
+        isAlive = true;
     }
 
     IEnumerator flash()

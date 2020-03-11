@@ -33,7 +33,8 @@ public class enemy : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            enemyManager.GetComponent<enemy_manager>().enemiesKilled += 1;
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
             onDeath();
         }
 
@@ -42,7 +43,8 @@ public class enemy : MonoBehaviour
             //Calculate score based on current multiplier. If multiplier will change throughout gameplay, we will need to use another reference than PlayerStats.multiLevel to store the multiplier.
             ScoreCount.scoreValue += (10*multiBonus);
             player.GetComponent<Player>().superMeterCharge(2);
-            enemyManager.GetComponent<enemy_manager>().enemiesKilled += 1;
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
             onDeath();
         }
 
