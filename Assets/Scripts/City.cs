@@ -14,7 +14,7 @@ public class City : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(city_health);
+        Debug.Log(city_health);
         if (city_health <= 0 && player != null)
             city_destroyed();
     }

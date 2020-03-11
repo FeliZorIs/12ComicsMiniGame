@@ -23,9 +23,10 @@ public class Player : MonoBehaviour
     Vector3      bullet_rotation2;
     public Text         shot_Text;
 
-    //Invincibility after hit
+    //Invincibility after hit & Player UI image damage
     Renderer rend;
     Color color;
+   public Image playerImg;
 
     //For gameOver Buttons
     public GameObject gameOverPrefab;
@@ -198,6 +199,7 @@ public class Player : MonoBehaviour
         {
             collision.gameObject.GetComponent<enemy>().onDeath();
             PlayerHealth.health -= 1;
+            StartCoroutine("PicUIDamage");
             if (PlayerHealth.health > 0)
             {
                 StartCoroutine("PlayerInvince");
@@ -212,6 +214,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Boss")
         {
             PlayerHealth.health -= 1;
+            StartCoroutine("PicUIDamage");
             collision.gameObject.GetComponent<Boss>().health -= 1;
             this.transform.position = new Vector2(this.transform.position.x - 1, this.transform.position.y);
             if (PlayerHealth.health > 0)
@@ -223,6 +226,14 @@ public class Player : MonoBehaviour
                 gameOver();
             }
         }
+    }
+
+    //Player U.I. turns red during damage.
+    public IEnumerator PicUIDamage()
+    {
+        playerImg.GetComponent<Image>().color = Color.red;
+        yield return new WaitForSeconds(1.0f);
+        playerImg.GetComponent<Image>().color = new Color(255,255,255);
     }
 
     //Invincibility state when getting hit.
