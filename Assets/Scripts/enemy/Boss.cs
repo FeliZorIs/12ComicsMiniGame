@@ -7,9 +7,15 @@ public class Boss : MonoBehaviour
     Renderer renderer;
     public int health;
     int maxHealth;
-    [SerializeField]int stage_health;
-    [SerializeField]bool invince;
+    int stage_health;
+    bool invince;
     bool isAlive;
+
+    //basic shooting declarations
+    public GameObject bullet;
+    Vector2 bullet_spawn;
+    public float fireRate;
+    private float myTime = 0f;
 
     enum BossStage
     {
@@ -31,24 +37,28 @@ public class Boss : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        bullet_spawn = new Vector2(this.transform.position.x - .5f, this.transform.position.y);
+
         switch (bossStage)
         {
             case BossStage.STAGE_1:
-                Debug.Log("1");
                 if (health <= stage_health*2)
                     bossStage = BossStage.STAGE_2;
+
+                shoot_basic();
                 break;
 
             case BossStage.STAGE_2:
-                Debug.Log("2");
                 if (health <= stage_health)
                     bossStage = BossStage.STAGE_3;
+
+                shoot_basic();
                 break;
 
             case BossStage.STAGE_3:
-                Debug.Log("3");
+                shoot_basic();
                 break;
         }
 
@@ -58,6 +68,10 @@ public class Boss : MonoBehaviour
             this.gameObject.SetActive(false);
         }
     }
+
+    //=================================
+    //          Functions
+    //=================================
 
     //is called in enemy_spawner
     public bool isAlive_check()
@@ -73,6 +87,23 @@ public class Boss : MonoBehaviour
         bossStage = BossStage.STAGE_1;
     }
 
+    // allows the Boss to shoot at the player with basic shots
+    void shoot_basic()
+    {
+        myTime += Time.deltaTime;
+
+        if (myTime >= fireRate)
+        {
+            //Debug.Log(Enemy.name + "has spawned");
+            Instantiate(bullet, bullet_spawn, Quaternion.identity);
+            myTime = 0;
+        }
+    }
+
+    //=================================
+    //          Coroutines
+    //=================================
+
     IEnumerator flash()
     {
         renderer.material.color = Color.white;
@@ -81,6 +112,10 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         renderer.material.color = Color.white;        
     }
+    
+    //=================================
+    //          Collision
+    //=================================
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

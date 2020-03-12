@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 3111868435304163213}
   - component: {fileID: 743534388}
   - component: {fileID: 3111868435304163219}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Boss1
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3111868435304163215
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,7 +196,7 @@ Animator:
   m_GameObject: {fileID: 3111868435304163217}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4e0189cd9d9a3f345bab1a79ce162626, type: 2}
+  m_Controller: {fileID: 9100000, guid: adbeecbd8e9944f4c8c2e3cc1d28745a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -217,5 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffb4aed0a83b3145b6dee4665de426e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
-  invince: 0
+  health: 75
+  bullet: {fileID: 7333550665432318456, guid: 8b9c1f4e695505a47aac3d5337ced3e9, type: 3}
+  fireRate: 0.5

@@ -213,6 +213,7 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        //player collides with boss
         if (collision.gameObject.tag == "Boss")
         {
             PlayerHealth.health -= 1;
@@ -227,6 +228,22 @@ public class Player : MonoBehaviour
             {
                 gameOver();
             }
+        }
+
+        //player collides with enemy bullet
+        if (collision.gameObject.tag == "enemy_shot")
+        {
+            PlayerHealth.health -= 1;
+            StartCoroutine("PicUIDamage");
+            if (PlayerHealth.health > 0)
+            {
+                StartCoroutine("PlayerInvince");
+            }
+            if (PlayerHealth.health <= 0)
+            {
+                gameOver();
+            }
+            Destroy(collision.gameObject);
         }
     }
 
