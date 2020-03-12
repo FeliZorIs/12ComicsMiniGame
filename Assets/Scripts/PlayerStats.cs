@@ -243,4 +243,8 @@ public class PlayerStats : MonoBehaviour
         SceneManager.LoadScene("TestMap");
     }
 
+    public void Back()
+    {
+        SceneManager.LoadScene("PlayerMenu");
+    }
 }

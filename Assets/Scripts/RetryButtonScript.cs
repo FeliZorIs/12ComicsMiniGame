@@ -9,6 +9,8 @@ public class RetryButtonScript : MonoBehaviour
 
     public Button retryButton;
     public Button customButton;
+    public Button returnMenu;
+
     public GameObject city;
     public void restartScene()
     {
@@ -25,4 +27,11 @@ public class RetryButtonScript : MonoBehaviour
         gameObject.SetActive(false);
         SceneManager.LoadScene("PlayerCustomization");
     }
+
+    public void returnToMenu()
+    {
+        gameObject.SetActive(false);
+        SceneManager.LoadScene("PlayerMenu");
+    }
+
 }

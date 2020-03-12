@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
     //For gameOver Buttons
     public GameObject gameOverPrefab;
     public GameObject returnCustomButton;
+    public GameObject returnToMenuBtn;
 
     //Customization stats being accounted for here.
     static public int ammolvl;
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
         color = rend.material.color;
         gameOverPrefab.SetActive(false);
         returnCustomButton.SetActive(false);
+        returnToMenuBtn.SetActive(false);
         bullet_rotation1 = new Vector3(0, 0, 12);
         bullet_rotation2 = new Vector3(0, 0, -12);
     }
@@ -257,6 +259,7 @@ public class Player : MonoBehaviour
         PlayerHealth.health = 0;
         gameOverPrefab.SetActive(true);
         returnCustomButton.SetActive(true);
+        returnToMenuBtn.SetActive(true);
         Destroy(gameObject);
     }
 
