@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     //Invincibility after hit & Player UI image damage
     Renderer rend;
     Color color;
-   public Image playerImg;
+    public Image playerImg;
 
     //For gameOver Buttons
     public GameObject gameOverPrefab;
@@ -42,11 +42,12 @@ public class Player : MonoBehaviour
     static public int supermeterlvl;
     public int superMeterCurrent;
     public Text superMeterText;
+    public GameObject enemyManager;
 
   
     void Start()
     {
-
+        enemyManager = GameObject.Find("EnemyManager");
         ammolvl = PlayerStats.ammoLevel;
         supermeterlvl = PlayerStats.superMeterLevel;
         multiplierlvl = PlayerStats.multiLevel;
@@ -179,7 +180,7 @@ public class Player : MonoBehaviour
                             GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
                             break;
                         case 3:
-                            nextFire = myTime + (fireRate + 0.5f);
+                            nextFire = myTime + (fireRate + 0.3f);
                             StartCoroutine("BurstShot");
                             break;
                     }
@@ -326,16 +327,21 @@ public class Player : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.Alpha4)){
-            if(superMeterCurrent >= 100) {
+            if(superMeterCurrent >= 100) 
+            {
                  GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
-                 foreach (GameObject target in enemies)
+                 for (int i = 0; i < enemies.Length; i++)
                  {
-                    GameObject.Destroy(target);
+                     enemies[i].GetComponent<enemy>().onDeath();
+                     GameObject.Destroy(enemies[i]);
+                     enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
+                     enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
                  }
                  superMeterCurrent = 0;
                  superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
             }
-            else {
+            else 
+            {
                 Debug.Log("Supermeter isn't full yet!");
             }
         }

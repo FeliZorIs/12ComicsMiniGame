@@ -29,5 +29,6 @@ public class City : MonoBehaviour
     public void city_destroyed()
     {
         player.GetComponent<Player>().gameOver();
+        city_text.text = "City: 0"  + " / " + city_health_Max;
     }
 }
