@@ -43,7 +43,6 @@ public class Player : MonoBehaviour
     public int superMeterCurrent;
     public Text superMeterText;
     public GameObject enemyManager;
-
   
     void Start()
     {
@@ -52,8 +51,7 @@ public class Player : MonoBehaviour
         supermeterlvl = PlayerStats.superMeterLevel;
         multiplierlvl = PlayerStats.multiLevel;
         superMeterCurrent = 0;
-        superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
-
+        superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
         gameOverPrefab.SetActive(false);
@@ -62,11 +60,13 @@ public class Player : MonoBehaviour
         bullet_rotation1 = new Vector3(0, 0, 12);
         bullet_rotation2 = new Vector3(0, 0, -12);
     }
+
     void FixedUpdate()
     {
         Movement();
         shoot();
         superMeterUse();
+        ESC();
 
         transform.position = new Vector2(
             Mathf.Clamp(transform.position.x, -7.7f, 4.7f),
@@ -204,6 +204,7 @@ public class Player : MonoBehaviour
           
     }
 
+
     //======================================
     //              collisions
     //======================================
@@ -220,11 +221,12 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine("PlayerInvince");
             }
-            if(PlayerHealth.health<= 0)
+            if(PlayerHealth.health <= 0)
             {
                 gameOver();
             }
             Destroy(collision.gameObject);
+            
         }
 
         //player collides with boss
@@ -295,6 +297,7 @@ public class Player : MonoBehaviour
         returnCustomButton.SetActive(true);
         returnToMenuBtn.SetActive(true);
         Destroy(gameObject);
+        
     }
 
 
@@ -313,12 +316,12 @@ public class Player : MonoBehaviour
             {
                 superMeterCurrent = 100;
             }
-            superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
+            superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
         }
         else
         {
             superMeterCurrent = 100;
-            superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
+            superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
         }
     }
 
@@ -346,5 +349,13 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
+
+    private void ESC()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            gameOver();
+        }
+    }
+
 }
