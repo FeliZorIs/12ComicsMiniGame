@@ -32,8 +32,6 @@ public class Boss : MonoBehaviour
         stage_health = maxHealth / 3;
         renderer = GetComponent<Renderer>();
         bossStage = BossStage.STAGE_1;
-
-        Debug.Log(stage_health);
     }
 
     // Update is called once per frame

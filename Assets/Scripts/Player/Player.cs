@@ -242,7 +242,10 @@ public class Player : MonoBehaviour
                 gameOver();
             }
         }
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         //player collides with enemy bullet
         if (collision.gameObject.tag == "enemy_shot")
         {
