@@ -160,7 +160,7 @@ public class Player : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     bultype = 3;
-                    shot_Text.text = "Shot Type: N/A";
+                    shot_Text.text = "Shot Type: Burst";
                 }
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -179,6 +179,8 @@ public class Player : MonoBehaviour
                             GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
                             break;
                         case 3:
+                            nextFire = myTime + (fireRate + 0.5f);
+                            StartCoroutine("BurstShot");
                             break;
                     }
                 }
@@ -188,6 +190,17 @@ public class Player : MonoBehaviour
 
         nextFire = nextFire - myTime;
         myTime = 0f;
+    }
+
+    //Burst shot couroutine.
+    public IEnumerator BurstShot()
+    {
+        for (int i = 0; i <= 3; i++ )
+        {
+            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+            yield return new WaitForSeconds(0.05f);
+        }
+          
     }
 
     //======================================
