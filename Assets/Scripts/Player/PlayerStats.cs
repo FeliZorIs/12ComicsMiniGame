@@ -6,26 +6,34 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-
-    //Variables for different stats. Making sure they can be manipulated in customization screen and their values are kept into gameplay.
     static public int healthLevel = 1;
     static public int ammoLevel = 1;
     static public int superMeterLevel = 1;
     static public int multiLevel = 1;
-    static public int maxPoints;
+    static public int maxPoints = 20;
     static public int pointsRemaining = 10;
-
+    //User who's currently logged in.
+    public string current = MenuBtnScript.currentUser;
 
     public Text healthText;
     public Text ammoText;
     public Text superMeterText;
     public Text multiplierText;
     public Text pointsRemainingText;
-   
+    
+    //TEMP STATS, WILL BE REPLACED WHEN THE DATABASE IS CREATED!!!!
+    static public int KathealthLevel = 3;
+    static public int KatammoLevel = 1;
+    static public int KatsuperMeterLevel = 1;
+    static public int KatmultiLevel = 2;
+    static public int KatmaxPoints = 20;
+    static public int KatpointsRemaining = 5;
+ 
     // Start is called before the first frame update
     void Start()
     {
         //Check the DB here for the grades and correspond that to the points given to student.
+        setStats();
         healthText.text = "Health level: " + healthLevel;
         ammoText.text = "Ammo level: " + ammoLevel;
         superMeterText.text = "SuperMeter level: " + superMeterLevel;
@@ -38,6 +46,37 @@ public class PlayerStats : MonoBehaviour
     {
         
     }
+
+
+    /*
+     ///////////////////////////////// 
+     ******GETTING PLAYER STATS HERE***
+     /////////////////////////////////
+    */
+     
+    //Based on who is logged in, the stats will be allocated accordingly. Obviously we'll save these stats into the DB so they're loaded in correctly each time but for now this is just to test.
+    public void setStats()
+    {
+        if(current == "katherine")
+        {
+            healthLevel = KathealthLevel;
+            ammoLevel = KatammoLevel;
+            superMeterLevel = KatsuperMeterLevel;
+            multiLevel = KatmultiLevel;
+            maxPoints = KatmaxPoints;
+            pointsRemaining = KatpointsRemaining;
+        }
+        else
+        {
+            healthLevel = 1;
+            ammoLevel = 1;
+            superMeterLevel = 1;
+            multiLevel = 1;
+            maxPoints = 20;
+            pointsRemaining = 10;
+        }
+    }
+
 
     /*
      /////////////////////////////////
@@ -240,11 +279,29 @@ public class PlayerStats : MonoBehaviour
     //Button click to actually play the game!
     public void Play()
     {
+        if (current == "katherine")
+        {
+            KathealthLevel = healthLevel;
+            KatammoLevel = ammoLevel;
+            KatsuperMeterLevel = superMeterLevel;
+            KatmultiLevel = multiLevel;
+            KatmaxPoints = maxPoints;
+            KatpointsRemaining = pointsRemaining;
+        }
         SceneManager.LoadScene("TestMap");
     }
 
     public void Back()
     {
+        if (current == "katherine")
+        {
+            KathealthLevel = healthLevel;
+            KatammoLevel = ammoLevel;
+            KatsuperMeterLevel = superMeterLevel;
+            KatmultiLevel = multiLevel;
+            KatmaxPoints = maxPoints;
+            KatpointsRemaining = pointsRemaining;
+        }
         SceneManager.LoadScene("PlayerMenu");
     }
 }

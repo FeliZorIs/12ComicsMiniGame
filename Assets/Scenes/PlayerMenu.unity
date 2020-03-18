@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 219767431}
   - component: {fileID: 219767433}
   - component: {fileID: 219767432}
+  - component: {fileID: 219767434}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -296,6 +297,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219767430}
   m_CullTransparentMesh: 0
+--- !u!114 &219767434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219767430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67cbe75281d8a7e43adc798ad8dabb52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  userText: {fileID: 1043543387}
 --- !u!1 &295581840
 GameObject:
   m_ObjectHideFlags: 0
@@ -1025,6 +1039,11 @@ MonoBehaviour:
   LeaderboardsButton: {fileID: 1984299390}
   logoutButton: {fileID: 295581842}
   backButton: {fileID: 0}
+  username: 
+  password: 
+  userInput: {fileID: 0}
+  passInput: {fileID: 0}
+  failText: {fileID: 0}
 --- !u!1 &1894016844
 GameObject:
   m_ObjectHideFlags: 0
