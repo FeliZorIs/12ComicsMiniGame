@@ -9,7 +9,7 @@ public class LoginDisp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        userText.GetComponent<Text>().text = MenuBtnScript.currentUser + " !";
+        userText.GetComponent<Text>().text = MenuBtnScript.currentUser + "!";
     }
 
     // Update is called once per frame

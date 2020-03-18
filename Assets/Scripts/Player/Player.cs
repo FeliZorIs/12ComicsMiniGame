@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public int superMeterCurrent;
     public Text superMeterText;
     public GameObject enemyManager;
+    public SupermeterBar superBar;
   
     void Start()
     {
@@ -59,6 +60,11 @@ public class Player : MonoBehaviour
         returnToMenuBtn.SetActive(false);
         bullet_rotation1 = new Vector3(0, 0, 12);
         bullet_rotation2 = new Vector3(0, 0, -12);
+
+        superBar.SetMaxSuper(100);
+
+        
+
     }
 
     void FixedUpdate()
@@ -67,6 +73,8 @@ public class Player : MonoBehaviour
         shoot();
         superMeterUse();
         ESC();
+
+        superBar.SetSuper(superMeterCurrent);
 
         transform.position = new Vector2(
             Mathf.Clamp(transform.position.x, -7.7f, 4.7f),

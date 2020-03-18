@@ -240,6 +240,11 @@ MonoBehaviour:
   LeaderboardsButton: {fileID: 0}
   logoutButton: {fileID: 0}
   backButton: {fileID: 350550176}
+  username: 
+  password: 
+  userInput: {fileID: 0}
+  passInput: {fileID: 0}
+  failText: {fileID: 0}
 --- !u!1 &219767430
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 590, y: 167}
+  m_AnchoredPosition: {x: 588, y: -13}
   m_SizeDelta: {x: 245, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &240917054
@@ -480,7 +485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 573, y: 394}
+  m_AnchoredPosition: {x: 589, y: 370}
   m_SizeDelta: {x: 1026, y: 582}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &299521659
@@ -644,7 +649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -628, y: 335}
+  m_AnchoredPosition: {x: -627, y: 327}
   m_SizeDelta: {x: 76, y: 76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &637865150
@@ -919,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 590, y: -2}
+  m_AnchoredPosition: {x: 588, y: 168}
   m_SizeDelta: {x: 245, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1220597437
@@ -1113,7 +1118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 590, y: 82}
+  m_AnchoredPosition: {x: 588, y: 78}
   m_SizeDelta: {x: 245, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1833214135
@@ -1241,7 +1246,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 590, y: -150}
+  m_AnchoredPosition: {x: 588, y: -142}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1868767792
