@@ -103,7 +103,7 @@ public class Player : MonoBehaviour
             //Level 1, only access to basic shot.
             case 1:
                 bultype = 1;
-                shot_Text.text = "Shot Type: basic";
+                shot_Text.text = "Shot Type: Basic";
 
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -119,12 +119,12 @@ public class Player : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     bultype = 1;
-                    shot_Text.text = "Shot Type: basic";
+                    shot_Text.text = "Shot Type: Basic";
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     bultype = 2;
-                    shot_Text.text = "Shot Type: 3 split";
+                    shot_Text.text = "Shot Type: 3 Split";
                 }
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -151,12 +151,12 @@ public class Player : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     bultype = 1;
-                    shot_Text.text = "Shot Type: basic";
+                    shot_Text.text = "Shot Type: Basic";
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     bultype = 2;
-                    shot_Text.text = "Shot Type: 3 split";
+                    shot_Text.text = "Shot Type: 3 Split";
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha3))
                 {

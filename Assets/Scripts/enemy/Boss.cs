@@ -19,6 +19,7 @@ public class Boss : MonoBehaviour
 
     enum BossStage
     {
+        ENTRANCE,
         STAGE_1,
         STAGE_2,
         STAGE_3
@@ -31,7 +32,9 @@ public class Boss : MonoBehaviour
         maxHealth = health;
         stage_health = maxHealth / 3;
         renderer = GetComponent<Renderer>();
-        bossStage = BossStage.STAGE_1;
+        this.transform.position = new Vector2(10, 0);
+
+        bossStage = BossStage.ENTRANCE;
     }
 
     // Update is called once per frame
@@ -41,6 +44,11 @@ public class Boss : MonoBehaviour
 
         switch (bossStage)
         {
+            case BossStage.ENTRANCE:
+                //going from off stage to on stage
+
+                break;
+
             case BossStage.STAGE_1:
                 if (health <= stage_health*2)
                     bossStage = BossStage.STAGE_2;

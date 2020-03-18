@@ -28,11 +28,11 @@ public class City : MonoBehaviour
     {
         cityBar.setCityHP(city_health);
         city_text.text = "City: " + city_health + " / "+ city_health_Max;
-        if (city_health <= 0 && player != null)
-        {
+
+        if (city_health <= 0)
             city_health = 0;
+        if (city_health <= 0 && player != null)
             city_destroyed();
-        }
     }
 
     public void city_destroyed()

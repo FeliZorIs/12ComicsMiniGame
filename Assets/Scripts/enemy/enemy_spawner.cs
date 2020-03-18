@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemy_spawner : MonoBehaviour
 {
@@ -18,8 +19,14 @@ public class enemy_spawner : MonoBehaviour
     public float waveKills;
     bool on = true;
 
+    //wave count declarations
+    int wave_count;
+    public Text wave_text;
+     bool wave_bool;
+
     enum WaveState 
     {
+        WAVE,
         ENEMY,
         BOSS,
         RESET
@@ -27,10 +34,16 @@ public class enemy_spawner : MonoBehaviour
 
     void Start()
     {
+        enemyManager = GameObject.Find("EnemyManager");
+
         spawning = true;
         timer = 0;
-        enemyManager = GameObject.Find("EnemyManager");
-        waveState = WaveState.ENEMY;
+
+        wave_count = 0;
+        wave_bool = true;
+        wave_text.gameObject.SetActive(false);
+
+        waveState = WaveState.WAVE;
     }
 
     // Update is called once per frame
@@ -38,6 +51,10 @@ public class enemy_spawner : MonoBehaviour
     {
         switch (waveState)
         {
+            case WaveState.WAVE:
+                StartCoroutine("wave_show");
+                break;
+
             case WaveState.ENEMY:
                 spawn_wave();
                 spawn_boss_check();
@@ -53,12 +70,17 @@ public class enemy_spawner : MonoBehaviour
                 Boss.GetComponent<Boss>().reset_boss();
                 enemyManager.GetComponent<enemy_manager>().enemiesKilled_current = 0;
                 on = true;
+                wave_bool = true;
                 spawning = true;
 
-                waveState = WaveState.ENEMY;
+                waveState = WaveState.WAVE;
                 break;
         }
     }
+
+    //============================
+    //          Functions
+    //============================
 
     void spawn_wave()
     {
@@ -94,10 +116,30 @@ public class enemy_spawner : MonoBehaviour
         }
     }
 
+    //============================
+    //          Coroutines
+    //============================
+
     IEnumerator spawn_boss()
     {
         yield return new WaitForSeconds(1);
         Boss.SetActive(true);
         waveState = WaveState.BOSS;
+    }
+
+    IEnumerator wave_show()
+    {
+        if (wave_bool)
+        {
+            wave_bool = false;
+            wave_count++;
+            wave_text.text = "Wave: " + wave_count;
+            wave_text.gameObject.SetActive(true);
+
+            yield return new WaitForSeconds(2);
+
+            wave_text.gameObject.SetActive(false);
+            waveState = WaveState.ENEMY;
+        }
     }
 }
