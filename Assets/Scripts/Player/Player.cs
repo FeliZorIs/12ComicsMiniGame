@@ -44,9 +44,14 @@ public class Player : MonoBehaviour
     public Text superMeterText;
     public GameObject enemyManager;
     public SupermeterBar superBar;
-  
+
+
+    //Figuring out who currentUser is and getting ready to change images based on that.
+    public string current;
     void Start()
     {
+        current = MenuBtnScript.currentUser;
+        userInitialize();
         enemyManager = GameObject.Find("EnemyManager");
         ammolvl = PlayerStats.ammoLevel;
         supermeterlvl = PlayerStats.superMeterLevel;
@@ -85,6 +90,21 @@ public class Player : MonoBehaviour
     /*
      * @brief this allows the character to move around the screen
      */
+
+    //Who are we playing as. Change UI images, shot graphics, etc.
+    void userInitialize()
+    {
+        //This will be an SQL statement when we get the DB up.
+        if (current == "katherine")
+        {
+            playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Katheryne Kat Warior");
+        }
+        else if (current == "msLinder")
+        {
+            Debug.Log("User is: " + current);
+            playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Ms  Linder copy");
+        }
+    }
     void Movement()
     {
         horizontal = Input.GetAxis("Horizontal");
@@ -301,6 +321,12 @@ public class Player : MonoBehaviour
         gameOverPrefab.SetActive(true);
         returnCustomButton.SetActive(true);
         returnToMenuBtn.SetActive(true);
+        //Destroy all player shots so there are no collisions after player dies.
+        GameObject[] theShots = GameObject.FindGameObjectsWithTag("player_shot");
+        for (int i = 0; i < theShots.Length; i++)
+        {
+            GameObject.Destroy(theShots[i]);
+        }
         Destroy(gameObject);
         
     }

@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     static public int maxPoints = 20;
     static public int pointsRemaining = 10;
     //User who's currently logged in.
-    public string current = MenuBtnScript.currentUser;
+    public string currentUse;
 
     public Text healthText;
     public Text ammoText;
@@ -28,17 +28,21 @@ public class PlayerStats : MonoBehaviour
     static public int KatmultiLevel = 2;
     static public int KatmaxPoints = 20;
     static public int KatpointsRemaining = 5;
+
+    static public int lindhealthLevel = 2;
+    static public int lindammoLevel = 3;
+    static public int lindsuperMeterLevel = 2;
+    static public int lindmultiLevel = 4;
+    static public int lindmaxPoints = 30;
+    static public int lindpointsRemaining = 9;
  
     // Start is called before the first frame update
     void Start()
     {
+        currentUse = MenuBtnScript.currentUser;
         //Check the DB here for the grades and correspond that to the points given to student.
         setStats();
-        healthText.text = "Health level: " + healthLevel;
-        ammoText.text = "Ammo level: " + ammoLevel;
-        superMeterText.text = "SuperMeter level: " + superMeterLevel;
-        multiplierText.text = "Multiplier level: " + multiLevel;
-        pointsRemainingText.text = "Points remaining: " + pointsRemaining;
+        initialDisplay();
     }
 
     // Update is called once per frame
@@ -57,8 +61,9 @@ public class PlayerStats : MonoBehaviour
     //Based on who is logged in, the stats will be allocated accordingly. Obviously we'll save these stats into the DB so they're loaded in correctly each time but for now this is just to test.
     public void setStats()
     {
-        if(current == "katherine")
+        if (currentUse == "katherine")
         {
+            Debug.Log("Kat logged in.");
             healthLevel = KathealthLevel;
             ammoLevel = KatammoLevel;
             superMeterLevel = KatsuperMeterLevel;
@@ -66,6 +71,18 @@ public class PlayerStats : MonoBehaviour
             maxPoints = KatmaxPoints;
             pointsRemaining = KatpointsRemaining;
         }
+
+        else if (currentUse == "msLinder")
+        {
+            Debug.Log("MissLinder logged in.");
+            healthLevel = lindhealthLevel;
+            ammoLevel = lindammoLevel;
+            superMeterLevel = lindsuperMeterLevel;
+            multiLevel = lindmultiLevel;
+            maxPoints = lindmaxPoints;
+            pointsRemaining = lindpointsRemaining;
+        }
+
         else
         {
             healthLevel = 1;
@@ -279,21 +296,19 @@ public class PlayerStats : MonoBehaviour
     //Button click to actually play the game!
     public void Play()
     {
-        if (current == "katherine")
-        {
-            KathealthLevel = healthLevel;
-            KatammoLevel = ammoLevel;
-            KatsuperMeterLevel = superMeterLevel;
-            KatmultiLevel = multiLevel;
-            KatmaxPoints = maxPoints;
-            KatpointsRemaining = pointsRemaining;
-        }
+        saveStats();
         SceneManager.LoadScene("TestMap");
     }
 
     public void Back()
     {
-        if (current == "katherine")
+        saveStats();
+        SceneManager.LoadScene("PlayerMenu");
+    }
+
+    void saveStats()
+    {
+        if (currentUse == "katherine")
         {
             KathealthLevel = healthLevel;
             KatammoLevel = ammoLevel;
@@ -302,6 +317,52 @@ public class PlayerStats : MonoBehaviour
             KatmaxPoints = maxPoints;
             KatpointsRemaining = pointsRemaining;
         }
-        SceneManager.LoadScene("PlayerMenu");
+        else if (currentUse == "msLinder")
+        {
+            lindhealthLevel = healthLevel;
+            lindammoLevel = ammoLevel;
+            lindsuperMeterLevel = superMeterLevel;
+            lindmultiLevel = multiLevel;
+            lindmaxPoints = maxPoints;
+            lindpointsRemaining = pointsRemaining;
+        }
+    }
+
+    void initialDisplay()
+    {
+        if (healthLevel == 10)
+        {
+            healthText.text = "Health level: " + healthLevel + " (MAX)";
+        }
+        else
+        {
+            healthText.text = "Health level: " + healthLevel;
+        }
+
+        if (ammoLevel == 3)
+        {
+            ammoText.text = "Ammo level: " + ammoLevel + " (MAX)";
+        }
+        else
+        {
+            ammoText.text = "Ammo level: " + ammoLevel;
+        }
+        if (superMeterLevel == 5)
+        {
+            superMeterText.text = "SuperMeter level: " + superMeterLevel + " (MAX)";
+        }
+        else
+        {
+            superMeterText.text = "SuperMeter level: " + superMeterLevel;
+        }
+        if (multiLevel == 5)
+        {
+            multiplierText.text = "Multiplier level: " + multiLevel + " (MAX)";
+        }
+        else
+        {
+            multiplierText.text = "Multiplier level: " + multiLevel;
+        }
+        pointsRemainingText.text = "Points remaining: " + pointsRemaining;
     }
 }

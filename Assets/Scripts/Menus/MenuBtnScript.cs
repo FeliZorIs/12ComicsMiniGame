@@ -13,6 +13,7 @@ public class MenuBtnScript : MonoBehaviour
     public Button LeaderboardsButton;
     public Button logoutButton;
     public Button backButton;
+   
 
     //Check for login.
     public string username;
@@ -55,6 +56,10 @@ public class MenuBtnScript : MonoBehaviour
     public bool login(string username, string password)
     {
         if ((username == "katherine") && (password == "password"))
+        {
+            validLogin = true;
+        }
+        else if ((username == "msLinder") && (password == "password"))
         {
             validLogin = true;
         }

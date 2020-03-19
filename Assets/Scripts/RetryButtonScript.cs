@@ -14,24 +14,30 @@ public class RetryButtonScript : MonoBehaviour
     public GameObject city;
     public void restartScene()
     {
+        resetStats();
         gameObject.SetActive(false);
-        
-        ScoreCount.scoreValue = 0;
-        PlayerHealth.health = 3;
-        city.GetComponent<City>().city_health = 3;
         SceneManager.LoadScene("TestMap");
     }
 
     public void returnToCustom()
     {
+        resetStats();
         gameObject.SetActive(false);
         SceneManager.LoadScene("PlayerCustomization");
     }
 
     public void returnToMenu()
     {
+        resetStats();
         gameObject.SetActive(false);
         SceneManager.LoadScene("PlayerMenu");
     }
 
+
+    void resetStats()
+    {
+        ScoreCount.scoreValue = 0;
+        PlayerHealth.health = PlayerStats.healthLevel;
+        city.GetComponent<City>().city_health = 3;
+    }
 }
