@@ -6,17 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class RetryButtonScript : MonoBehaviour
 {
-
+    public Image GameOver;
     public Button retryButton;
     public Button customButton;
     public Button returnMenu;
 
     public GameObject city;
+
     public void restartScene()
     {
         resetStats();
         gameObject.SetActive(false);
         SceneManager.LoadScene("TestMap");
+        Time.timeScale = 1f;
     }
 
     public void returnToCustom()
@@ -24,6 +26,7 @@ public class RetryButtonScript : MonoBehaviour
         resetStats();
         gameObject.SetActive(false);
         SceneManager.LoadScene("PlayerCustomization");
+        Time.timeScale = 1f;
     }
 
     public void returnToMenu()
@@ -31,6 +34,7 @@ public class RetryButtonScript : MonoBehaviour
         resetStats();
         gameObject.SetActive(false);
         SceneManager.LoadScene("PlayerMenu");
+        Time.timeScale = 1f;
     }
 
 
@@ -39,5 +43,6 @@ public class RetryButtonScript : MonoBehaviour
         ScoreCount.scoreValue = 0;
         PlayerHealth.health = PlayerStats.healthLevel;
         city.GetComponent<City>().city_health = 3;
+        Time.timeScale = 1f;
     }
 }

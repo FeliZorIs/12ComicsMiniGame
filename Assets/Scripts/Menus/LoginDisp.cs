@@ -13,7 +13,7 @@ public class LoginDisp : MonoBehaviour
     {
         curr = MenuBtnScript.currentUser;
         showStats();
-        userText.GetComponent<Text>().text = curr + "!";
+        userText.GetComponent<Text>().text = "Welcome " + curr + "!";
     }
 
     // Update is called once per frame

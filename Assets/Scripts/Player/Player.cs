@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public GameObject gameOverPrefab;
     public GameObject returnCustomButton;
     public GameObject returnToMenuBtn;
+    public GameObject GameOverUI;
 
     //Customization stats being accounted for here.
     static public int ammolvl;
@@ -60,9 +61,12 @@ public class Player : MonoBehaviour
         superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
+
         gameOverPrefab.SetActive(false);
         returnCustomButton.SetActive(false);
         returnToMenuBtn.SetActive(false);
+        GameOverUI.SetActive(false);
+
         bullet_rotation1 = new Vector3(0, 0, 12);
         bullet_rotation2 = new Vector3(0, 0, -12);
 
@@ -74,7 +78,6 @@ public class Player : MonoBehaviour
         Movement();
         shoot();
         superMeterUse();
-        ESC();
 
         superBar.SetSuper(superMeterCurrent);
 
@@ -321,6 +324,7 @@ public class Player : MonoBehaviour
         gameOverPrefab.SetActive(true);
         returnCustomButton.SetActive(true);
         returnToMenuBtn.SetActive(true);
+        GameOverUI.SetActive(true);
         //Destroy all player shots so there are no collisions after player dies.
         GameObject[] theShots = GameObject.FindGameObjectsWithTag("player_shot");
         for (int i = 0; i < theShots.Length; i++)
@@ -381,12 +385,6 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void ESC()
-    {
-        if (Input.GetKeyDown("escape"))
-        {
-            gameOver();
-        }
-    }
+
 
 }
