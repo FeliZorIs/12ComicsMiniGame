@@ -1323,7 +1323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
-  Enemy: {fileID: 5184283475834509901, guid: b8462c7ec8c119446a3f8050240ba823, type: 3}
+  Enemies:
+  - {fileID: 5184283475834509901, guid: b8462c7ec8c119446a3f8050240ba823, type: 3}
+  - {fileID: 677896434432950724, guid: 9a225b27c3b02f040b2ade69ac4a6946, type: 3}
+  - {fileID: 8561594647827672511, guid: c460c8ff30cc8f247b651db99274639b, type: 3}
   Boss: {fileID: 743534380}
   x_position: 8.5
   y_zone: 4
@@ -2827,7 +2830,7 @@ PrefabInstance:
     - target: {fileID: 3111868435304163216, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3111868435304163216, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
@@ -2887,7 +2890,27 @@ PrefabInstance:
     - target: {fileID: 3111868435304163217, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: myPositions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: myPositions.Array.data[0].x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: lerpTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
+        type: 3}
+      propertyPath: myPositions.Array.data[1].x
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f21e9b0bf667ab54fb20898885cf9dd0, type: 3}

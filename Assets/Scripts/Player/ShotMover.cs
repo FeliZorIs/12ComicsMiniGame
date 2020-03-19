@@ -1,6 +1,4 @@
-﻿//This script is going to be for player shots. Basic movement of the shot.
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +6,7 @@ public class ShotMover : MonoBehaviour
 {
     float timer;
     public float ttk = 2;
-    public  float speed; //Speed the shot will travel.
+    public float speed; //Speed the shot will travel.
     // Start is called before the first frame update
 
     void Start()
@@ -26,15 +24,4 @@ public class ShotMover : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "BasicEnemy")
-        {
-            Destroy(this.gameObject);
-        }
-    }
 }
-
-
-//Testing comment for Git commit.

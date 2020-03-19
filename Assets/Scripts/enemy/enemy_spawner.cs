@@ -7,7 +7,7 @@ public class enemy_spawner : MonoBehaviour
 {
 
     public GameObject enemyManager;
-    public GameObject Enemy;
+    public GameObject[] Enemies;
     public GameObject Boss;
 
     public float x_position;
@@ -84,13 +84,22 @@ public class enemy_spawner : MonoBehaviour
 
     void spawn_wave()
     {
+        GameObject enemy_toSpawn;
+        int chosen = Random.RandomRange(0,100);
+        if (chosen <= 80)
+            enemy_toSpawn = Enemies[0];
+        else if (chosen > 80 && chosen <= 90)
+            enemy_toSpawn = Enemies[1];
+        else
+            enemy_toSpawn = Enemies[2];
+
         if (spawning)
             timer += Time.deltaTime;
 
         if (timer >= timeInBetween)
         {
             //Debug.Log(Enemy.name + "has spawned");
-            Instantiate(Enemy, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
+            Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
             timer = 0;
         }
     }

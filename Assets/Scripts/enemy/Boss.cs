@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
     int stage_health;
     bool invince;
     bool isAlive;
+    Animator anim;
 
     //basic shooting declarations
     public GameObject bullet;
@@ -28,11 +29,12 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        anim = GetComponent<Animator>();
+        renderer = GetComponent<Renderer>();
         isAlive = true;
         maxHealth = health;
         stage_health = maxHealth / 3;
-        renderer = GetComponent<Renderer>();
-        this.transform.position = new Vector2(10, 0);
 
         bossStage = BossStage.ENTRANCE;
     }

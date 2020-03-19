@@ -18,6 +18,11 @@ public class enemy_shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    void selfDestruct()
+    {
         timer += Time.deltaTime;
         if (timer >= ttk)
         {
@@ -27,7 +32,7 @@ public class enemy_shot : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.tag == "BasicEnemy")
+        if (collision.tag == "Despawner")
         {
             Destroy(this.gameObject);
         }

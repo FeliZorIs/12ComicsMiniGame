@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5621861890415905662}
   - component: {fileID: 3292922619350154595}
   - component: {fileID: 1498820099058235162}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ShotLogic
   m_TagString: player_shot
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7942463680339449246}
   - component: {fileID: 7942463680339449245}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}

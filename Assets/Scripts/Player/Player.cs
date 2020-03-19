@@ -62,9 +62,6 @@ public class Player : MonoBehaviour
         bullet_rotation2 = new Vector3(0, 0, -12);
 
         superBar.SetMaxSuper(100);
-
-        
-
     }
 
     void FixedUpdate()
