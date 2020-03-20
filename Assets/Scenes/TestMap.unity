@@ -1610,7 +1610,7 @@ MonoBehaviour:
   x_position: 8.5
   y_zone: 4
   timeInBetween: 0.5
-  waveKills: 35
+  waveKills: 0
   wave_text: {fileID: 1857701158}
 --- !u!1 &678491391
 GameObject:
@@ -3692,7 +3692,7 @@ PrefabInstance:
     - target: {fileID: 3111868435304163216, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3111868435304163216, guid: f21e9b0bf667ab54fb20898885cf9dd0,
         type: 3}
@@ -3753,26 +3753,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
-        type: 3}
-      propertyPath: myPositions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
-        type: 3}
-      propertyPath: myPositions.Array.data[0].x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
-        type: 3}
-      propertyPath: lerpTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3111868435304163219, guid: f21e9b0bf667ab54fb20898885cf9dd0,
-        type: 3}
-      propertyPath: myPositions.Array.data[1].x
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f21e9b0bf667ab54fb20898885cf9dd0, type: 3}
