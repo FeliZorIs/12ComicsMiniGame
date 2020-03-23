@@ -21,21 +21,7 @@ public class PlayerStats : MonoBehaviour
     public Text multiplierText;
     public Text pointsRemainingText;
     
-    //TEMP STATS, WILL BE REPLACED WHEN THE DATABASE IS CREATED!!!!
-    static public int KathealthLevel = 3;
-    static public int KatammoLevel = 1;
-    static public int KatsuperMeterLevel = 1;
-    static public int KatmultiLevel = 2;
-    static public int KatmaxPoints = 20;
-    static public int KatpointsRemaining = 5;
-
-    static public int lindhealthLevel = 2;
-    static public int lindammoLevel = 3;
-    static public int lindsuperMeterLevel = 2;
-    static public int lindmultiLevel = 4;
-    static public int lindmaxPoints = 30;
-    static public int lindpointsRemaining = 9;
- 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -57,43 +43,62 @@ public class PlayerStats : MonoBehaviour
      ******GETTING PLAYER STATS HERE***
      /////////////////////////////////
     */
-     
+
+
+    /*
+   ------COROUTINES FOR GRABBING/SAVING STATS FROM THE DB-------
+   */
+
+    IEnumerator grabStats()
+    {
+
+        WWWForm form = new WWWForm();
+        form.AddField("username", currentUse);
+        WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
+        yield return www;
+
+        //Grab the array from PHP , using commas to split each value. Convert them to Integers so we can use 'em in Unity for stat manip.
+        string[] Sstats = www.text.Split(',');
+        int[] stats = new int[Sstats.Length];
+        for (int i = 0; i < Sstats.Length; i++)
+        {
+            stats[i] = int.Parse(Sstats[i]);
+            //  Debug.Log("The value of a string: " + Sstats[i] + " is now an int that is: " + stats[i]);
+        }
+
+        // Debug.Log(Sstats.Length);
+
+
+        healthLevel = stats[0];
+        ammoLevel = stats[1];
+        superMeterLevel = stats[2];
+        multiLevel = stats[3];
+        pointsRemaining = stats[4];
+        maxPoints = stats[5];
+
+        initialDisplay();
+    }
+
+    IEnumerator saveToDB()
+    {
+        WWWForm form2 = new WWWForm();
+        form2.AddField("username", currentUse);
+        form2.AddField("health", healthLevel);
+        form2.AddField("ammo", ammoLevel);
+        form2.AddField("superMeter", superMeterLevel);
+        form2.AddField("multi", multiLevel);
+        form2.AddField("pointsR", pointsRemaining);
+        WWW www2 = new WWW("https://web.njit.edu/~mrk38/SaveStats.php", form2);
+        yield return www2;
+
+        Debug.Log("PHP Message: " + www2.text);
+    }
+
     //Based on who is logged in, the stats will be allocated accordingly. Obviously we'll save these stats into the DB so they're loaded in correctly each time but for now this is just to test.
     public void setStats()
     {
-        if (currentUse == "katherine")
-        {
-            Debug.Log("Kat logged in.");
-            healthLevel = KathealthLevel;
-            ammoLevel = KatammoLevel;
-            superMeterLevel = KatsuperMeterLevel;
-            multiLevel = KatmultiLevel;
-            maxPoints = KatmaxPoints;
-            pointsRemaining = KatpointsRemaining;
-        }
-
-        else if (currentUse == "msLinder")
-        {
-            Debug.Log("MissLinder logged in.");
-            healthLevel = lindhealthLevel;
-            ammoLevel = lindammoLevel;
-            superMeterLevel = lindsuperMeterLevel;
-            multiLevel = lindmultiLevel;
-            maxPoints = lindmaxPoints;
-            pointsRemaining = lindpointsRemaining;
-        }
-
-        else
-        {
-            healthLevel = 1;
-            ammoLevel = 1;
-            superMeterLevel = 1;
-            multiLevel = 1;
-            maxPoints = 20;
-            pointsRemaining = 10;
-        }
+        StartCoroutine(grabStats());
     }
-
 
     /*
      /////////////////////////////////
@@ -296,38 +301,17 @@ public class PlayerStats : MonoBehaviour
     //Button click to actually play the game!
     public void Play()
     {
-        saveStats();
+        StartCoroutine(saveToDB());
         SceneManager.LoadScene("TestMap");
     }
 
     public void Back()
     {
-        saveStats();
+        StartCoroutine(saveToDB());
         SceneManager.LoadScene("PlayerMenu");
     }
 
-    void saveStats()
-    {
-        if (currentUse == "katherine")
-        {
-            KathealthLevel = healthLevel;
-            KatammoLevel = ammoLevel;
-            KatsuperMeterLevel = superMeterLevel;
-            KatmultiLevel = multiLevel;
-            KatmaxPoints = maxPoints;
-            KatpointsRemaining = pointsRemaining;
-        }
-        else if (currentUse == "msLinder")
-        {
-            lindhealthLevel = healthLevel;
-            lindammoLevel = ammoLevel;
-            lindsuperMeterLevel = superMeterLevel;
-            lindmultiLevel = multiLevel;
-            lindmaxPoints = maxPoints;
-            lindpointsRemaining = pointsRemaining;
-        }
-    }
-
+   
     void initialDisplay()
     {
         if (healthLevel == 10)

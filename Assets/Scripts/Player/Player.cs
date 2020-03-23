@@ -98,14 +98,13 @@ public class Player : MonoBehaviour
     void userInitialize()
     {
         //This will be an SQL statement when we get the DB up.
-        if (current == "katherine")
+        if (Resources.Load<Sprite>("Hero_UI_Images/" + current) != null)
         {
-            playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Katheryne Kat Warior");
+            playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/" + current);
         }
-        else if (current == "msLinder")
+        else
         {
-            Debug.Log("User is: " + current);
-            playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Ms  Linder copy");
+            playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
         }
     }
     void Movement()

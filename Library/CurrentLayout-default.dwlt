@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 11}
-  m_MinSize: {x: 875, y: 542}
+  m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 221}
   m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 62
+  controlID: 147
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -95,8 +95,8 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
   controlID: 172
 --- !u!114 &5
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_MinSize: {x: 333, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 135
+  controlID: 58
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -199,8 +199,8 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 947
-  m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 18003, y: 14042}
+  m_MinSize: {x: 679, y: 492}
+  m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
   controlID: 173
 --- !u!114 &9
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
-  controlID: 61
+  controlID: 146
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -524,20 +524,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/enemy/Boss
+    - Assets/Scripts/Player
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Scripts/enemy/Boss
+  - Assets/Scripts/Player
   m_LastFoldersGridSize: 65
-  m_LastProjectPath: C:\Users\deadr\git\12ComicsMiniGame
+  m_LastProjectPath: E:\Backups\Rutgers Newark stuff\NJIT Courses\cs 491\Github project\12ComicsMiniGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 41}
-    m_SelectedIDs: eeba0000
-    m_LastClickedID: 47854
-    m_ExpandedIDs: 00000000b8360000ba360000bc360000be360000c0360000c2360000ee360000f0360000f836000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 56370000
+    m_LastClickedID: 14166
+    m_ExpandedIDs: 0000000010370000123700001437000016370000183700001a3700004c37000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -565,7 +565,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000b8360000ba360000bc360000be360000c0360000c2360000
+    m_ExpandedIDs: 0000000010370000123700001437000016370000183700001a370000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -658,7 +658,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 1080
+  m_LastVerticalScrollValue: 0
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -688,20 +688,20 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: f2bdfdff
-      m_LastClickedID: -147982
-      m_ExpandedIDs: 68e0fdff6cfefeff8c02ffff0a2dffffdc4fffff6a93fffffe94ffff52f1ffff92f5ffffd2350000243d0000823d000044660000666b000082970000e0970000
+      m_SelectedIDs: e82d0000
+      m_LastClickedID: 0
+      m_ExpandedIDs: 10f3ffffcaf3ffff78f6ffff283b0000323b0000503b0000983b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: offenseBlock_1Position
-        m_OriginalName: offenseBlock_1Position
+        m_Name: Canvas
+        m_OriginalName: Canvas
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: -139372
+        m_UserData: 13876
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
         m_OriginalEventType: 0
@@ -750,9 +750,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.45307955, y: 0.5450376, z: -0.9238281}
+    m_Target: {x: 65.370865, y: 248.21294, z: -42.004856}
     speed: 2
-    m_Value: {x: 0.45307955, y: 0.5450376, z: -0.9238281}
+    m_Value: {x: 65.370865, y: 248.21294, z: -42.004856}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -802,9 +802,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.720594
+    m_Target: 897.86676
     speed: 2
-    m_Value: 9.302004
+    m_Value: 897.86676
   m_Ortho:
     m_Target: 1
     speed: 2

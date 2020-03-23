@@ -313,6 +313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userText: {fileID: 1043543387}
+  heroNameText: {fileID: 767390852}
   heroImg: {fileID: 1062847090}
   curr: 
 --- !u!1 &295581840

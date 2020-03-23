@@ -6,6 +6,7 @@ public class LoginDisp : MonoBehaviour
 {
 
     public GameObject userText;
+    public GameObject heroNameText;
     public Image heroImg;
     public string curr;
     // Start is called before the first frame update
@@ -25,18 +26,36 @@ public class LoginDisp : MonoBehaviour
     //Info will be pulled via SQL request.
     void showStats() 
     {
-        if (curr == "katherine")
+        if (Resources.Load<Sprite>("Hero_UI_Images/" + curr) != null)
         {
-            heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Katheryne Kat Warior");
+            heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/" + curr);
         }
-        else if (curr == "msLinder")
+        //Default image if nothing exists. Maybe we can make our own?
+        else
         {
-            heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Ms  Linder copy");
+            heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
+        }
+
+        StartCoroutine(display());
+    }
+
+    IEnumerator display()
+    {
+
+        //Also gonna need high score to be calculated here.
+        WWWForm form = new WWWForm();
+        form.AddField("username", curr);
+        WWW www = new WWW("https://web.njit.edu/~mrk38/MainMenu.php", form);
+        yield return www;
+        if (www.text == "")
+        {
+            heroNameText.GetComponent<Text>().text = "No hero name available!";
         }
         else
         {
-            heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Katheryne Kat Warior");
+            heroNameText.GetComponent<Text>().text = www.text;
         }
+
     }
     
 }

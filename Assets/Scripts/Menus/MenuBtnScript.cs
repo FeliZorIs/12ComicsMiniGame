@@ -36,38 +36,35 @@ public class MenuBtnScript : MonoBehaviour
         username = userInput.GetComponent<Text>().text;
         password = passInput.GetComponent<Text>().text;
         //Call this function to check the DB for valid credentials.
-        login(username, password);
-        if (validLogin == true)
-        {
-            failText.SetActive(false);
-            currentUser = username;
-            SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
-        }
-        else
-        {
-            Debug.Log("User or pass is incorrect!");
-            failText.SetActive(true);
-            //Do nothing.
-        }
+        StartCoroutine(Login(username, password));
+        
 
     }
 
     //Gonna needa do some SQL stuff here to search through the DB for user and pass to confirm or deny entry.
-    public bool login(string username, string password)
+    IEnumerator Login(string user, string pass)
     {
-        if ((username == "katherine") && (password == "password"))
+        WWWForm form = new WWWForm();
+        form.AddField("name", user);
+        form.AddField("password", pass);
+        WWW www = new WWW("https://web.njit.edu/~mrk38/MiniLogin.php", form);
+        yield return www;
+
+        if (www.text == "1")
         {
             validLogin = true;
-        }
-        else if ((username == "msLinder") && (password == "password"))
-        {
-            validLogin = true;
+            failText.SetActive(false);
+            currentUser = username;
+            SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
+            Debug.Log("Login successful! PHP: " + www.text);
         }
         else
         {
-            validLogin = false;
+            Debug.Log("oh no , login failed. php message: " + www.text);
+            Debug.Log("User or pass is incorrect!");
+            failText.SetActive(true);
         }
-        return validLogin;
+
     }
 
 
