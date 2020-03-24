@@ -49,7 +49,7 @@ public class PlayerStats : MonoBehaviour
    ------COROUTINES FOR GRABBING/SAVING STATS FROM THE DB-------
    */
 
-    IEnumerator grabStats()
+    public IEnumerator grabStats()
     {
 
         WWWForm form = new WWWForm();

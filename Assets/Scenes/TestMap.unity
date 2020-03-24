@@ -1610,7 +1610,7 @@ MonoBehaviour:
   x_position: 8.5
   y_zone: 4
   timeInBetween: 0.5
-  waveKills: 0
+  waveKills: 1
   wave_text: {fileID: 1857701158}
 --- !u!1 &678491391
 GameObject:
@@ -3188,6 +3188,7 @@ MonoBehaviour:
   retryButton: {fileID: 504979880}
   customButton: {fileID: 1693615591}
   returnMenu: {fileID: 1635085595}
+  currentP: 
   city: {fileID: 88149787}
 --- !u!114 &1713074430
 MonoBehaviour:
@@ -3532,6 +3533,80 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881721051}
   m_CullTransparentMesh: 0
+--- !u!1001 &1903290485
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 51065579974629871, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: enemy_health
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950722, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 677896434432950724, guid: ea2fb481822767a46bba5a684f30924a,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy_golden
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea2fb481822767a46bba5a684f30924a, type: 3}
 --- !u!1 &1910462004
 GameObject:
   m_ObjectHideFlags: 0

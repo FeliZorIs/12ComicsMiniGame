@@ -41,7 +41,8 @@ public class Player : MonoBehaviour
 
     //Supermeter vars
     static public int supermeterlvl;
-    public int superMeterCurrent;
+    public float superCast;
+    public float superMeterCurrent;
     public Text superMeterText;
     public GameObject enemyManager;
     public SupermeterBar superBar;
@@ -56,6 +57,7 @@ public class Player : MonoBehaviour
         enemyManager = GameObject.Find("EnemyManager");
         ammolvl = PlayerStats.ammoLevel;
         supermeterlvl = PlayerStats.superMeterLevel;
+        superCast = (float)supermeterlvl;
         multiplierlvl = PlayerStats.multiLevel;
         superMeterCurrent = 0;
         superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
@@ -320,6 +322,7 @@ public class Player : MonoBehaviour
     public void gameOver() 
     {
         PlayerHealth.health = 0;
+        RetryButtonScript.score = ScoreCount.scoreValue;
         gameOverPrefab.SetActive(true);
         returnCustomButton.SetActive(true);
         returnToMenuBtn.SetActive(true);
@@ -341,20 +344,20 @@ public class Player : MonoBehaviour
 
     //Charge the supermeter based on the superMeter level.
     //Since we're doing shot collision seperately i'm making this public. We'll change it to private later.
-    public void superMeterCharge(int s)
+    public void superMeterCharge(float s)
     {
-        if (superMeterCurrent < 100) 
+        if (superMeterCurrent < 100f) 
         {
             superMeterCurrent += s*supermeterlvl;
-            if (superMeterCurrent >= 100)
+            if (superMeterCurrent >= 100f)
             {
-                superMeterCurrent = 100;
+                superMeterCurrent = 100f;
             }
             superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
         }
         else
         {
-            superMeterCurrent = 100;
+            superMeterCurrent = 100f;
             superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
         }
     }
@@ -364,7 +367,7 @@ public class Player : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.Alpha4)){
-            if(superMeterCurrent >= 100) 
+            if(superMeterCurrent >= 100f) 
             {
                  GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
                  for (int i = 0; i < enemies.Length; i++)
@@ -374,7 +377,7 @@ public class Player : MonoBehaviour
                      enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
                      enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
                  }
-                 superMeterCurrent = 0;
+                 superMeterCurrent = 0f;
                  superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
             }
             else 

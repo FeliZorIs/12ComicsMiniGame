@@ -11,6 +11,7 @@ TagManager:
   - player_shot
   - Boss
   - enemy_shot
+  - Gold_enemy
   layers:
   - Default
   - TransparentFX

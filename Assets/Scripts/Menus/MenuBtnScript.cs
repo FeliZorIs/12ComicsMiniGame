@@ -41,7 +41,7 @@ public class MenuBtnScript : MonoBehaviour
 
     }
 
-    //Gonna needa do some SQL stuff here to search through the DB for user and pass to confirm or deny entry.
+    
     IEnumerator Login(string user, string pass)
     {
         WWWForm form = new WWWForm();
@@ -67,11 +67,40 @@ public class MenuBtnScript : MonoBehaviour
 
     }
 
+    public IEnumerator grabStats()
+    {
+
+        WWWForm form = new WWWForm();
+        form.AddField("username", currentUser);
+        WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
+        yield return www;
+
+        //Grab the array from PHP , using commas to split each value. Convert them to Integers so we can use 'em in Unity for stat manip.
+        string[] Sstats = www.text.Split(',');
+        int[] stats = new int[Sstats.Length];
+        for (int i = 0; i < Sstats.Length; i++)
+        {
+            stats[i] = int.Parse(Sstats[i]);
+            //  Debug.Log("The value of a string: " + Sstats[i] + " is now an int that is: " + stats[i]);
+        }
+
+        // Debug.Log(Sstats.Length);
+
+
+        PlayerStats.healthLevel = stats[0];
+        PlayerStats.ammoLevel = stats[1];
+        PlayerStats.superMeterLevel = stats[2];
+        PlayerStats.multiLevel = stats[3];
+        PlayerStats.pointsRemaining = stats[4];
+        PlayerStats.maxPoints = stats[5];
+        SceneManager.LoadScene("TestMap");
+    }
+
 
     public void PlayBtn()
     {
-        
-        SceneManager.LoadScene("TestMap");
+        StartCoroutine(grabStats());
+       
     }
 
     public void CustomizeBtn()

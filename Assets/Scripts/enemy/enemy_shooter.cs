@@ -47,13 +47,19 @@ public class enemy_shooter : enemy
         if (collision.tag == "player_shot")
         {
             //Calculate score based on current multiplier. If multiplier will change throughout gameplay, we will need to use another reference than PlayerStats.multiLevel to store the multiplier.
-            ScoreCount.scoreValue += (10 * multiBonus);
-            player.GetComponent<Player>().superMeterCharge(2);
+         
             enemy_health--;
             if (enemy_health <= 0)
+            {
+                ScoreCount.scoreValue += (10 * multiBonus);
+                player.GetComponent<Player>().superMeterCharge(0.5f);
                 killed_by_player();
+            }
+
             else
+            {
                 StartCoroutine("flash");
+            }
             Destroy(collision.gameObject);
         }
 

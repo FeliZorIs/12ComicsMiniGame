@@ -10,9 +10,18 @@ public class RetryButtonScript : MonoBehaviour
     public Button retryButton;
     public Button customButton;
     public Button returnMenu;
-
+    public string currentP;
     public GameObject city;
+    static public int score;
+    static public int currentHigh;
 
+
+    void Start()
+    {
+        currentP = MenuBtnScript.currentUser;
+        //User's current high score. Use this to compare for if we want to store the score or not.
+        currentHigh = LoginDisp.highScore;
+    }
     public void restartScene()
     {
         resetStats();
@@ -40,9 +49,23 @@ public class RetryButtonScript : MonoBehaviour
 
     void resetStats()
     {
+        if (score > currentHigh)
+        {
+            StartCoroutine(saveScore());
+        }
         ScoreCount.scoreValue = 0;
         PlayerHealth.health = PlayerStats.healthLevel;
         city.GetComponent<City>().city_health = 3;
         Time.timeScale = 1f;
+    }
+
+    IEnumerator saveScore()
+    {
+
+        WWWForm form = new WWWForm();
+        form.AddField("username", currentP);
+        form.AddField("score", score);
+        WWW www = new WWW("https://web.njit.edu/~mrk38/saveScore.php", form);
+        yield return www;
     }
 }

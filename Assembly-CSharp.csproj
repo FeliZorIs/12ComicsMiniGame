@@ -76,6 +76,7 @@
      <Compile Include="Assets\Scripts\enemy\Boss\Boss1_offenseBlock.cs" />
      <Compile Include="Assets\Scripts\enemy\Boss\boss1_stage3_shot.cs" />
      <Compile Include="Assets\Scripts\enemy\enemy.cs" />
+     <Compile Include="Assets\Scripts\enemy\enemy_golden.cs" />
      <Compile Include="Assets\Scripts\enemy\enemy_heavy.cs" />
      <Compile Include="Assets\Scripts\enemy\enemy_manager.cs" />
      <Compile Include="Assets\Scripts\enemy\enemy_shooter.cs" />

@@ -9,7 +9,7 @@ public class SupermeterBar : MonoBehaviour
     public Gradient gradient;
     public Image fill;
 
-    public void SetMaxSuper(int super)
+    public void SetMaxSuper(float super)
     {
         slider.maxValue = super;
         //slider.value = super;
@@ -17,7 +17,7 @@ public class SupermeterBar : MonoBehaviour
         fill.color = gradient.Evaluate(1f);
     }
 
-    public void SetSuper(int super)
+    public void SetSuper(float super)
     {
         slider.value = super;
 
