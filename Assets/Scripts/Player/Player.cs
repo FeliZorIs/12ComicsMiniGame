@@ -47,6 +47,16 @@ public class Player : MonoBehaviour
     public GameObject enemyManager;
     public SupermeterBar superBar;
 
+    //Shake on City Hit vars
+    public City city;
+    public int current_cityHealth;
+    public CameraShake cameraShake;
+
+    //Shot type icon vars
+    public Image single;
+    public Image split;
+    public Image burst;
+
 
     //Figuring out who currentUser is and getting ready to change images based on that.
     public string current;
@@ -72,6 +82,9 @@ public class Player : MonoBehaviour
         bullet_rotation1 = new Vector3(0, 0, 12);
         bullet_rotation2 = new Vector3(0, 0, -12);
 
+
+        current_cityHealth = city.city_health;
+
         superBar.SetMaxSuper(100);
     }
 
@@ -85,7 +98,14 @@ public class Player : MonoBehaviour
 
         transform.position = new Vector2(
             Mathf.Clamp(transform.position.x, -7.7f, 4.7f),
-            Mathf.Clamp(transform.position.y, -4.2f, 4.2f));
+            Mathf.Clamp(transform.position.y, -4.2f, 2.9f)
+            );
+
+        if (city.city_health < current_cityHealth)
+        {
+            StartCoroutine(cameraShake.Shake(.15f, .4f));
+            current_cityHealth = city.city_health;
+        }
     }
 
     //====================================
@@ -132,7 +152,12 @@ public class Player : MonoBehaviour
             //Level 1, only access to basic shot.
             case 1:
                 bultype = 1;
-                shot_Text.text = "Shot Type: Basic";
+                //shot_Text.text = "Shot Type: Basic";
+               
+                single.enabled = true;
+                split.enabled = false;
+                burst.enabled = false;
+
 
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -145,15 +170,24 @@ public class Player : MonoBehaviour
 
             //Level 2, access to basic shot and split shot.
             case 2:
+
+                single.enabled = true;
+                split.enabled = true;
+                burst.enabled = false;
+
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     bultype = 1;
-                    shot_Text.text = "Shot Type: Basic";
+                    //shot_Text.text = "Shot Type: Basic";
+                    single.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                    split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     bultype = 2;
-                    shot_Text.text = "Shot Type: 3 Split";
+                    //shot_Text.text = "Shot Type: 3 Split";
+                    single.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
+                    split.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                 }
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -177,20 +211,34 @@ public class Player : MonoBehaviour
 
             //Level 3, access to third shot type as well.
             case 3:
+
+                single.enabled = true;
+                split.enabled = true;
+                burst.enabled = true;
+
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
                     bultype = 1;
-                    shot_Text.text = "Shot Type: Basic";
+                    //shot_Text.text = "Shot Type: Basic";
+                    single.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                    split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
+                    burst.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
                     bultype = 2;
-                    shot_Text.text = "Shot Type: 3 Split";
+                    //shot_Text.text = "Shot Type: 3 Split";
+                    single.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
+                    split.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
+                    burst.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
                     bultype = 3;
-                    shot_Text.text = "Shot Type: Burst";
+                    //shot_Text.text = "Shot Type: Burst";
+                    single.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
+                    split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
+                    burst.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                 }
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -373,12 +421,13 @@ public class Player : MonoBehaviour
                  for (int i = 0; i < enemies.Length; i++)
                  {
                      enemies[i].GetComponent<enemy>().onDeath();
+                     ScoreCount.scoreValue += (5 * multiplierlvl);
                      GameObject.Destroy(enemies[i]);
                      enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
                      enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
                  }
                  superMeterCurrent = 0f;
-                 superMeterText.text = "Supermeter Charge: " + superMeterCurrent + "%";
+                 superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
             }
             else 
             {

@@ -12,6 +12,14 @@ public class Boss : MonoBehaviour
     bool isAlive;
     Animator anim;
 
+
+    //City vars 
+    public City city;
+    public int cityMax;
+
+    //Score vars
+    static public int multiBonus;
+
     //basic shooting declarations
     public GameObject bullet;
     Vector2 bullet_spawn;
@@ -40,6 +48,9 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        multiBonus = PlayerStats.multiLevel;
+
         anim = GetComponent<Animator>();
         renderer = GetComponent<Renderer>();
         isAlive = true;
@@ -52,6 +63,8 @@ public class Boss : MonoBehaviour
         offenseBlock_2.SetActive(false);
 
         bossStage = BossStage.ENTRANCE;
+
+        cityMax = city.city_health_Max;
     }
 
     // Update is called once per frame
@@ -94,8 +107,17 @@ public class Boss : MonoBehaviour
 
         if (health <= 0)
         {
+
+            if (city.city_health < cityMax)
+            {
+                city.city_health += 1;
+            }
+
+            ScoreCount.scoreValue += (1000 * multiBonus);
             isAlive = false;
             this.gameObject.SetActive(false);
+
+
         }
     }
 
