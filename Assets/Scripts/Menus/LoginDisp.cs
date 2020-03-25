@@ -47,7 +47,8 @@ public class LoginDisp : MonoBehaviour
         //Also gonna need high score to be calculated here.
         WWWForm form = new WWWForm();
         form.AddField("username", curr);
-        WWW www = new WWW("https://web.njit.edu/~mrk38/MainMenu.php", form);
+       // WWW www = new WWW("https://web.njit.edu/~mrk38/MainMenu.php", form);
+        WWW www = new WWW("https://web.njit.edu/~rp553/MainMenu.php", form);
         yield return www;
 
         string[] heroInfo = www.text.Split(',');

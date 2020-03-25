@@ -47,7 +47,8 @@ public class MenuBtnScript : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("name", user);
         form.AddField("password", pass);
-        WWW www = new WWW("https://web.njit.edu/~mrk38/MiniLogin.php", form);
+        //WWW www = new WWW("https://web.njit.edu/~mrk38/MiniLogin.php", form);
+        WWW www = new WWW("https://web.njit.edu/~rp553/MiniLogin.php", form);
         yield return www;
 
         if (www.text == "1")
@@ -70,13 +71,14 @@ public class MenuBtnScript : MonoBehaviour
     public IEnumerator grabStats()
     {
 
-        WWWForm form = new WWWForm();
-        form.AddField("username", currentUser);
-        WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
-        yield return www;
+        WWWForm form2 = new WWWForm();
+        form2.AddField("username", currentUser);
+        //WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form2);
+        WWW www2 = new WWW("https://web.njit.edu/~rp553/PlayerStats.php", form2);
+        yield return www2;
 
         //Grab the array from PHP , using commas to split each value. Convert them to Integers so we can use 'em in Unity for stat manip.
-        string[] Sstats = www.text.Split(',');
+        string[] Sstats = www2.text.Split(',');
         int[] stats = new int[Sstats.Length];
         for (int i = 0; i < Sstats.Length; i++)
         {

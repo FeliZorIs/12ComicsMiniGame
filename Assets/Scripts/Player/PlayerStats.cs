@@ -54,7 +54,8 @@ public class PlayerStats : MonoBehaviour
 
         WWWForm form = new WWWForm();
         form.AddField("username", currentUse);
-        WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
+       // WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
+        WWW www = new WWW("https://web.njit.edu/~rp553/PlayerStats.php", form);
         yield return www;
 
         //Grab the array from PHP , using commas to split each value. Convert them to Integers so we can use 'em in Unity for stat manip.
@@ -88,7 +89,8 @@ public class PlayerStats : MonoBehaviour
         form2.AddField("superMeter", superMeterLevel);
         form2.AddField("multi", multiLevel);
         form2.AddField("pointsR", pointsRemaining);
-        WWW www2 = new WWW("https://web.njit.edu/~mrk38/SaveStats.php", form2);
+       // WWW www2 = new WWW("https://web.njit.edu/~mrk38/SaveStats.php", form2);
+        WWW www2 = new WWW("https://web.njit.edu/~rp553/SaveStats.php", form2);
         yield return www2;
 
         Debug.Log("PHP Message: " + www2.text);
