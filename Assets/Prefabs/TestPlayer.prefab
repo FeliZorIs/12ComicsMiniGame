@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4615894405718055736}
   - component: {fileID: 4615894405718055739}
-  - component: {fileID: 6145556587813983382}
   - component: {fileID: 4615894405718055878}
   - component: {fileID: 101939583}
+  - component: {fileID: 6855186940309125047}
   m_Layer: 9
   m_Name: TestPlayer
   m_TagString: Player
@@ -85,22 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &6145556587813983382
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4615894405718055741}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.09, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.89
 --- !u!50 &4615894405718055878
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +123,84 @@ MonoBehaviour:
   shot_spawn: {fileID: 0}
   fireRate: 0
   shot_Text: {fileID: 0}
+  playerImg: {fileID: 0}
   gameOverPrefab: {fileID: 0}
+  returnCustomButton: {fileID: 0}
+  returnToMenuBtn: {fileID: 0}
+  GameOverUI: {fileID: 0}
+  superCast: 0
+  superMeterCurrent: 0
+  superMeterText: {fileID: 0}
+  enemyManager: {fileID: 0}
+  superBar: {fileID: 0}
+  city: {fileID: 0}
+  current_cityHealth: 0
+  cameraShake: {fileID: 0}
+  single: {fileID: 0}
+  split: {fileID: 0}
+  burst: {fileID: 0}
+  current: 
+--- !u!60 &6855186940309125047
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4615894405718055741}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.08, y: 1.84}
+    newSize: {x: 2.08, y: 1.84}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.42999998, y: -0.63}
+      - {x: 0.39, y: -0.53999996}
+      - {x: 0.35, y: -0.29999998}
+      - {x: 0.44, y: -0.17}
+      - {x: 0.51, y: -0.22}
+      - {x: 0.57, y: -0.21}
+      - {x: 0.64, y: -0.19}
+      - {x: 0.64, y: -0.06}
+      - {x: 0.63, y: -0.02}
+      - {x: 0.61, y: 0.01}
+      - {x: 0.37, y: 0.03}
+      - {x: 0.44, y: 0.06}
+      - {x: 0.42999998, y: 0.41}
+      - {x: 0.34, y: 0.47}
+      - {x: 0.32999998, y: 0.47}
+      - {x: 0.07, y: 0.42}
+      - {x: 0.02, y: 0.47}
+      - {x: -0.01, y: 0.47}
+      - {x: -0.099999994, y: 0.41}
+      - {x: -0.099999994, y: 0.29999998}
+      - {x: -0.32999998, y: 0.42}
+      - {x: -0.42999998, y: 0.39999998}
+      - {x: -0.42, y: 0.26}
+      - {x: -0.48999998, y: 0.28}
+      - {x: -0.64, y: 0.31}
+      - {x: -0.64, y: 0.06}
+      - {x: -0.57, y: -0.12}
+      - {x: -0.48, y: -0.22}
+      - {x: -0.14999999, y: -0.39}
+      - {x: -0.26, y: -0.45999998}
+      - {x: -0.35999998, y: -0.56}
+      - {x: -0.32999998, y: -0.64}
+      - {x: -0.21, y: -0.64}
+      - {x: -0.11, y: -0.56}
+      - {x: -0.11, y: -0.64}
+      - {x: 0.22999999, y: -0.64}
 --- !u!1 &4615894407035091054
 GameObject:
   m_ObjectHideFlags: 0
