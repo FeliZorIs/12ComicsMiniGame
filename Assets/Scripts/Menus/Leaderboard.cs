@@ -13,17 +13,22 @@ public class Leaderboard : MonoBehaviour
     public GameObject Search;
     public GameObject CurrentRank;
     public GameObject rankings;
+    List<string> theNames = new List<string>();
+    List<int> theScores = new List<int>();
     string theText;
-    int currentHighest;
-   
+    int tempRank;
+    int playerRank;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(dispEvery());
+        StartCoroutine(getNames());
+        StartCoroutine(getScores());
         Search.SetActive(false);
         CurrentRank.SetActive(false);
+
     }
 
 
@@ -51,23 +56,115 @@ public class Leaderboard : MonoBehaviour
      ******************
      */
 
-    public IEnumerator dispEvery()
+    public IEnumerator getNames()
     {
-        WWWForm form = new WWWForm();
-       
-        WWW www = new WWW("https://web.njit.edu/~mrk38/LeaderboardAll.php");
-        // WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardAll.php");
-        yield return www;
-        
-         string[] players = www.text.Split(',');
-         for (int i = 0; i < players.Length; i++)
-         {
+        /*
+         * THE ARRAY PASSED DOWN FROM PHP IS MADE UP OF THE USERNAME AND HERO NAME. 
+         * IF YOU WANT JUST THE USERNAME/HERO NAME, WE'LL PROBABLY NEED TO EDIT THE PHP FILE
+         * AND CREATE ANOTHER COROUTINE TO GRAB THAT INFO SEPERATELY.
+         */
 
-             theText = theText + players[i] + "\r\n";
-             // 
-             //  Debug.Log("The value of a string: " + Sstats[i] + " is now an int that is: " + stats[i]);
-         }
-         rankings.GetComponent<Text>().text = theText;
+        WWW www = new WWW("https://web.njit.edu/~mrk38/LeaderboardNamesAll.php");
+        // WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardNamesAll.php");
+        yield return www;
+
+        string[] players = www.text.Split(',');
+
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            theNames.Add(players[i]);
+
+        }
+
+
 
     }
+
+    public IEnumerator getScores()
+    {
+
+        WWW www2 = new WWW("https://web.njit.edu/~mrk38/LeaderboardScoresAll.php");
+        // WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardScoresAll.php");
+        yield return www2;
+
+        string[] scores = www2.text.Split(',');
+
+        for (int i = 0; i < scores.Length; i++)
+        {
+            theScores.Add((int.Parse(scores[i])));
+        }
+        //Call the function to display the ranks from the database.
+        sortRanks();
+    }
+
+    //Sort the scores and display them.
+    void sortRanks()
+    {
+        //Take the lists that were formed via the Coroutine, and use them to print the leaderboard data to the screen in descending order.
+        //Also rank is simply determined by adding 1 each time the value is printed.
+
+        int numList;
+        int currentNum;
+        string currentName;
+        numList = theScores.Count;
+
+        for (int i = 0; i < numList - 1; i++)
+        {
+            for (int j = i + 1; j < numList; j++)
+            {
+                if (theScores[i] < theScores[j])
+                {
+                    currentNum = theScores[i];
+                    currentName = theNames[i];
+                    theScores[i] = theScores[j];
+                    theScores[j] = currentNum;
+                    theNames[i] = theNames[j];
+                    theNames[j] = currentName;
+
+                }
+            }
+            Debug.Log("The new output is: " + theNames[i] + " " + theScores[i]);
+            theText = theText + "\t" + (i + 1) + "\t" + theNames[i] + "\t" + "\t" + theScores[i] + "\n";
+        }
+        rankings.GetComponent<Text>().text = theText;
+
+
+
+        /*
+         OLD CODE BUT MAY BE USEFUL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        int[] finalScores = new int[numList];
+        string[] finalNames = new string[numList];
+
+        for(int r = 0; r<numList; r++)
+        {
+            finalScores[r] = theScores[r];
+            finalNames[r] = theNames[r];
+           
+        }
+
+        for (int i = 0; i < finalScores.Length - 1; i++)
+        {
+            for (int j = i + 1; j < finalScores.Length; j++ )
+            {
+                if(finalScores[i] < finalScores[j])
+                {
+                    currentNum = finalScores[i];
+                    currentName = finalNames[i]; 
+                    finalScores[i] = finalScores[j];
+                    finalScores[j] = currentNum;
+                    finalNames[i] = finalNames[j];
+                    finalNames[j] = currentName;
+                    
+                }
+            }
+            Debug.Log("The new output is: " + finalNames[i] + " " + finalScores[i]);
+            theText = theText + "\t" + (i + 1) + "\t" + finalNames[i] + "\t" + "\t" + finalScores[i] + "\n";
+        }
+        rankings.GetComponent<Text>().text = theText;
+        */
+
+    }
+
+
 }
