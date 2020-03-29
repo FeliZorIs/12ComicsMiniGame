@@ -12,6 +12,7 @@ TagManager:
   - Boss
   - enemy_shot
   - Gold_enemy
+  - medKit
   layers:
   - Default
   - TransparentFX

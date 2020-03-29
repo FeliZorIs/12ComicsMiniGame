@@ -341,6 +341,14 @@ public class Player : MonoBehaviour
             }
             Destroy(collision.gameObject);
         }
+
+        //when player collides with the med kit
+        if (collision.tag == "medKit")
+        {
+            PlayerHealth.health += collision.gameObject.GetComponent<medKit>().health;
+            Destroy(collision.gameObject);
+        }
+
     }
 
     //Player U.I. turns red during damage.

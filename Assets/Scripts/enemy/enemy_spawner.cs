@@ -22,7 +22,7 @@ public class enemy_spawner : MonoBehaviour
     //wave count declarations
     int wave_count;
     public Text wave_text;
-     bool wave_bool;
+    bool wave_bool;
 
     enum WaveState 
     {
@@ -85,13 +85,31 @@ public class enemy_spawner : MonoBehaviour
     void spawn_wave()
     {
         GameObject enemy_toSpawn;
-        int chosen = Random.RandomRange(0,100);
-        if (chosen <= 80)
+        int chosen = Random.RandomRange(0, 100);
+
+        //wave 1: basic enemy only
+        if (wave_count == 1)
             enemy_toSpawn = Enemies[0];
-        else if (chosen > 80 && chosen <= 90)
-            enemy_toSpawn = Enemies[1];
-        else
+
+        //wave 2: heavy only
+        else if (wave_count == 2)
             enemy_toSpawn = Enemies[2];
+
+        //wave 3: shooter only
+        else if (wave_count == 3)
+            enemy_toSpawn = Enemies[1];
+
+        //wave 4 and over
+        else
+        {
+            if (chosen <= 80)
+                enemy_toSpawn = Enemies[0];
+            else if (chosen > 80 && chosen <= 90)
+                enemy_toSpawn = Enemies[1];
+            else
+                enemy_toSpawn = Enemies[2];
+        }   
+        //
 
         if (spawning)
             timer += Time.deltaTime;

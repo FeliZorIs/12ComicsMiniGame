@@ -11,7 +11,11 @@ public class enemy : MonoBehaviour
     protected GameObject player;
     protected GameObject city;
     protected Renderer renderer;
-    
+
+    //health kit drop declarations
+    public GameObject medKit;
+    public float odds;
+
     private void Start()
     {
         findComponents();
@@ -40,6 +44,22 @@ public class enemy : MonoBehaviour
     public void onDeath()
     {
         enemyManager.GetComponent<enemy_manager>().active_enemies.Remove(this);
+
+        if (this.tag == "Gold_enemy")
+        {
+            //gold enemy shouldn't drop med kits
+        }
+        else 
+        {
+            float med_num = Random.RandomRange(1, 100);
+            //percent = 1%
+            if(med_num <= odds)
+            {
+                Debug.Log("here you go");
+                Instantiate(medKit, transform.position, Quaternion.identity);
+            }
+        }
+
         Destroy(this.gameObject);
     }
 

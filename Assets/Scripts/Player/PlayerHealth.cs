@@ -27,6 +27,11 @@ public class PlayerHealth : MonoBehaviour
     {
         healthBar.SetHealth(health);
         HealthText.text = "Health: " + health + " / " + maxHealth;
+
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        }
       
     }
 
