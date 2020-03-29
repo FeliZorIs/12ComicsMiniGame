@@ -9,6 +9,7 @@ public class LoginDisp : MonoBehaviour
     public GameObject heroNameText;
     public Image heroImg;
     public string curr;
+    static public string currHero;
     public GameObject currentScore;
     static public int highScore;
     // Start is called before the first frame update
@@ -22,11 +23,11 @@ public class LoginDisp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //Info will be pulled via SQL request.
-    void showStats() 
+    void showStats()
     {
         if (Resources.Load<Sprite>("Hero_UI_Images/" + curr) != null)
         {
@@ -47,7 +48,7 @@ public class LoginDisp : MonoBehaviour
         //Also gonna need high score to be calculated here.
         WWWForm form = new WWWForm();
         form.AddField("username", curr);
-       // WWW www = new WWW("https://web.njit.edu/~mrk38/MainMenu.php", form);
+        // WWW www = new WWW("https://web.njit.edu/~mrk38/MainMenu.php", form);
         WWW www = new WWW("https://web.njit.edu/~rp553/MainMenu.php", form);
         yield return www;
 
@@ -65,8 +66,9 @@ public class LoginDisp : MonoBehaviour
             heroNameText.GetComponent<Text>().text = heroInfo[0];
             currentScore.GetComponent<Text>().text = "Current high score: " + heroInfo[1];
             highScore = int.Parse(heroInfo[1]);
+            currHero = heroInfo[0];
         }
 
     }
-    
+
 }

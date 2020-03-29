@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class Leaderboard : MonoBehaviour
 {
@@ -13,10 +14,12 @@ public class Leaderboard : MonoBehaviour
     public GameObject Search;
     public GameObject CurrentRank;
     public GameObject rankings;
+    static public string theCurrentUser;
+    static public string theCurrentHero;
     List<string> theNames = new List<string>();
     List<int> theScores = new List<int>();
     string theText;
-    int tempRank;
+    int currentHighScore;
     int playerRank;
 
 
@@ -24,10 +27,13 @@ public class Leaderboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHighScore = LoginDisp.highScore;
+        theCurrentUser = MenuBtnScript.currentUser;
+        theCurrentHero = LoginDisp.currHero;
         StartCoroutine(getNames());
         StartCoroutine(getScores());
         Search.SetActive(false);
-        CurrentRank.SetActive(false);
+        // CurrentRank.SetActive(false);
 
     }
 
@@ -35,6 +41,7 @@ public class Leaderboard : MonoBehaviour
 
     public void PersonalBoard()
     {
+
         Search.SetActive(false);
         CurrentRank.SetActive(false);
     }
@@ -47,6 +54,8 @@ public class Leaderboard : MonoBehaviour
 
     public void GlobalBoard()
     {
+        StartCoroutine(getNames());
+        StartCoroutine(getScores());
         Search.SetActive(true);
         CurrentRank.SetActive(true);
     }
@@ -64,8 +73,8 @@ public class Leaderboard : MonoBehaviour
          * AND CREATE ANOTHER COROUTINE TO GRAB THAT INFO SEPERATELY.
          */
 
-        WWW www = new WWW("https://web.njit.edu/~mrk38/LeaderboardNamesAll.php");
-        // WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardNamesAll.php");
+        //WWW www = new WWW("https://web.njit.edu/~mrk38/LeaderboardNamesAll.php");
+        WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardNamesAll.php");
         yield return www;
 
         string[] players = www.text.Split(',');
@@ -84,8 +93,8 @@ public class Leaderboard : MonoBehaviour
     public IEnumerator getScores()
     {
 
-        WWW www2 = new WWW("https://web.njit.edu/~mrk38/LeaderboardScoresAll.php");
-        // WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardScoresAll.php");
+        //WWW www2 = new WWW("https://web.njit.edu/~mrk38/LeaderboardScoresAll.php");
+        WWW www2 = new WWW("https://web.njit.edu/~rp553/LeaderboardScoresAll.php");
         yield return www2;
 
         string[] scores = www2.text.Split(',');
@@ -124,11 +133,16 @@ public class Leaderboard : MonoBehaviour
 
                 }
             }
-            Debug.Log("The new output is: " + theNames[i] + " " + theScores[i]);
+
             theText = theText + "\t" + (i + 1) + "\t" + theNames[i] + "\t" + "\t" + theScores[i] + "\n";
         }
-        rankings.GetComponent<Text>().text = theText;
 
+        playerRank = theScores.IndexOf(currentHighScore);
+
+
+        Debug.Log("My rank is: " + (playerRank + 1));
+        rankings.GetComponent<Text>().text = theText;
+        CurrentRank.GetComponent<Text>().text = "" + (playerRank + 1);
 
 
         /*

@@ -682,7 +682,7 @@ MonoBehaviour:
   MySchool: {fileID: 1833214135}
   Global: {fileID: 240917054}
   Search: {fileID: 1868767790}
-  CurrentRank: {fileID: 764848260}
+  CurrentRank: {fileID: 1336933776}
   rankings: {fileID: 1882937443}
 --- !u!1 &350550175
 GameObject:
@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 1336933779}
   - component: {fileID: 1336933778}
   m_Layer: 5
-  m_Name: Placeholder
+  m_Name: RankText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
