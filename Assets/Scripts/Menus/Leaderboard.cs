@@ -27,6 +27,8 @@ public class Leaderboard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        theNames = new List<string>();
+        theScores = new List<int>();
         currentHighScore = LoginDisp.highScore;
         theCurrentUser = MenuBtnScript.currentUser;
         theCurrentHero = LoginDisp.currHero;

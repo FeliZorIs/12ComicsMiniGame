@@ -27,6 +27,8 @@ public class MenuBtnScript : MonoBehaviour
     //Store userinfo
     static public string currentUser;
 
+    //For scene fade.
+    public GameObject fader;
     void Start()
     {
         
@@ -56,7 +58,8 @@ public class MenuBtnScript : MonoBehaviour
             validLogin = true;
             failText.SetActive(false);
             currentUser = username;
-            SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
+            fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
+           // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
         }
         else
@@ -95,7 +98,8 @@ public class MenuBtnScript : MonoBehaviour
         PlayerStats.multiLevel = stats[3];
         PlayerStats.pointsRemaining = stats[4];
         PlayerStats.maxPoints = stats[5];
-        SceneManager.LoadScene("TestMap");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
+       // SceneManager.LoadScene("TestMap");
     }
 
 
@@ -107,24 +111,25 @@ public class MenuBtnScript : MonoBehaviour
 
     public void CustomizeBtn()
     {
-        
-        SceneManager.LoadScene("PlayerCustomization");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
+        //SceneManager.LoadScene("PlayerCustomization");
     }
 
     public void LeaderboardsBtn()
     {
-        
-        SceneManager.LoadScene("Leaderboards");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("Leaderboards");
+        //SceneManager.LoadScene("Leaderboards");
     }
 
     public void LogoutBtn()
     {
-        
-        SceneManager.LoadScene("PlayerLogin");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
+       // SceneManager.LoadScene("PlayerLogin");
     }
 
     public void BackBtn()
     {
-        SceneManager.LoadScene("PlayerMenu");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
+       // SceneManager.LoadScene("PlayerMenu");
     }
 }

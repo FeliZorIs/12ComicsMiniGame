@@ -22,6 +22,8 @@ public class PlayerStats : MonoBehaviour
     public Text multiplierText;
     public Text pointsRemainingText;
     
+    //For scene fade.
+    public GameObject fader;
     
     // Start is called before the first frame update
     void Start()
@@ -305,13 +307,15 @@ public class PlayerStats : MonoBehaviour
     public void Play()
     {
         StartCoroutine(saveToDB());
-        SceneManager.LoadScene("TestMap");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
+       // SceneManager.LoadScene("TestMap");
     }
 
     public void Back()
     {
         StartCoroutine(saveToDB());
-        SceneManager.LoadScene("PlayerMenu");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
+       // SceneManager.LoadScene("PlayerMenu");
     }
 
    

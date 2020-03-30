@@ -16,6 +16,10 @@ public class RetryButtonScript : MonoBehaviour
     static public int currentHigh;
 
 
+    //For scene fade.
+    public GameObject fader;
+
+
     void Start()
     {
         currentP = MenuBtnScript.currentUser;
@@ -26,7 +30,8 @@ public class RetryButtonScript : MonoBehaviour
     {
         resetStats();
         gameObject.SetActive(false);
-        SceneManager.LoadScene("TestMap");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
+        //SceneManager.LoadScene("TestMap");
         Time.timeScale = 1f;
     }
 
@@ -34,7 +39,8 @@ public class RetryButtonScript : MonoBehaviour
     {
         resetStats();
         gameObject.SetActive(false);
-        SceneManager.LoadScene("PlayerCustomization");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
+        //SceneManager.LoadScene("PlayerCustomization");
         Time.timeScale = 1f;
     }
 
@@ -42,7 +48,8 @@ public class RetryButtonScript : MonoBehaviour
     {
         resetStats();
         gameObject.SetActive(false);
-        SceneManager.LoadScene("PlayerMenu");
+        fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
+       // SceneManager.LoadScene("PlayerMenu");
         Time.timeScale = 1f;
     }
 
