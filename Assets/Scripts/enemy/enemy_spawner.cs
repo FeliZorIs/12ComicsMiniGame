@@ -7,7 +7,7 @@ public class enemy_spawner : MonoBehaviour
 {
 
     public GameObject enemyManager;
-    public GameObject[] Enemies;
+    public enemy[] Enemies;
     public GameObject Boss;
 
     public float x_position;
@@ -17,6 +17,7 @@ public class enemy_spawner : MonoBehaviour
 
     bool spawning;
     public float waveKills;
+    public float maxEnemiesOnscreen;
     bool on = true;
 
     //wave count declarations
@@ -24,13 +25,14 @@ public class enemy_spawner : MonoBehaviour
     public Text wave_text;
     bool wave_bool;
 
-    enum WaveState 
+    enum WaveState
     {
         WAVE,
         ENEMY,
         BOSS,
         RESET
-    } WaveState waveState;
+    }
+    WaveState waveState;
 
     void Start()
     {
@@ -84,8 +86,15 @@ public class enemy_spawner : MonoBehaviour
 
     void spawn_wave()
     {
-        GameObject enemy_toSpawn;
+        enemy enemy_toSpawn;
         int chosen = Random.RandomRange(0, 100);
+        int goldSpawn = Random.RandomRange(0, 10000);
+
+        if (goldSpawn >= 9990)
+        {
+            enemy_toSpawn = Enemies[3];
+            Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
+        }
 
         //wave 1: basic enemy only
         if (wave_count == 1)
@@ -108,16 +117,17 @@ public class enemy_spawner : MonoBehaviour
                 enemy_toSpawn = Enemies[1];
             else
                 enemy_toSpawn = Enemies[2];
-        }   
+        }
         //
 
-        if (spawning)
+        if (spawning && enemyManager.GetComponent<enemy_manager>().active_enemies.Count <= maxEnemiesOnscreen)
             timer += Time.deltaTime;
 
         if (timer >= timeInBetween)
         {
             //Debug.Log(Enemy.name + "has spawned");
-            Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
+            //Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
+            StartCoroutine("V_pattern_right", enemy_toSpawn);
             timer = 0;
         }
     }
@@ -125,11 +135,19 @@ public class enemy_spawner : MonoBehaviour
 
     void spawn_boss_check()
     {
+        bool gold = true;
+        for (int i = 0; i < enemyManager.GetComponent<enemy_manager>().active_enemies.Count; i++)
+        {
+            if (enemyManager.GetComponent<enemy_manager>().active_enemies[i] = Enemies[3])
+                gold = true;
+        }
+
         if (enemyManager.GetComponent<enemy_manager>().enemiesKilled_current >= waveKills)
         {
             spawning = false;
             if (enemyManager.GetComponent<enemy_manager>().active_enemies.Count > 0)
             {
+
                 //Debug.Log("finish the enemies");
             }
             else
@@ -168,5 +186,65 @@ public class enemy_spawner : MonoBehaviour
             wave_text.gameObject.SetActive(false);
             waveState = WaveState.ENEMY;
         }
+    }
+
+    IEnumerator X_pattern(GameObject enemy_toSpawn)
+    {
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1), Quaternion.identity);
+
+        yield return new WaitForSeconds(.5f);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(.5f);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1), Quaternion.identity);
+    }
+
+    IEnumerator T_pattern(GameObject enemy_toSpawn)
+    {
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+
+        yield return new WaitForSeconds(.25f);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+    }
+
+    IEnumerator V_pattern_left(GameObject enemy_toSpawn)
+    {
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - .5f), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+    }
+
+    IEnumerator V_pattern_right(GameObject enemy_toSpawn)
+    {
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - .5f), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        yield return new WaitForSeconds(.25f);
     }
 }
