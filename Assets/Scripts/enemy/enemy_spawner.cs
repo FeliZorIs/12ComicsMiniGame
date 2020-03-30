@@ -188,7 +188,7 @@ public class enemy_spawner : MonoBehaviour
         }
     }
 
-    IEnumerator X_pattern(GameObject enemy_toSpawn)
+    IEnumerator X_pattern(enemy enemy_toSpawn)
     {
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1), Quaternion.identity);
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1), Quaternion.identity);
@@ -201,7 +201,7 @@ public class enemy_spawner : MonoBehaviour
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1), Quaternion.identity);
     }
 
-    IEnumerator T_pattern(GameObject enemy_toSpawn)
+    IEnumerator T_pattern(enemy enemy_toSpawn)
     {
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
@@ -220,7 +220,7 @@ public class enemy_spawner : MonoBehaviour
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
     }
 
-    IEnumerator V_pattern_left(GameObject enemy_toSpawn)
+    IEnumerator V_pattern_left(enemy enemy_toSpawn)
     {
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
@@ -234,7 +234,7 @@ public class enemy_spawner : MonoBehaviour
         yield return new WaitForSeconds(.25f);
     }
 
-    IEnumerator V_pattern_right(GameObject enemy_toSpawn)
+    IEnumerator V_pattern_right(enemy enemy_toSpawn)
     {
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
         Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);

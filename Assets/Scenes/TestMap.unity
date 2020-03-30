@@ -1619,9 +1619,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 0}
   Enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8378619110630911376, guid: b8462c7ec8c119446a3f8050240ba823, type: 3}
+  - {fileID: 677896434432950721, guid: 9a225b27c3b02f040b2ade69ac4a6946, type: 3}
+  - {fileID: 8561594647827672498, guid: c460c8ff30cc8f247b651db99274639b, type: 3}
+  - {fileID: 51065579974629871, guid: ea2fb481822767a46bba5a684f30924a, type: 3}
   Boss: {fileID: 743534380}
   x_position: 8.5
   y_zone: 3.5
