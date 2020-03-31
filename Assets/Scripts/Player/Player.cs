@@ -62,6 +62,9 @@ public class Player : MonoBehaviour
     public string current;
     void Start()
     {
+        //Ensures that even if restarting the scene after being invincible, that the player can still take damage.
+        Physics2D.IgnoreLayerCollision(0, 10, false);
+
         current = MenuBtnScript.currentUser;
         userInitialize();
         enemyManager = GameObject.Find("EnemyManager");

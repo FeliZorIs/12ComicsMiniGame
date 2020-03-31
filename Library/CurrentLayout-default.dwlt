@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 221}
   m_MaxSize: {x: 8002, y: 4021}
   vertical: 0
-  controlID: 167
+  controlID: 161
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 57
+  controlID: 19
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_MinSize: {x: 333, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 20
+  controlID: 46
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_MinSize: {x: 677, y: 492}
   m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 58
+  controlID: 20
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_MinSize: {x: 402, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
-  controlID: 166
+  controlID: 160
 --- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -541,19 +541,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/Materials
+    - Assets/Scripts/Player
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/Sprites/Materials
+  - Assets/Scripts/Player
   m_LastFoldersGridSize: 65
   m_LastProjectPath: E:\Backups\Rutgers Newark stuff\NJIT Courses\cs 491\Github project\12ComicsMiniGame
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 10}
-    m_SelectedIDs: 28360000
-    m_LastClickedID: 13864
+    m_SelectedIDs: 24360000
+    m_LastClickedID: 13860
     m_ExpandedIDs: 00000000c2350000c4350000c6350000c8350000ca350000cc3500002636000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -705,9 +705,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 243a0000
+      m_SelectedIDs: 22330000
       m_LastClickedID: 0
-      m_ExpandedIDs: 5af0ffffe8f0ffff2ef1ffff30f2ffff9ef2ffff6efbffff9634000026350000fa58000022590000a45e0000566000006260000008620000
+      m_ExpandedIDs: 6efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
