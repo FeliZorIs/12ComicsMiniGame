@@ -13,7 +13,7 @@ public class MenuBtnScript : MonoBehaviour
     public Button LeaderboardsButton;
     public Button logoutButton;
     public Button backButton;
-   
+
 
     //Check for login.
     public string username;
@@ -31,19 +31,19 @@ public class MenuBtnScript : MonoBehaviour
     public GameObject fader;
     void Start()
     {
-        
+
     }
     public void LoadMenu()
     {
-        username = userInput.GetComponent<Text>().text;
-        password = passInput.GetComponent<Text>().text;
+        username = userInput.GetComponent<InputField>().text;
+        password = passInput.GetComponent<InputField>().text;
         //Call this function to check the DB for valid credentials.
         StartCoroutine(Login(username, password));
-        
+
 
     }
 
-    
+
     IEnumerator Login(string user, string pass)
     {
         WWWForm form = new WWWForm();
@@ -59,7 +59,7 @@ public class MenuBtnScript : MonoBehaviour
             failText.SetActive(false);
             currentUser = username;
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
-           // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
+            // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
         }
         else
@@ -99,14 +99,14 @@ public class MenuBtnScript : MonoBehaviour
         PlayerStats.pointsRemaining = stats[4];
         PlayerStats.maxPoints = stats[5];
         fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
-       // SceneManager.LoadScene("TestMap");
+        // SceneManager.LoadScene("TestMap");
     }
 
 
     public void PlayBtn()
     {
         StartCoroutine(grabStats());
-       
+
     }
 
     public void CustomizeBtn()
@@ -124,12 +124,12 @@ public class MenuBtnScript : MonoBehaviour
     public void LogoutBtn()
     {
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
-       // SceneManager.LoadScene("PlayerLogin");
+        // SceneManager.LoadScene("PlayerLogin");
     }
 
     public void BackBtn()
     {
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
-       // SceneManager.LoadScene("PlayerMenu");
+        // SceneManager.LoadScene("PlayerMenu");
     }
 }

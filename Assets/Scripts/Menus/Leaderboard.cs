@@ -33,7 +33,7 @@ public class Leaderboard : MonoBehaviour
         theCurrentUser = MenuBtnScript.currentUser;
         theCurrentHero = LoginDisp.currHero;
         StartCoroutine(getNames());
-        StartCoroutine(getScores());
+        //StartCoroutine(getScores());
         Search.SetActive(false);
         // CurrentRank.SetActive(false);
 
@@ -88,7 +88,9 @@ public class Leaderboard : MonoBehaviour
 
         }
 
-
+        //Wait here before calling getScores because otherwise the name list may not be fully populated yet!
+        yield return new WaitForFixedUpdate();
+        StartCoroutine(getScores());
 
     }
 
@@ -106,6 +108,7 @@ public class Leaderboard : MonoBehaviour
             theScores.Add((int.Parse(scores[i])));
         }
         //Call the function to display the ranks from the database.
+
         sortRanks();
     }
 
@@ -140,8 +143,6 @@ public class Leaderboard : MonoBehaviour
         }
 
         playerRank = theScores.IndexOf(currentHighScore);
-
-
         Debug.Log("My rank is: " + (playerRank + 1));
         rankings.GetComponent<Text>().text = theText;
         CurrentRank.GetComponent<Text>().text = "" + (playerRank + 1);

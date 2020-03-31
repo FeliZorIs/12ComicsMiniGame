@@ -968,13 +968,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 792782299}
   m_TextComponent: {fileID: 1377260495}
   m_Placeholder: {fileID: 341926012}
-  m_ContentType: 4
-  m_InputType: 0
+  m_ContentType: 7
+  m_InputType: 2
   m_AsteriskChar: 42
-  m_KeyboardType: 1
+  m_KeyboardType: 0
   m_LineType: 0
   m_HideMobileInput: 0
-  m_CharacterValidation: 3
+  m_CharacterValidation: 0
   m_CharacterLimit: 20
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1732,8 +1732,8 @@ MonoBehaviour:
   backButton: {fileID: 0}
   username: 
   password: 
-  userInput: {fileID: 691358474}
-  passInput: {fileID: 1377260493}
+  userInput: {fileID: 1713208727}
+  passInput: {fileID: 792782296}
   failText: {fileID: 1115463499}
   fader: {fileID: 925968533}
 --- !u!1 &2144105631
