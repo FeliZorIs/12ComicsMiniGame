@@ -18,7 +18,12 @@ public class Leaderboard : MonoBehaviour
     static public string theCurrentHero;
     List<string> theNames = new List<string>();
     List<int> theScores = new List<int>();
+
     string theText;
+    string theRank;
+    string theHero;
+    string theScr;
+
     int currentHighScore;
     int playerRank;
 
@@ -139,7 +144,10 @@ public class Leaderboard : MonoBehaviour
                 }
             }
 
-            theText = theText + "\t" + (i + 1) + "\t" + theNames[i] + "\t" + "\t" + theScores[i] + "\n";
+            //theText = theText + "\t" + (i + 1) + "\t" + theNames[i] + "\t" + "\t" + theScores[i] + "\n";
+            theText = theText + "\t \t" + (i + 1) + "\t \t \t \t" + theNames[i] + "\t" + "\t \t \t \t" + theScores[i] + " \t \t \t \n";
+
+
         }
 
         playerRank = theScores.IndexOf(currentHighScore);

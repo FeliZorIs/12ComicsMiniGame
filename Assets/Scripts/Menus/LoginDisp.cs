@@ -17,7 +17,7 @@ public class LoginDisp : MonoBehaviour
     {
         curr = MenuBtnScript.currentUser;
         showStats();
-        userText.GetComponent<Text>().text = "Welcome " + curr + "!";
+        userText.GetComponent<Text>().text = "WELCOME " + curr.ToUpper() + "!";
     }
 
     // Update is called once per frame
@@ -56,15 +56,15 @@ public class LoginDisp : MonoBehaviour
 
         if (heroInfo[0] == "")
         {
-            heroNameText.GetComponent<Text>().text = "No hero name available!";
-            currentScore.GetComponent<Text>().text = "no score available!";
+            heroNameText.GetComponent<Text>().text = "N/A";
+            currentScore.GetComponent<Text>().text = "N/A";
             highScore = 0;
 
         }
         else
         {
-            heroNameText.GetComponent<Text>().text = heroInfo[0];
-            currentScore.GetComponent<Text>().text = "Current high score: " + heroInfo[1];
+            heroNameText.GetComponent<Text>().text = heroInfo[0].ToUpper();
+            currentScore.GetComponent<Text>().text = heroInfo[1];
             highScore = int.Parse(heroInfo[1]);
             currHero = heroInfo[0];
         }
