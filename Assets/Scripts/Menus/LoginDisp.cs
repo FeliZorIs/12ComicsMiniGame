@@ -8,6 +8,7 @@ public class LoginDisp : MonoBehaviour
     public GameObject userText;
     public GameObject heroNameText;
     public Image heroImg;
+    public Image UserIco;
     public string curr;
     static public string currHero;
     public GameObject currentScore;
@@ -17,7 +18,7 @@ public class LoginDisp : MonoBehaviour
     {
         curr = MenuBtnScript.currentUser;
         showStats();
-        userText.GetComponent<Text>().text = "WELCOME " + curr.ToUpper() + "!";
+        userText.GetComponent<Text>().text = curr.ToUpper();
     }
 
     // Update is called once per frame
@@ -32,11 +33,13 @@ public class LoginDisp : MonoBehaviour
         if (Resources.Load<Sprite>("Hero_UI_Images/" + curr) != null)
         {
             heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/" + curr);
+            UserIco.GetComponent<Image>().sprite = Resources.Load<Sprite>("UserICON/" + curr);
         }
         //Default image if nothing exists. Maybe we can make our own?
         else
         {
             heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
+            UserIco.GetComponent<Image>().sprite = Resources.Load<Sprite>("UserICON/Template");
         }
 
         StartCoroutine(display());

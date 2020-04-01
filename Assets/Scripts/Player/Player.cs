@@ -57,6 +57,9 @@ public class Player : MonoBehaviour
     public Image split;
     public Image burst;
 
+    public Text OneShot;
+    public Text TwoShot;
+    public Text ThreeShot;
 
     //Figuring out who currentUser is and getting ready to change images based on that.
     public string current;
@@ -73,7 +76,7 @@ public class Player : MonoBehaviour
         superCast = (float)supermeterlvl;
         multiplierlvl = PlayerStats.multiLevel;
         superMeterCurrent = 0;
-        superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
+        superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
 
@@ -100,8 +103,8 @@ public class Player : MonoBehaviour
         superBar.SetSuper(superMeterCurrent);
 
         transform.position = new Vector2(
-            Mathf.Clamp(transform.position.x, -7.7f, 4.7f),
-            Mathf.Clamp(transform.position.y, -4.2f, 2.9f)
+            Mathf.Clamp(transform.position.x, -7.7f, 4.9f),
+            Mathf.Clamp(transform.position.y, -3.3f, 3.6f)
             );
 
         if (city.city_health < current_cityHealth)
@@ -161,6 +164,10 @@ public class Player : MonoBehaviour
                 split.enabled = false;
                 burst.enabled = false;
 
+                OneShot.gameObject.SetActive(true);
+                TwoShot.gameObject.SetActive(false);
+                ThreeShot.gameObject.SetActive(false);
+
 
                 myTime = myTime + Time.deltaTime;
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
@@ -177,6 +184,9 @@ public class Player : MonoBehaviour
                 single.enabled = true;
                 split.enabled = true;
                 burst.enabled = false;
+                OneShot.gameObject.SetActive(true);
+                TwoShot.gameObject.SetActive(true);
+                ThreeShot.gameObject.SetActive(false);
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -218,6 +228,9 @@ public class Player : MonoBehaviour
                 single.enabled = true;
                 split.enabled = true;
                 burst.enabled = true;
+                OneShot.gameObject.SetActive(true);
+                TwoShot.gameObject.SetActive(true);
+                ThreeShot.gameObject.SetActive(true);
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
@@ -226,6 +239,7 @@ public class Player : MonoBehaviour
                     single.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                     split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                     burst.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
+                    
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
@@ -412,12 +426,12 @@ public class Player : MonoBehaviour
             {
                 superMeterCurrent = 100f;
             }
-            superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
+            superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         }
         else
         {
             superMeterCurrent = 100f;
-            superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
+            superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         }
     }
 
@@ -438,7 +452,7 @@ public class Player : MonoBehaviour
                      enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
                  }
                  superMeterCurrent = 0f;
-                 superMeterText.text = "Supermeter: " + superMeterCurrent + "%";
+                 superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
             }
             else 
             {

@@ -553,8 +553,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: -20, y: -13}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &341926012
 MonoBehaviour:
@@ -1233,8 +1233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.000015259, y: 0}
+  m_AnchoredPosition: {x: 0, y: -3.63}
+  m_SizeDelta: {x: -0, y: -7.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1377260495
 MonoBehaviour:
@@ -1730,6 +1730,8 @@ MonoBehaviour:
   LeaderboardsButton: {fileID: 0}
   logoutButton: {fileID: 0}
   backButton: {fileID: 0}
+  How2Play: {fileID: 0}
+  playGuide: {fileID: 0}
   username: 
   password: 
   userInput: {fileID: 1713208727}

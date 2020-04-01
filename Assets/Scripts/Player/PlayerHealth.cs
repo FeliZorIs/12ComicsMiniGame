@@ -26,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
     void Update()
     {
         healthBar.SetHealth(health);
-        HealthText.text = "Health: " + health + " / " + maxHealth;
+        HealthText.text = "HEALTH: " + health + " / " + maxHealth;
 
         if (health >= maxHealth)
         {

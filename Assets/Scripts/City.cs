@@ -27,7 +27,7 @@ public class City : MonoBehaviour
     void Update()
     {
         cityBar.setCityHP(city_health);
-        city_text.text = "City: " + city_health + " / "+ city_health_Max;
+        city_text.text = "CITY HP: " + city_health + " / "+ city_health_Max;
 
         if (city_health <= 0)
             city_health = 0;
@@ -38,6 +38,6 @@ public class City : MonoBehaviour
     public void city_destroyed()
     {
         player.GetComponent<Player>().gameOver();
-        city_text.text = "City: 0"  + " / " + city_health_Max;
+        city_text.text = "CITY HP: 0"  + " / " + city_health_Max;
     }
 }

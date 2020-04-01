@@ -102,6 +102,11 @@ public class MenuBtnScript : MonoBehaviour
         // SceneManager.LoadScene("TestMap");
     }
 
+    void FixedUpdate()
+    {
+        
+    }
+
 
     public void PlayBtn()
     {
@@ -132,4 +137,5 @@ public class MenuBtnScript : MonoBehaviour
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
         // SceneManager.LoadScene("PlayerMenu");
     }
+
 }
