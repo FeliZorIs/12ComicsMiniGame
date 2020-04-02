@@ -68,7 +68,8 @@ public class enemy_spawner : MonoBehaviour
                 break;
 
             case WaveState.RESET:
-                waveKills *= 1.5f;
+                //waveKills *= 1.5f;
+                waveKills_increase();
                 Boss.GetComponent<Boss>().reset_boss();
                 enemyManager.GetComponent<enemy_manager>().enemiesKilled_current = 0;
                 on = true;
@@ -88,9 +89,10 @@ public class enemy_spawner : MonoBehaviour
     {
         enemy enemy_toSpawn;
         int chosen = Random.RandomRange(0, 100);
-        int goldSpawn = Random.RandomRange(0, 10000);
+        int goldSpawn = Random.RandomRange(0, 15000);
+        int pattern = Random.RandomRange(0, 1000);
 
-        if (goldSpawn >= 9990)
+        if (goldSpawn >= 14999)
         {
             enemy_toSpawn = Enemies[3];
             Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
@@ -123,25 +125,29 @@ public class enemy_spawner : MonoBehaviour
         if (spawning && enemyManager.GetComponent<enemy_manager>().active_enemies.Count <= maxEnemiesOnscreen)
             timer += Time.deltaTime;
 
+
         if (timer >= timeInBetween)
         {
-            //Debug.Log(Enemy.name + "has spawned");
-            //Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
-            StartCoroutine("V_pattern_right", enemy_toSpawn);
+            if (pattern <= 9999)
+                Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
+            else 
+            {
+                int pattern_select = Random.RandomRange(1, 4);
+                if(pattern_select == 1)
+                    StartCoroutine("X_pattern_right", enemy_toSpawn);
+                if (pattern_select == 2)
+                    StartCoroutine("T_pattern_right", enemy_toSpawn);
+                if (pattern_select == 3)
+                    StartCoroutine("V_pattern_left", enemy_toSpawn);
+                if (pattern_select == 4)
+                    StartCoroutine("V_pattern_right", enemy_toSpawn);
+            }
             timer = 0;
         }
     }
 
-
     void spawn_boss_check()
-    {
-        bool gold = true;
-        for (int i = 0; i < enemyManager.GetComponent<enemy_manager>().active_enemies.Count; i++)
-        {
-            if (enemyManager.GetComponent<enemy_manager>().active_enemies[i] = Enemies[3])
-                gold = true;
-        }
-
+    {        
         if (enemyManager.GetComponent<enemy_manager>().enemiesKilled_current >= waveKills)
         {
             spawning = false;
@@ -159,6 +165,32 @@ public class enemy_spawner : MonoBehaviour
                 }
             }
         }
+    }
+
+    void waveKills_increase()
+    {
+        //going onto wave 2
+        if (wave_count == 1)
+            waveKills = 15;
+
+        //going onto wave 3
+        if (wave_count == 2)
+        {
+            waveKills = 20;
+            timeInBetween = 1.25f;
+        }
+
+        //going onto wave 4
+        if (wave_count == 3)
+        {
+            waveKills = 35;
+            timeInBetween = .75f;
+        }
+
+        //going onto wave 5 and onward
+        if (wave_count == 4)
+            waveKills *= 1.15f;
+
     }
 
     //============================

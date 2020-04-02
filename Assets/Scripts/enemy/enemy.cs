@@ -34,11 +34,13 @@ public class enemy : MonoBehaviour
     protected void findComponents()
     {
         enemyManager = GameObject.Find("EnemyManager");
-        enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
         player = GameObject.Find("TestPlayer");
         multiBonus = PlayerStats.multiLevel;
         city = GameObject.Find("Despawn_Enemy");
         renderer = GetComponent<Renderer>();
+        if (this.tag != "Gold_enemy")
+            enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
+
 
     }
     public void onDeath()

@@ -79,7 +79,8 @@ public class Boss : MonoBehaviour
                 break;
 
             case BossStage.STAGE_1:
-                if (health <= stage_health*2)
+                if (health <= stage_health * 2)
+                    invince = false;
                     bossStage = BossStage.STAGE_2;
 
                 shoot_basic();
@@ -100,7 +101,6 @@ public class Boss : MonoBehaviour
                 offenseBlock_1.SetActive(true);
                 offenseBlock_2.SetActive(true);
 
-
                 shoot_basic();
                 break;
         }
@@ -115,9 +115,8 @@ public class Boss : MonoBehaviour
 
             ScoreCount.scoreValue += (1000 * multiBonus);
             isAlive = false;
+            reset_boss();
             this.gameObject.SetActive(false);
-
-
         }
     }
 
@@ -136,7 +135,11 @@ public class Boss : MonoBehaviour
     {
         health = maxHealth;
         bossStage = BossStage.STAGE_1;
-        isAlive = true;
+        //isAlive = true;
+        defenseBlock_1.SetActive(false);
+        defenseBlock_2.SetActive(false);
+        offenseBlock_1.SetActive(false);
+        offenseBlock_2.SetActive(false);
         inEntrance = true;
         invince = true;
     }
