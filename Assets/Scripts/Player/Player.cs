@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     public Text superMeterText;
     public GameObject enemyManager;
     public SupermeterBar superBar;
+    bool usingMeter = false;
+    public GameObject meterInfoText;
 
     //Shake on City Hit vars
     public City city;
@@ -75,11 +77,14 @@ public class Player : MonoBehaviour
         supermeterlvl = PlayerStats.superMeterLevel;
         superCast = (float)supermeterlvl;
         multiplierlvl = PlayerStats.multiLevel;
-        superMeterCurrent = 0;
+        // superMeterCurrent = 0; TESTING SUPERMETER ANIMATION !!! UNCOMMENT THIS LINE AFTER.
+        superMeterCurrent = 100f;
+       // superMeterCurrent = 0;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
 
+        meterInfoText.SetActive(false);
         gameOverPrefab.SetActive(false);
         returnCustomButton.SetActive(false);
         returnToMenuBtn.SetActive(false);
@@ -94,6 +99,18 @@ public class Player : MonoBehaviour
         superBar.SetMaxSuper(100);
     }
 
+
+    void Update()
+    {
+        if(superMeterCurrent >=100)
+        {
+            meterInfoText.SetActive(true);
+        }
+        else
+        {
+            meterInfoText.SetActive(false);
+        }
+    }
     void FixedUpdate()
     {
         Movement();
@@ -134,6 +151,18 @@ public class Player : MonoBehaviour
         {
             playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
         }
+
+        if(Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current) !=null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current);
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/katheryne");
+        }
+
+        Destroy(this.GetComponent<PolygonCollider2D>());
+        this.gameObject.AddComponent<PolygonCollider2D>();
     }
     void Movement()
     {
@@ -442,17 +471,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha4)){
             if(superMeterCurrent >= 100f) 
             {
-                 GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
-                 for (int i = 0; i < enemies.Length; i++)
-                 {
-                     enemies[i].GetComponent<enemy>().onDeath();
-                     ScoreCount.scoreValue += (5 * multiplierlvl);
-                     GameObject.Destroy(enemies[i]);
-                     enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
-                     enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
-                 }
-                 superMeterCurrent = 0f;
-                 superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
+                //Play the animation of supermeter.
+                StartCoroutine(superAni());
             }
             else 
             {
@@ -460,6 +480,37 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    //Animation for using the supermeter. Might not even need this if we add events to the animation.
+    public IEnumerator superAni()
+    {
+        Physics2D.IgnoreLayerCollision(0, 10, true);
+        Physics2D.IgnoreLayerCollision(0, 8, true);
+        this.gameObject.GetComponent<Animator>().enabled = true;
+
+
+        yield return new WaitForSeconds(2.3f);
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
+        for (int i = 0; i < enemies.Length; i++)
+        {
+
+
+            enemies[i].GetComponent<enemy>().onDeath();
+            ScoreCount.scoreValue += (5 * multiplierlvl);
+            GameObject.Destroy(enemies[i]);
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
+            enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
+        }
+        superMeterCurrent = 0f;
+        superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
+        this.gameObject.GetComponent<Animator>().enabled = false;
+
+        //Give player a moment of invincibility after animation ends so they can get their bearings.
+        yield return new WaitForSeconds(0.5f);
+        Physics2D.IgnoreLayerCollision(0, 10, false);
+        Physics2D.IgnoreLayerCollision(0, 8, false);
+    }
+
 
 
 

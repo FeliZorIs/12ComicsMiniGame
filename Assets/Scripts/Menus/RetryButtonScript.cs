@@ -75,5 +75,7 @@ public class RetryButtonScript : MonoBehaviour
         //WWW www = new WWW("https://web.njit.edu/~mrk38/saveScore.php", form);
         WWW www = new WWW("https://web.njit.edu/~rp553/saveScore.php", form);
         yield return www;
+
+        LoginDisp.highScore = score;
     }
 }
