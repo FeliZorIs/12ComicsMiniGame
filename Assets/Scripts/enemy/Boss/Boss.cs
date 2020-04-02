@@ -11,6 +11,7 @@ public class Boss : MonoBehaviour
     bool invince;
     bool isAlive;
     Animator anim;
+    GameObject eSpawn;
 
 
     //City vars 
@@ -53,7 +54,9 @@ public class Boss : MonoBehaviour
 
         anim = GetComponent<Animator>();
         renderer = GetComponent<Renderer>();
-        isAlive = true;
+        eSpawn = GameObject.Find("WaveManager");
+        city = GameObject.Find("Despawn_Enemy").GetComponent<City>();
+        //isAlive = true;
         maxHealth = health;
         stage_health = maxHealth / 3;
 
@@ -114,9 +117,11 @@ public class Boss : MonoBehaviour
             }
 
             ScoreCount.scoreValue += (1000 * multiBonus);
-            isAlive = false;
-            reset_boss();
-            this.gameObject.SetActive(false);
+            //isAlive = false;
+            //reset_boss();
+            eSpawn.GetComponent<enemy_spawner>().boss_alive = false;
+            //this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
         }
     }
 

@@ -19,6 +19,7 @@ public class enemy_spawner : MonoBehaviour
     public float waveKills;
     public float maxEnemiesOnscreen;
     bool on = true;
+    public bool boss_alive = false;
 
     //wave count declarations
     int wave_count;
@@ -63,14 +64,14 @@ public class enemy_spawner : MonoBehaviour
                 break;
 
             case WaveState.BOSS:
-                if (Boss.GetComponent<Boss>().isAlive_check() == false)
+                if (boss_alive == false)
                     waveState = WaveState.RESET;
                 break;
 
             case WaveState.RESET:
                 //waveKills *= 1.5f;
                 waveKills_increase();
-                Boss.GetComponent<Boss>().reset_boss();
+                //Boss.GetComponent<Boss>().reset_boss();
                 enemyManager.GetComponent<enemy_manager>().enemiesKilled_current = 0;
                 on = true;
                 wave_bool = true;
@@ -188,7 +189,7 @@ public class enemy_spawner : MonoBehaviour
         }
 
         //going onto wave 5 and onward
-        if (wave_count == 4)
+        if (wave_count >= 4)
             waveKills *= 1.15f;
 
     }
@@ -200,7 +201,8 @@ public class enemy_spawner : MonoBehaviour
     IEnumerator spawn_boss()
     {
         yield return new WaitForSeconds(1);
-        Boss.SetActive(true);
+        boss_alive = true;
+        Instantiate(Boss, new Vector2(0, 0), Quaternion.identity);
         waveState = WaveState.BOSS;
     }
 
