@@ -16,8 +16,12 @@ public class Leaderboard : MonoBehaviour
     public GameObject rankings;
     static public string theCurrentUser;
     static public string theCurrentHero;
+
+    //Arrays for the leaderboard components.
     List<string> theNames = new List<string>();
+    List<string> theHeroes = new List<string>();
     List<int> theScores = new List<int>();
+    List<int> theRanks = new List<int>();
 
     string theText;
     string theRank;
@@ -38,7 +42,6 @@ public class Leaderboard : MonoBehaviour
         theCurrentUser = MenuBtnScript.currentUser;
         theCurrentHero = LoginDisp.currHero;
         StartCoroutine(getNames());
-        //StartCoroutine(getScores());
         Search.SetActive(false);
         // CurrentRank.SetActive(false);
 
@@ -74,26 +77,42 @@ public class Leaderboard : MonoBehaviour
 
     public IEnumerator getNames()
     {
-        /*
-         * THE ARRAY PASSED DOWN FROM PHP IS MADE UP OF THE USERNAME AND HERO NAME. 
-         * IF YOU WANT JUST THE USERNAME/HERO NAME, WE'LL PROBABLY NEED TO EDIT THE PHP FILE
-         * AND CREATE ANOTHER COROUTINE TO GRAB THAT INFO SEPERATELY.
-         */
 
         //WWW www = new WWW("https://web.njit.edu/~mrk38/LeaderboardNamesAll.php");
         WWW www = new WWW("https://web.njit.edu/~rp553/LeaderboardNamesAll.php");
         yield return www;
 
-        string[] players = www.text.Split(',');
+        string[] users = www.text.Split(',');
 
 
-        for (int i = 0; i < players.Length; i++)
+        for (int i = 0; i < users.Length; i++)
         {
-            theNames.Add(players[i]);
+            theNames.Add(users[i]);
 
         }
 
-        //Wait here before calling getScores because otherwise the name list may not be fully populated yet!
+        //Wait here before calling getHeroes() because otherwise the name list may not be fully populated yet!
+        yield return new WaitForFixedUpdate();
+        StartCoroutine(getHeroes());
+
+    }
+    public IEnumerator getHeroes()
+    {
+
+        //WWW www2 = new WWW("https://web.njit.edu/~mrk38/LeaderboardHeroesAll.php");
+        WWW www2 = new WWW("https://web.njit.edu/~rp553/LeaderboardHeroesAll.php");
+        yield return www2;
+
+        string[] heroes = www2.text.Split(',');
+
+
+        for (int i = 0; i < heroes.Length; i++)
+        {
+            theHeroes.Add(heroes[i]);
+
+        }
+
+        //Wait here before calling getScores() because otherwise the hero list may not be fully populated yet!
         yield return new WaitForFixedUpdate();
         StartCoroutine(getScores());
 
@@ -102,17 +121,18 @@ public class Leaderboard : MonoBehaviour
     public IEnumerator getScores()
     {
 
-        //WWW www2 = new WWW("https://web.njit.edu/~mrk38/LeaderboardScoresAll.php");
-        WWW www2 = new WWW("https://web.njit.edu/~rp553/LeaderboardScoresAll.php");
-        yield return www2;
+        //WWW www3 = new WWW("https://web.njit.edu/~mrk38/LeaderboardScoresAll.php");
+        WWW www3 = new WWW("https://web.njit.edu/~rp553/LeaderboardScoresAll.php");
+        yield return www3;
 
-        string[] scores = www2.text.Split(',');
+        string[] scores = www3.text.Split(',');
 
         for (int i = 0; i < scores.Length; i++)
         {
             theScores.Add((int.Parse(scores[i])));
+            theRanks.Add((i + 1));
         }
-        //Call the function to display the ranks from the database.
+        //Call the function to display the ranks to the screen.
 
         sortRanks();
     }
@@ -120,12 +140,14 @@ public class Leaderboard : MonoBehaviour
     //Sort the scores and display them.
     void sortRanks()
     {
-        //Take the lists that were formed via the Coroutine, and use them to print the leaderboard data to the screen in descending order.
-        //Also rank is simply determined by adding 1 each time the value is printed.
+        //Take the lists that were formed via the Coroutines, and use them to print the leaderboard data to the screen in descending order.
 
         int numList;
         int currentNum;
+        int userIndex = 0;
         string currentName;
+        string currentHero;
+
         numList = theScores.Count;
 
         for (int i = 0; i < numList - 1; i++)
@@ -134,60 +156,38 @@ public class Leaderboard : MonoBehaviour
             {
                 if (theScores[i] < theScores[j])
                 {
+                    //Actual sorting of arrays here to ensure everything matches up.
                     currentNum = theScores[i];
                     currentName = theNames[i];
+                    currentHero = theHeroes[i];
+
                     theScores[i] = theScores[j];
                     theScores[j] = currentNum;
+
                     theNames[i] = theNames[j];
                     theNames[j] = currentName;
 
+                    theHeroes[i] = theHeroes[j];
+                    theHeroes[j] = currentHero;
                 }
             }
 
-            //theText = theText + "\t" + (i + 1) + "\t" + theNames[i] + "\t" + "\t" + theScores[i] + "\n";
-            theText = theText + "\t \t" + (i + 1) + "\t \t \t \t" + theNames[i] + "\t" + "\t \t \t \t" + theScores[i] + " \t \t \t \n";
-
-
+            theText = theText + "\t \t" + theRanks[i] + "\t \t \t \t" + theNames[i] + "\t" + theHeroes[i] + "\t \t \t \t" + theScores[i] + " \t \t \t \n";
         }
 
-        playerRank = theScores.IndexOf(currentHighScore);
-        Debug.Log("My rank is: " + (playerRank + 1));
-        rankings.GetComponent<Text>().text = theText;
-        CurrentRank.GetComponent<Text>().text = "" + (playerRank + 1);
+        //Find out what current player's rank is.
+        string lowerName = theCurrentUser.ToLower();
+        List<string> lowerNames = new List<string>();
 
-
-        /*
-         OLD CODE BUT MAY BE USEFUL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        int[] finalScores = new int[numList];
-        string[] finalNames = new string[numList];
-
-        for(int r = 0; r<numList; r++)
+        for (int m = 0; m < numList; m++)
         {
-            finalScores[r] = theScores[r];
-            finalNames[r] = theNames[r];
-           
+            currentName = theNames[m].ToLower();
+            lowerNames.Add(currentName);
         }
-
-        for (int i = 0; i < finalScores.Length - 1; i++)
-        {
-            for (int j = i + 1; j < finalScores.Length; j++ )
-            {
-                if(finalScores[i] < finalScores[j])
-                {
-                    currentNum = finalScores[i];
-                    currentName = finalNames[i]; 
-                    finalScores[i] = finalScores[j];
-                    finalScores[j] = currentNum;
-                    finalNames[i] = finalNames[j];
-                    finalNames[j] = currentName;
-                    
-                }
-            }
-            Debug.Log("The new output is: " + finalNames[i] + " " + finalScores[i]);
-            theText = theText + "\t" + (i + 1) + "\t" + finalNames[i] + "\t" + "\t" + finalScores[i] + "\n";
-        }
+        userIndex = (lowerNames.IndexOf(lowerName) + 1);
+        playerRank = (theRanks.IndexOf(userIndex) + 1);
         rankings.GetComponent<Text>().text = theText;
-        */
+        CurrentRank.GetComponent<Text>().text = "" + (playerRank);
 
     }
 
