@@ -24,6 +24,7 @@ public class MenuBtnScript : MonoBehaviour
     bool validLogin = false;
 
 
+
     //Store userinfo
     static public string currentUser;
 
@@ -32,6 +33,7 @@ public class MenuBtnScript : MonoBehaviour
     void Start()
     {
 
+       
     }
     public void LoadMenu()
     {
@@ -59,6 +61,7 @@ public class MenuBtnScript : MonoBehaviour
             failText.SetActive(false);
             currentUser = username;
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
             // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
         }
@@ -104,12 +107,13 @@ public class MenuBtnScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        
+
     }
 
 
     public void PlayBtn()
     {
+        FindObjectOfType<AudioManager>().Stop("MenuMusic");
         StartCoroutine(grabStats());
 
     }
@@ -128,6 +132,7 @@ public class MenuBtnScript : MonoBehaviour
 
     public void LogoutBtn()
     {
+        FindObjectOfType<AudioManager>().Stop("MenuMusic");
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
         // SceneManager.LoadScene("PlayerLogin");
     }

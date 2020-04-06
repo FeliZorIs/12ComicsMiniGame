@@ -29,7 +29,8 @@ public class enemy_spawner : MonoBehaviour
     //background change
     public GameObject[] backgrounds;
     int current_background = 0;
-
+    //Testing...
+    int musicCount = 1;
     enum WaveState
     {
         WAVE,
@@ -196,6 +197,7 @@ public class enemy_spawner : MonoBehaviour
 
     }
 
+    
     void changeBackground()
     {
         if (wave_count % 3 == 0)
@@ -208,7 +210,19 @@ public class enemy_spawner : MonoBehaviour
             {
                 backgrounds[i].gameObject.SetActive(false);
             }
-
+            //This if is just a test, remove when editing in the future!!!!
+            if(musicCount%2 != 0 )
+            {
+                FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
+                FindObjectOfType<AudioManager>().Play("GameplayMusic_NIGHT"); 
+            }
+            else
+            {
+                FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
+                FindObjectOfType<AudioManager>().Play("GameplayMusic_DAY");
+                
+            }
+            musicCount++;
             backgrounds[current_background].gameObject.SetActive(true);
         }
     }

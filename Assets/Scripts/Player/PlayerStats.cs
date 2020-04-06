@@ -308,6 +308,7 @@ public class PlayerStats : MonoBehaviour
     {
         StartCoroutine(saveToDB());
         fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
+        FindObjectOfType<AudioManager>().Stop("MenuMusic");
        // SceneManager.LoadScene("TestMap");
     }
 

@@ -167,8 +167,26 @@ MonoBehaviour:
   mixerGroup: {fileID: 0}
   sounds:
   - name: MenuMusic
-    clip: {fileID: 8300000, guid: 0b00bda9c5fff3e49a716cd9c8c2869a, type: 3}
+    clip: {fileID: 8300000, guid: 0a330d869ce951f4ab83f63eae1af487, type: 3}
     volume: 0.187
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GameplayMusic_DAY
+    clip: {fileID: 8300000, guid: 1c62329a2bf8c8c42817ce1c573784af, type: 3}
+    volume: 0.099
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: GameplayMusic_NIGHT
+    clip: {fileID: 8300000, guid: 64546ccc9ed51c1459724dcb0885c939, type: 3}
+    volume: 0.219
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
