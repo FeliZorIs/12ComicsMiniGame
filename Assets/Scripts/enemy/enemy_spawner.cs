@@ -26,6 +26,10 @@ public class enemy_spawner : MonoBehaviour
     public Text wave_text;
     bool wave_bool;
 
+    //background change
+    public GameObject[] backgrounds;
+    int current_background = 0;
+
     enum WaveState
     {
         WAVE,
@@ -69,9 +73,7 @@ public class enemy_spawner : MonoBehaviour
                 break;
 
             case WaveState.RESET:
-                //waveKills *= 1.5f;
                 waveKills_increase();
-                //Boss.GetComponent<Boss>().reset_boss();
                 enemyManager.GetComponent<enemy_manager>().enemiesKilled_current = 0;
                 on = true;
                 wave_bool = true;
@@ -194,6 +196,23 @@ public class enemy_spawner : MonoBehaviour
 
     }
 
+    void changeBackground()
+    {
+        if (wave_count % 3 == 0)
+        {
+            current_background++;
+            if (current_background > backgrounds.Length - 1)
+                current_background = 0;
+           
+            for (int i = 0; i < backgrounds.Length; i++)
+            {
+                backgrounds[i].gameObject.SetActive(false);
+            }
+
+            backgrounds[current_background].gameObject.SetActive(true);
+        }
+    }
+
     //============================
     //          Coroutines
     //============================
@@ -217,6 +236,7 @@ public class enemy_spawner : MonoBehaviour
 
             yield return new WaitForSeconds(2);
 
+            changeBackground();
             wave_text.gameObject.SetActive(false);
             waveState = WaveState.ENEMY;
         }
