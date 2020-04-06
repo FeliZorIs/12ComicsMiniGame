@@ -1336,7 +1336,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f67f577d35b1c044839ac8a17496055, type: 2}
+  - {fileID: 2100000, guid: a4281ff375a02fb489d1757a12c04ed0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1967,6 +1967,7 @@ MonoBehaviour:
   timeInBetween: 0.75
   waveKills: 2
   maxEnemiesOnscreen: 15
+  boss_alive: 0
   wave_text: {fileID: 1857701158}
 --- !u!1 &678491391
 GameObject:

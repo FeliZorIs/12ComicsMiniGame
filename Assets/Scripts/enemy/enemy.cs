@@ -53,16 +53,22 @@ public class enemy : MonoBehaviour
         }
         else 
         {
-            float med_num = Random.RandomRange(1, 100);
-            //percent = 1%
-            if(med_num <= odds)
-            {
-                Debug.Log("here you go");
-                Instantiate(medKit, transform.position, Quaternion.identity);
-            }
+            dropMed();
         }
 
         Destroy(this.gameObject);
+    }
+
+    void dropMed()
+    {
+        float med_num = Random.RandomRange(1, 100);
+        float xrange = Random.RandomRange(-3.5f, 4);
+        //percent = 1%
+        if (med_num <= odds)
+        {
+            Debug.Log("here you go");
+            Instantiate(medKit, new Vector2(xrange, 5), Quaternion.identity);
+        }
     }
 
     protected void killed_by_player()
