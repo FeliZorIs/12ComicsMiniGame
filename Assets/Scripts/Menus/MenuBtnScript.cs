@@ -138,4 +138,9 @@ public class MenuBtnScript : MonoBehaviour
         // SceneManager.LoadScene("PlayerMenu");
     }
 
+    public void CreditsBtn()
+    {
+        fader.GetComponent<Scene_Fade>().FadeToLevel("Credits");
+    }
+
 }
