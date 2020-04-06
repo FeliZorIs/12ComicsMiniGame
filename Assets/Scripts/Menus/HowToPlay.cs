@@ -124,6 +124,11 @@ public class HowToPlay : MonoBehaviour
             if (Input.GetKey("escape"))
             {
                 How2Play.SetActive(false);
+                P1.SetActive(true);
+                P2.SetActive(false);
+                P3.SetActive(false);
+                P4.SetActive(false);
+                P5.SetActive(false);
             }
         }
     }
