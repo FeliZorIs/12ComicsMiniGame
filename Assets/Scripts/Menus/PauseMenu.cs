@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 
     public static bool GameIsPaused = false;
     public GameObject PauseMenuUI;
+    public GameObject GOver;
+    public GameObject H2P;
 
 
     void Start()
@@ -27,7 +29,16 @@ public class PauseMenu : MonoBehaviour
                 Pause();
             }
         }
+
+        if (GOver.activeSelf)
+        {
+            Resume();
+        }
         
+        if (H2P.activeSelf)
+        {
+            Pause();
+        }
     }
 
     void Resume()

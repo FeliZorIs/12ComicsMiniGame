@@ -13,7 +13,13 @@ public class Leaderboard : MonoBehaviour
     public Button Global;
     public GameObject Search;
     public GameObject CurrentRank;
-    public GameObject rankings;
+    //public GameObject rankings;
+    public GameObject rank;
+    public GameObject uname;
+    public GameObject hname;
+    public GameObject uscore;
+    
+
     static public string theCurrentUser;
     static public string theCurrentHero;
 
@@ -23,7 +29,12 @@ public class Leaderboard : MonoBehaviour
     List<int> theScores = new List<int>();
     List<int> theRanks = new List<int>();
 
-    string theText;
+    string theText1;
+    string theText2;
+    string theText3;
+    string theText4;
+    string theText5;
+
     string theRank;
     string theHero;
     string theScr;
@@ -43,7 +54,7 @@ public class Leaderboard : MonoBehaviour
         theCurrentHero = LoginDisp.currHero;
         StartCoroutine(getNames());
         Search.SetActive(false);
-        // CurrentRank.SetActive(false);
+        //CurrentRank.SetActive(false);
 
     }
 
@@ -172,21 +183,33 @@ public class Leaderboard : MonoBehaviour
                 }
             }
 
-            theText = theText + "\t \t" + theRanks[i] + "\t \t \t \t" + theNames[i] + "\t" + theHeroes[i] + "\t \t \t \t" + theScores[i] + " \t \t \t \n";
+            //theText1 = theText1 + "\t \t" + theRanks[i] + "\t \t \t \t" + theNames[i] + "\t" + theHeroes[i] + "\t \t \t \t" + theScores[i] + " \t \t \t \n";
+            theText2 = theText2 + "" + theRanks[i] + "\n";
+            theText3 = theText3 + "" + theNames[i] + "\n";
+            theText4 = theText4 + "" + theHeroes[i] + "\n";
+            theText5 = theText5 + "" + theScores[i] + "\n";
+
         }
 
         //Find out what current player's rank is.
-        string lowerName = theCurrentUser.ToLower();
-        List<string> lowerNames = new List<string>();
+         string lowerName = theCurrentUser.ToLower();
+         List<string> lowerNames = new List<string>();
 
-        for (int m = 0; m < numList; m++)
-        {
-            currentName = theNames[m].ToLower();
-            lowerNames.Add(currentName);
-        }
-        userIndex = (lowerNames.IndexOf(lowerName) + 1);
-        playerRank = (theRanks.IndexOf(userIndex) + 1);
-        rankings.GetComponent<Text>().text = theText;
+         for (int m = 0; m < numList; m++)
+         {
+             currentName = theNames[m].ToLower();
+             lowerNames.Add(currentName);
+         }
+         userIndex = (lowerNames.IndexOf(lowerName) + 1);
+         playerRank = (theRanks.IndexOf(userIndex) + 1); 
+        //rankings.GetComponent<Text>().text = theText1;
+        rank.GetComponent<Text>().text = theText2;
+        uname.GetComponent<Text>().text = theText3;
+        hname.GetComponent<Text>().text = theText4;
+        uscore.GetComponent<Text>().text = theText5;
+
+
+
         CurrentRank.GetComponent<Text>().text = "" + (playerRank);
 
     }

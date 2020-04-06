@@ -213,6 +213,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 219767431}
+  - {fileID: 1946220480}
   - {fileID: 677686469}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -483,7 +484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.6, y: -677}
+  m_AnchoredPosition: {x: 1.6, y: -674}
   m_SizeDelta: {x: 1369.2, y: 581.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &364182342
@@ -562,7 +563,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3258bbf549f9b7f48b2591fcaa039b1f, type: 3}
-    m_FontSize: 26
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -590,17 +591,21 @@ MonoBehaviour:
     ADDITIONAL PROGRAMMER
 
 
-    HERO SPRITE DESIGN
+    HERO SPRITE DESIGNS
 
 
     ENEMY
-    SPRITE DESIGN
+    SPRITE DESIGNS
 
 
     BACKGROUND SPRITES & SOUNDS
 
 
-    ORIGINAL CHARACTER DESIGNS'
+    ORIGINAL CHARACTER DESIGNS
+
+
+    BACKGROUND
+    MUSIC'
 --- !u!222 &464950733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -638,13 +643,12 @@ RectTransform:
   m_Children:
   - {fileID: 464950731}
   - {fileID: 1059607717}
-  - {fileID: 1946220480}
   m_Father: {fileID: 364182341}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -37, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &677686467
@@ -918,7 +922,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 3258bbf549f9b7f48b2591fcaa039b1f, type: 3}
-    m_FontSize: 26
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -929,9 +933,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Rhea
+  m_Text: 'Rhea Pavithran
 
-    Mahir
+    Mahir Hossain
 
 
     Mohamed Khan
@@ -940,24 +944,27 @@ MonoBehaviour:
     Oris Feliz
 
 
-    Krishan Patel
+    Krishan
+    Patel
 
 
-    Nick
+    Nicolas Alves
 
 
-    Timour
-    Khan
+    Timour Khan
 
 
     3rd Party Designer
 
 
-    3rd Party - Unity Asset Store
+    Unity
+    Asset Store
 
 
-    Mark
-    Hair & 12Comics'
+    Mark Hair & 12Comics
+
+
+    Patrick de Arteaga'
 --- !u!222 &1059607719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1154,13 +1161,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 568222472}
-  m_RootOrder: 2
+  m_Father: {fileID: 103631836}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 7.3500004, y: -641}
-  m_SizeDelta: {x: 1383.9, y: 143.5}
+  m_AnchoredPosition: {x: 451.7, y: 18.5}
+  m_SizeDelta: {x: 462.6, y: 265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946220481
 MonoBehaviour:
@@ -1175,14 +1182,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7287297, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.77254903, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3258bbf549f9b7f48b2591fcaa039b1f, type: 3}
-    m_FontSize: 93
+    m_Font: {fileID: 12800000, guid: 0ee670331f46527449ef2797cbca2f8a, type: 3}
+    m_FontSize: 79
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1193,7 +1200,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: THANKS FOR PLAYING
+  m_Text: "THANKS \nFOR \nPLAYING"
 --- !u!222 &1946220482
 CanvasRenderer:
   m_ObjectHideFlags: 0
