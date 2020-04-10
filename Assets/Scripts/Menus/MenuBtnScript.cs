@@ -33,7 +33,6 @@ public class MenuBtnScript : MonoBehaviour
     void Start()
     {
 
-       
     }
     public void LoadMenu()
     {
@@ -105,11 +104,28 @@ public class MenuBtnScript : MonoBehaviour
         // SceneManager.LoadScene("TestMap");
     }
 
-    void FixedUpdate()
+    void Update()
     {
 
-    }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (userInput.GetComponent<InputField>().isFocused)
+            {
+                passInput.GetComponent<InputField>().Select();
+            }
+            else if (passInput.GetComponent<InputField>().isFocused)
+            {
+                userInput.GetComponent<InputField>().Select();
+            }
+        }
 
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            LoadMenu();
+        }
+
+    }
 
     public void PlayBtn()
     {
