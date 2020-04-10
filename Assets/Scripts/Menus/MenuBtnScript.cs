@@ -30,9 +30,16 @@ public class MenuBtnScript : MonoBehaviour
 
     //For scene fade.
     public GameObject fader;
+
+    //QuickFix for tab to work.
+    static bool onLogin = true;
     void Start()
     {
-        userInput.GetComponent<InputField>().Select();
+        if(onLogin == true)
+        {
+            userInput.GetComponent<InputField>().Select();
+        }
+       
     }
     public void LoadMenu()
     {
@@ -59,10 +66,12 @@ public class MenuBtnScript : MonoBehaviour
             validLogin = true;
             failText.SetActive(false);
             currentUser = username;
+            onLogin = false;
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
             FindObjectOfType<AudioManager>().Play("MenuMusic");
             // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
+          
         }
         else
         {
@@ -150,6 +159,7 @@ public class MenuBtnScript : MonoBehaviour
 
     public void LogoutBtn()
     {
+        onLogin = true;
         FindObjectOfType<AudioManager>().Stop("MenuMusic");
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
         // SceneManager.LoadScene("PlayerLogin");
