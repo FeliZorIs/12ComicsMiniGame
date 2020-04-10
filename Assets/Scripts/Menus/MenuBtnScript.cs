@@ -32,7 +32,7 @@ public class MenuBtnScript : MonoBehaviour
     public GameObject fader;
     void Start()
     {
-
+        userInput.GetComponent<InputField>().Select();
     }
     public void LoadMenu()
     {
@@ -69,6 +69,8 @@ public class MenuBtnScript : MonoBehaviour
             Debug.Log("oh no , login failed. php message: " + www.text);
             Debug.Log("User or pass is incorrect!");
             failText.SetActive(true);
+
+            userInput.GetComponent<InputField>().Select();
         }
 
     }
