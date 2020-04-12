@@ -21,23 +21,34 @@ public class PlayerStats : MonoBehaviour
     public Text superMeterText;
     public Text multiplierText;
     public Text pointsRemainingText;
-    
+
     //For scene fade.
     public GameObject fader;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        currentUse = MenuBtnScript.currentUser;
-        //Check the DB here for the grades and correspond that to the points given to student.
-        setStats();
-        initialDisplay();
+        if (MenuBtnScript.debugOn == true)
+        {
+            currentUse = "Katheryne";
+            setStats();
+            initialDisplay();
+
+        }
+        else
+        {
+            currentUse = MenuBtnScript.currentUser;
+            //Check the DB here for the grades and correspond that to the points given to student.
+            setStats();
+            initialDisplay();
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 
@@ -57,7 +68,7 @@ public class PlayerStats : MonoBehaviour
 
         WWWForm form = new WWWForm();
         form.AddField("username", currentUse);
-       // WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
+        // WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form);
         WWW www = new WWW("https://web.njit.edu/~rp553/PlayerStats.php", form);
         yield return www;
 
@@ -92,7 +103,7 @@ public class PlayerStats : MonoBehaviour
         form2.AddField("superMeter", superMeterLevel);
         form2.AddField("multi", multiLevel);
         form2.AddField("pointsR", pointsRemaining);
-       // WWW www2 = new WWW("https://web.njit.edu/~mrk38/SaveStats.php", form2);
+        // WWW www2 = new WWW("https://web.njit.edu/~mrk38/SaveStats.php", form2);
         WWW www2 = new WWW("https://web.njit.edu/~rp553/SaveStats.php", form2);
         yield return www2;
 
@@ -123,7 +134,7 @@ public class PlayerStats : MonoBehaviour
         {
             return;
         }
-        
+
         else
         {
             healthLevel += 1;
@@ -132,7 +143,7 @@ public class PlayerStats : MonoBehaviour
 
         if (healthLevel == 10)
         {
-            healthText.text = "Health level: " + healthLevel + " (MAX)" ;
+            healthText.text = "Health level: " + healthLevel + " (MAX)";
         }
 
         else
@@ -205,7 +216,7 @@ public class PlayerStats : MonoBehaviour
             ammoLevel -= 1;
             pointsRemaining += 1;
         }
-       
+
         ammoText.text = "Ammo level: " + ammoLevel;
         pointsRemainingText.text = "Points remaining: " + pointsRemaining;
     }
@@ -252,7 +263,7 @@ public class PlayerStats : MonoBehaviour
             superMeterLevel -= 1;
             pointsRemaining += 1;
         }
-        superMeterText.text = "SuperMeter level: " + superMeterLevel;   
+        superMeterText.text = "SuperMeter level: " + superMeterLevel;
         pointsRemainingText.text = "Points remaining: " + pointsRemaining;
     }
 
@@ -308,18 +319,27 @@ public class PlayerStats : MonoBehaviour
     {
         StartCoroutine(saveToDB());
         fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
-        FindObjectOfType<AudioManager>().Stop("MenuMusic");
-       // SceneManager.LoadScene("TestMap");
+
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Stop("MenuMusic");
+        }
+      
+        // SceneManager.LoadScene("TestMap");
     }
 
     public void Back()
     {
         StartCoroutine(saveToDB());
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
-       // SceneManager.LoadScene("PlayerMenu");
+        // SceneManager.LoadScene("PlayerMenu");
     }
 
-   
+
     void initialDisplay()
     {
         if (healthLevel == 10)

@@ -39,9 +39,16 @@ public class RetryButtonScript : MonoBehaviour
     {
         resetStats();
         gameObject.SetActive(false);
-        FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
-        FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
+            FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
+        }
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
         //SceneManager.LoadScene("PlayerCustomization");
         Time.timeScale = 1f;
@@ -51,9 +58,17 @@ public class RetryButtonScript : MonoBehaviour
     {
         resetStats();
         gameObject.SetActive(false);
-        FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
-        FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
-        FindObjectOfType<AudioManager>().Play("MenuMusic");
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
+            FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
+            FindObjectOfType<AudioManager>().Play("MenuMusic");
+        }
+
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
         // SceneManager.LoadScene("PlayerMenu");
         Time.timeScale = 1f;

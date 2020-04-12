@@ -16,9 +16,20 @@ public class LoginDisp : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        curr = MenuBtnScript.currentUser;
-        showStats();
-        userText.GetComponent<Text>().text = curr.ToUpper();
+        //This check is for debugging!!!!
+        if (MenuBtnScript.debugOn == true)
+        {
+            curr = "Katheryne";
+            showStats();
+            userText.GetComponent<Text>().text = curr.ToUpper();
+        }
+        else
+        {
+            curr = MenuBtnScript.currentUser;
+            showStats();
+            userText.GetComponent<Text>().text = curr.ToUpper();
+        }
+
     }
 
     // Update is called once per frame

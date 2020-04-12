@@ -6,22 +6,22 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     //movement declarations
-    public float        speed;
-    float               horizontal, 
+    public float speed;
+    float horizontal,
                         vertical;
-    Vector2             direction;
+    Vector2 direction;
 
     //shooting declarations
-    public GameObject   shot;
-    public Transform    shot_spawn;
-    public float        fireRate;
-    private float       nextFire;
-    private float       myTime = 0f;
+    public GameObject shot;
+    public Transform shot_spawn;
+    public float fireRate;
+    private float nextFire;
+    private float myTime = 0f;
 
-    int                 bultype = 1;
-    Vector3      bullet_rotation1;
-    Vector3      bullet_rotation2;
-    public Text         shot_Text;
+    int bultype = 1;
+    Vector3 bullet_rotation1;
+    Vector3 bullet_rotation2;
+    public Text shot_Text;
 
     //Invincibility after hit & Player UI image damage
     Renderer rend;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
 
     //Customization stats being accounted for here.
     static public int ammolvl;
-    
+
     static public int multiplierlvl;
 
     //Supermeter vars
@@ -67,11 +67,20 @@ public class Player : MonoBehaviour
     public string current;
     void Start()
     {
-        FindObjectOfType<AudioManager>().Play("GameplayMusic_DAY");
+
+
         //Ensures that even if restarting the scene after being invincible, that the player can still take damage.
         Physics2D.IgnoreLayerCollision(0, 10, false);
+        if (MenuBtnScript.debugOn == true)
+        {
+            current = "Katheryne";
+        }
+        else
+        {
+            current = MenuBtnScript.currentUser;
+            FindObjectOfType<AudioManager>().Play("GameplayMusic_DAY");
+        }
 
-        current = MenuBtnScript.currentUser;
         userInitialize();
         enemyManager = GameObject.Find("EnemyManager");
         ammolvl = PlayerStats.ammoLevel;
@@ -80,7 +89,7 @@ public class Player : MonoBehaviour
         multiplierlvl = PlayerStats.multiLevel;
         // superMeterCurrent = 0; TESTING SUPERMETER ANIMATION !!! UNCOMMENT THIS LINE AFTER.
         superMeterCurrent = 100f;
-       // superMeterCurrent = 0;
+        // superMeterCurrent = 0;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
@@ -103,7 +112,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(superMeterCurrent >=100)
+        if (superMeterCurrent >= 100)
         {
             meterInfoText.SetActive(true);
         }
@@ -153,7 +162,7 @@ public class Player : MonoBehaviour
             playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
         }
 
-        if(Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current) !=null)
+        if (Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current) != null)
         {
             this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current);
         }
@@ -189,7 +198,7 @@ public class Player : MonoBehaviour
             case 1:
                 bultype = 1;
                 //shot_Text.text = "Shot Type: Basic";
-               
+
                 single.enabled = true;
                 split.enabled = false;
                 burst.enabled = false;
@@ -269,7 +278,7 @@ public class Player : MonoBehaviour
                     single.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                     split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                     burst.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
-                    
+
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
@@ -320,12 +329,12 @@ public class Player : MonoBehaviour
     //Burst shot couroutine.
     public IEnumerator BurstShot()
     {
-        for (int i = 0; i <= 3; i++ )
+        for (int i = 0; i <= 3; i++)
         {
             Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
             yield return new WaitForSeconds(0.05f);
         }
-          
+
     }
 
 
@@ -345,12 +354,12 @@ public class Player : MonoBehaviour
             {
                 StartCoroutine("PlayerInvince");
             }
-            if(PlayerHealth.health <= 0)
+            if (PlayerHealth.health <= 0)
             {
                 gameOver();
             }
             Destroy(collision.gameObject);
-            
+
         }
 
         //player collides with boss
@@ -403,7 +412,7 @@ public class Player : MonoBehaviour
     {
         playerImg.GetComponent<Image>().color = Color.red;
         yield return new WaitForSeconds(1.0f);
-        playerImg.GetComponent<Image>().color = new Color(255,255,255);
+        playerImg.GetComponent<Image>().color = new Color(255, 255, 255);
     }
 
     //Invincibility state when getting hit.
@@ -413,7 +422,7 @@ public class Player : MonoBehaviour
         color.a = 0.5f;
         rend.material.color = color;
         yield return new WaitForSeconds(2.4f);
-        Physics2D.IgnoreLayerCollision(0,10, false);
+        Physics2D.IgnoreLayerCollision(0, 10, false);
         color.a = 1f;
         rend.material.color = color;
     }
@@ -422,7 +431,7 @@ public class Player : MonoBehaviour
     //              PlayerDeath
     //======================================
 
-    public void gameOver() 
+    public void gameOver()
     {
         PlayerHealth.health = 0;
         RetryButtonScript.score = ScoreCount.scoreValue;
@@ -437,7 +446,7 @@ public class Player : MonoBehaviour
             GameObject.Destroy(theShots[i]);
         }
         Destroy(gameObject);
-        
+
     }
 
 
@@ -449,9 +458,9 @@ public class Player : MonoBehaviour
     //Since we're doing shot collision seperately i'm making this public. We'll change it to private later.
     public void superMeterCharge(float s)
     {
-        if (superMeterCurrent < 100f) 
+        if (superMeterCurrent < 100f)
         {
-            superMeterCurrent += s*supermeterlvl;
+            superMeterCurrent += s * supermeterlvl;
             if (superMeterCurrent >= 100f)
             {
                 superMeterCurrent = 100f;
@@ -469,13 +478,14 @@ public class Player : MonoBehaviour
     private void superMeterUse()
     {
 
-        if (Input.GetKeyDown(KeyCode.Alpha4)){
-            if(superMeterCurrent >= 100f) 
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            if (superMeterCurrent >= 100f)
             {
                 //Play the animation of supermeter.
                 StartCoroutine(superAni());
             }
-            else 
+            else
             {
                 Debug.Log("Supermeter isn't full yet!");
             }

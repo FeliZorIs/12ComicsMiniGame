@@ -32,14 +32,17 @@ public class MenuBtnScript : MonoBehaviour
     public GameObject fader;
 
     //QuickFix for tab to work.
-    static bool onLogin = true;
+    static public bool onLogin = true;
+
+    //Debug mode for testing check.
+    static public bool debugOn = true;
     void Start()
     {
-        if(onLogin == true)
+        if (onLogin == true && debugOn == false)
         {
             userInput.GetComponent<InputField>().Select();
         }
-       
+
     }
     public void LoadMenu()
     {
@@ -67,11 +70,12 @@ public class MenuBtnScript : MonoBehaviour
             failText.SetActive(false);
             currentUser = username;
             onLogin = false;
+            debugOn = false;
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
             FindObjectOfType<AudioManager>().Play("MenuMusic");
             // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
-          
+
         }
         else
         {
@@ -88,6 +92,10 @@ public class MenuBtnScript : MonoBehaviour
     {
 
         WWWForm form2 = new WWWForm();
+        if (MenuBtnScript.debugOn == true)
+        {
+            currentUser = "Katheryne";
+        }
         form2.AddField("username", currentUser);
         //WWW www = new WWW("https://web.njit.edu/~mrk38/PlayerStats.php", form2);
         WWW www2 = new WWW("https://web.njit.edu/~rp553/PlayerStats.php", form2);
@@ -117,30 +125,41 @@ public class MenuBtnScript : MonoBehaviour
 
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (onLogin == true)
         {
-            if (userInput.GetComponent<InputField>().isFocused)
+            if (Input.GetKeyDown(KeyCode.Tab))
             {
-                passInput.GetComponent<InputField>().Select();
+                if (userInput.GetComponent<InputField>().isFocused)
+                {
+                    passInput.GetComponent<InputField>().Select();
+                }
+                else if (passInput.GetComponent<InputField>().isFocused)
+                {
+                    userInput.GetComponent<InputField>().Select();
+                }
             }
-            else if (passInput.GetComponent<InputField>().isFocused)
+
+
+            if (Input.GetKeyDown(KeyCode.Return))
             {
-                userInput.GetComponent<InputField>().Select();
+                LoadMenu();
             }
         }
 
-
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            LoadMenu();
-        }
 
     }
 
     public void PlayBtn()
     {
-        FindObjectOfType<AudioManager>().Stop("MenuMusic");
+        if(MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            FindObjectOfType<AudioManager>().Stop("MenuMusic");
+        }
+       
         StartCoroutine(grabStats());
 
     }

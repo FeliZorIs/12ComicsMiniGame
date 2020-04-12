@@ -18,7 +18,7 @@ public class Leaderboard : MonoBehaviour
     public GameObject uname;
     public GameObject hname;
     public GameObject uscore;
-    
+
 
     static public string theCurrentUser;
     static public string theCurrentHero;
@@ -49,9 +49,19 @@ public class Leaderboard : MonoBehaviour
     {
         theNames = new List<string>();
         theScores = new List<int>();
-        currentHighScore = LoginDisp.highScore;
-        theCurrentUser = MenuBtnScript.currentUser;
-        theCurrentHero = LoginDisp.currHero;
+        if (MenuBtnScript.debugOn == true)
+        {
+            theCurrentUser = "Katheryne";
+            currentHighScore = 0;
+            theCurrentHero = "Kat warrior";
+        }
+        else
+        {
+            currentHighScore = LoginDisp.highScore;
+            theCurrentUser = MenuBtnScript.currentUser;
+            theCurrentHero = LoginDisp.currHero;
+        }
+
         StartCoroutine(getNames());
         Search.SetActive(false);
         //CurrentRank.SetActive(false);
@@ -192,16 +202,16 @@ public class Leaderboard : MonoBehaviour
         }
 
         //Find out what current player's rank is.
-         string lowerName = theCurrentUser.ToLower();
-         List<string> lowerNames = new List<string>();
+        string lowerName = theCurrentUser.ToLower();
+        List<string> lowerNames = new List<string>();
 
-         for (int m = 0; m < numList; m++)
-         {
-             currentName = theNames[m].ToLower();
-             lowerNames.Add(currentName);
-         }
-         userIndex = (lowerNames.IndexOf(lowerName) + 1);
-         playerRank = (theRanks.IndexOf(userIndex) + 1); 
+        for (int m = 0; m < numList; m++)
+        {
+            currentName = theNames[m].ToLower();
+            lowerNames.Add(currentName);
+        }
+        userIndex = (lowerNames.IndexOf(lowerName) + 1);
+        playerRank = (theRanks.IndexOf(userIndex) + 1);
         //rankings.GetComponent<Text>().text = theText1;
         rank.GetComponent<Text>().text = theText2;
         uname.GetComponent<Text>().text = theText3;
