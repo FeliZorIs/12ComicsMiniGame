@@ -65,6 +65,11 @@ public class Player : MonoBehaviour
 
     //Figuring out who currentUser is and getting ready to change images based on that.
     public string current;
+
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     void Start()
     {
 
@@ -78,7 +83,11 @@ public class Player : MonoBehaviour
         else
         {
             current = MenuBtnScript.currentUser;
-            FindObjectOfType<AudioManager>().Play("GameplayMusic_DAY");
+            //Maybe put this on Awake() to avoid potential overlap? Idk we'll test and see.
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+
+            audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
         }
 
         userInitialize();
@@ -87,9 +96,8 @@ public class Player : MonoBehaviour
         supermeterlvl = PlayerStats.superMeterLevel;
         superCast = (float)supermeterlvl;
         multiplierlvl = PlayerStats.multiLevel;
-        // superMeterCurrent = 0; TESTING SUPERMETER ANIMATION !!! UNCOMMENT THIS LINE AFTER.
-        superMeterCurrent = 100f;
-        // superMeterCurrent = 0;
+        //superMeterCurrent = 100f;
+        superMeterCurrent = 0;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
@@ -123,6 +131,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
+       
         Movement();
         shoot();
         superMeterUse();
@@ -401,6 +410,7 @@ public class Player : MonoBehaviour
         //when player collides with the med kit
         if (collision.tag == "medKit")
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Health_Pickup");
             PlayerHealth.health += collision.gameObject.GetComponent<medKit>().health;
             Destroy(collision.gameObject);
         }
@@ -495,6 +505,7 @@ public class Player : MonoBehaviour
     //Animation for using the supermeter. Might not even need this if we add events to the animation.
     public IEnumerator superAni()
     {
+        
         Physics2D.IgnoreLayerCollision(0, 10, true);
         Physics2D.IgnoreLayerCollision(0, 8, true);
         this.gameObject.GetComponent<Animator>().enabled = true;
@@ -514,13 +525,17 @@ public class Player : MonoBehaviour
         }
         superMeterCurrent = 0f;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
-        this.gameObject.GetComponent<Animator>().enabled = false;
-
+        this.gameObject.GetComponent<Animator>().enabled = false; 
         //Give player a moment of invincibility after animation ends so they can get their bearings.
         yield return new WaitForSeconds(0.5f);
         Physics2D.IgnoreLayerCollision(0, 10, false);
         Physics2D.IgnoreLayerCollision(0, 8, false);
+        //Reset position so glitch doesn't happen theoretically.
+       
+
     }
+
+
 
 
 

@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\HSPackages\InfiniteGround\Script\Ground.cs" />
      <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
+     <Compile Include="Assets\Scripts\Audio\AudioManagerSFX.cs" />
      <Compile Include="Assets\Scripts\Audio\Sound.cs" />
      <Compile Include="Assets\Scripts\CameraShake.cs" />
      <Compile Include="Assets\Scripts\City.cs" />

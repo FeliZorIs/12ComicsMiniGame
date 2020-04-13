@@ -13,6 +13,8 @@ TagManager:
   - enemy_shot
   - Gold_enemy
   - medKit
+  - MusicManager
+  - SFXManager
   layers:
   - Default
   - TransparentFX

@@ -25,6 +25,10 @@ public class PlayerStats : MonoBehaviour
     //For scene fade.
     public GameObject fader;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,12 +41,16 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
             currentUse = MenuBtnScript.currentUser;
             //Check the DB here for the grades and correspond that to the points given to student.
             setStats();
             initialDisplay();
         }
     }
+
+  
 
 
     // Update is called once per frame
@@ -326,7 +334,7 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Stop("MenuMusic");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
         }
       
         // SceneManager.LoadScene("TestMap");

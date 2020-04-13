@@ -23,7 +23,9 @@ public class MenuBtnScript : MonoBehaviour
     public GameObject failText;
     bool validLogin = false;
 
-
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
 
     //Store userinfo
     static public string currentUser;
@@ -38,11 +40,26 @@ public class MenuBtnScript : MonoBehaviour
     static public bool debugOn = true;
     void Start()
     {
-        if (onLogin == true && debugOn == false)
+       
+        if (onLogin == true)
         {
             userInput.GetComponent<InputField>().Select();
         }
+        else
+        {
+            if (debugOn == true)
+            {
 
+            }
+            else
+            {
+                audioManagerMusic = GameObject.FindWithTag("MusicManager");
+                audioManagerSFX = GameObject.FindWithTag("SFXManager");
+            }
+
+        }
+
+        
     }
     public void LoadMenu()
     {
@@ -66,13 +83,17 @@ public class MenuBtnScript : MonoBehaviour
 
         if (www.text == "1")
         {
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
             validLogin = true;
             failText.SetActive(false);
             currentUser = username;
             onLogin = false;
             debugOn = false;
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Login_Button");
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
-            FindObjectOfType<AudioManager>().Play("MenuMusic");
+            yield return new WaitForSeconds(0.6f);
+            audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
             // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
 
@@ -157,7 +178,8 @@ public class MenuBtnScript : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Stop("MenuMusic");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
+           
         }
        
         StartCoroutine(grabStats());
@@ -179,7 +201,7 @@ public class MenuBtnScript : MonoBehaviour
     public void LogoutBtn()
     {
         onLogin = true;
-        FindObjectOfType<AudioManager>().Stop("MenuMusic");
+        audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
         // SceneManager.LoadScene("PlayerLogin");
     }

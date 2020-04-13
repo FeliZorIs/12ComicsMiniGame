@@ -29,8 +29,13 @@ public class enemy_spawner : MonoBehaviour
     //background change
     public GameObject[] backgrounds;
     int current_background = 0;
-    //Testing...
-    int musicCount = 1;
+
+    //Testing FORAUDIO!!!...
+    int musicCount = 0;
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     enum WaveState
     {
         WAVE,
@@ -43,6 +48,8 @@ public class enemy_spawner : MonoBehaviour
     void Start()
     {
         enemyManager = GameObject.Find("EnemyManager");
+        audioManagerMusic = GameObject.FindWithTag("MusicManager");
+        audioManagerSFX = GameObject.FindWithTag("SFXManager");
 
         spawning = true;
         timer = 0;
@@ -202,6 +209,7 @@ public class enemy_spawner : MonoBehaviour
     {
         if (wave_count % 3 == 0)
         {
+            musicCount++;
             current_background++;
             if (current_background > backgrounds.Length - 1)
                 current_background = 0;
@@ -211,18 +219,32 @@ public class enemy_spawner : MonoBehaviour
                 backgrounds[i].gameObject.SetActive(false);
             }
             //This if is just a test, remove when editing in the future!!!!
-            if(musicCount%2 != 0 )
+           
+            //Sunset Music
+            if(musicCount == 1)
             {
-                FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
-                FindObjectOfType<AudioManager>().Play("GameplayMusic_NIGHT"); 
+                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+                audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_SUNSET");
             }
+            //Nighttime Music
+            else if(musicCount == 2)
+            {
+                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+                audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_NIGHT");
+            }
+            //Daytime Music
             else
             {
-                FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
-                FindObjectOfType<AudioManager>().Play("GameplayMusic_DAY");
-                
+                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+                audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
             }
-            musicCount++;
+            if(musicCount == 3)
+            {
+                musicCount = 0;
+            }
             backgrounds[current_background].gameObject.SetActive(true);
         }
     }

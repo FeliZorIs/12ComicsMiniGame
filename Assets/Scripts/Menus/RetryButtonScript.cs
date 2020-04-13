@@ -19,12 +19,27 @@ public class RetryButtonScript : MonoBehaviour
     //For scene fade.
     public GameObject fader;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
 
     void Start()
     {
-        currentP = MenuBtnScript.currentUser;
-        //User's current high score. Use this to compare for if we want to store the score or not.
-        currentHigh = LoginDisp.highScore;
+        if(MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+            currentP = "Katheryne";
+            currentHigh = 99999;
+        }
+        else
+        {
+            currentP = MenuBtnScript.currentUser;
+            //User's current high score. Use this to compare for if we want to store the score or not.
+            currentHigh = LoginDisp.highScore;
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+        
     }
     public void restartScene()
     {
@@ -45,9 +60,9 @@ public class RetryButtonScript : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
-            FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
-            FindObjectOfType<AudioManager>().Play("MenuMusic");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+            audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
         }
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
         //SceneManager.LoadScene("PlayerCustomization");
@@ -64,9 +79,9 @@ public class RetryButtonScript : MonoBehaviour
         }
         else
         {
-            FindObjectOfType<AudioManager>().Stop("GameplayMusic_DAY");
-            FindObjectOfType<AudioManager>().Stop("GameplayMusic_NIGHT");
-            FindObjectOfType<AudioManager>().Play("MenuMusic");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+            audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
         }
 
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
