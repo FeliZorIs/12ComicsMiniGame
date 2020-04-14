@@ -92,7 +92,7 @@ public class MenuBtnScript : MonoBehaviour
             debugOn = false;
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Login_Button");
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.5f);
             audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
             // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);

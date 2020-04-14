@@ -145,6 +145,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_UP");
             healthLevel += 1;
             pointsRemaining -= 1;
         }
@@ -173,6 +174,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_DOWN");
             healthLevel -= 1;
             pointsRemaining += 1;
         }
@@ -194,6 +196,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_UP");
             ammoLevel += 1;
             pointsRemaining -= 1;
         }
@@ -221,6 +224,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_DOWN");
             ammoLevel -= 1;
             pointsRemaining += 1;
         }
@@ -242,6 +246,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_UP");
             superMeterLevel += 1;
             pointsRemaining -= 1;
         }
@@ -268,6 +273,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_DOWN");
             superMeterLevel -= 1;
             pointsRemaining += 1;
         }
@@ -289,6 +295,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_UP");
             multiLevel += 1;
             pointsRemaining -= 1;
         }
@@ -315,6 +322,7 @@ public class PlayerStats : MonoBehaviour
 
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Customize_DOWN");
             multiLevel -= 1;
             pointsRemaining += 1;
         }
