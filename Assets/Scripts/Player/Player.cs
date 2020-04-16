@@ -96,8 +96,8 @@ public class Player : MonoBehaviour
         supermeterlvl = PlayerStats.superMeterLevel;
         superCast = (float)supermeterlvl;
         multiplierlvl = PlayerStats.multiLevel;
-        //superMeterCurrent = 100f;
-        superMeterCurrent = 0;
+        superMeterCurrent = 100f;
+        //superMeterCurrent = 0;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-       
+        superMeterCurrent = 100f;
         Movement();
         shoot();
         superMeterUse();

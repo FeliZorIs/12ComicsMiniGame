@@ -38,6 +38,9 @@ public class Boss : MonoBehaviour
     public GameObject offenseBlock_1;
     public GameObject offenseBlock_2;
 
+    //For enemy death
+    public GameObject particleDestruct;
+
     enum BossStage
     {
         ENTRANCE,
@@ -121,6 +124,12 @@ public class Boss : MonoBehaviour
             //reset_boss();
             eSpawn.GetComponent<enemy_spawner>().boss_alive = false;
             //this.gameObject.SetActive(false);
+
+            //Create particle effect on destruction.
+            Instantiate(particleDestruct, transform.position, transform.rotation);
+
+            //Add destruction on particle effect after a certain time.
+
             Destroy(this.gameObject);
         }
     }

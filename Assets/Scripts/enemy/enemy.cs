@@ -16,6 +16,8 @@ public class enemy : MonoBehaviour
     public GameObject medKit;
     public float odds;
 
+    //For enemy death
+    public GameObject particleDestruct;
     private void Start()
     {
         findComponents();
@@ -56,6 +58,8 @@ public class enemy : MonoBehaviour
             dropMed();
         }
 
+        //Create particle effect on destruction.
+        Instantiate(particleDestruct, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 

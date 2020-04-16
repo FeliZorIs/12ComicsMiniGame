@@ -230,6 +230,7 @@ MonoBehaviour:
   defenseBlock_2: {fileID: 3894210313963671132}
   offenseBlock_1: {fileID: 9189825609700281556}
   offenseBlock_2: {fileID: 2767179025398431262}
+  particleDestruct: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
 --- !u!1001 &1464759218150244723
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -195,7 +195,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameplayMusic_SUNSET
     clip: {fileID: 8300000, guid: 7b893ee264b46664392dd62aefbf74a2, type: 3}
-    volume: 0.494
+    volume: 0.357
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -719,7 +719,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Health_Pickup
     clip: {fileID: 8300000, guid: a8db74fa62cfde94aa8bbe0a67cf7ffa, type: 3}
-    volume: 0.578
+    volume: 0.354
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
