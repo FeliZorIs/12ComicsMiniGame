@@ -62,6 +62,7 @@ public class RetryButtonScript : MonoBehaviour
         {
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
             audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
         }
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
@@ -81,6 +82,7 @@ public class RetryButtonScript : MonoBehaviour
         {
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
             audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
         }
 

@@ -70,6 +70,11 @@ public class Player : MonoBehaviour
     GameObject audioManagerMusic;
     GameObject audioManagerSFX;
 
+
+    //Misc effects
+    public GameObject medKitParticle;
+    public GameObject superMeterParticle;
+  // public GameObject playerDeathParticle;
     void Start()
     {
 
@@ -131,7 +136,7 @@ public class Player : MonoBehaviour
     }
     void FixedUpdate()
     {
-        superMeterCurrent = 100f;
+        //superMeterCurrent = 100f;
         Movement();
         shoot();
         superMeterUse();
@@ -261,10 +266,8 @@ public class Player : MonoBehaviour
                             break;
 
                         case 2:
-                            nextFire = myTime + fireRate;
-                            Instantiate(shot, shot_spawn.position, Quaternion.identity);
-                            GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
-                            GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+                           nextFire = myTime + (fireRate+ 0.4f);
+                           StartCoroutine(tripleShot());
                             break;
                     }
                 }
@@ -316,14 +319,17 @@ public class Player : MonoBehaviour
                             break;
 
                         case 2:
-                            nextFire = myTime + fireRate;
+                            nextFire = myTime + (fireRate+ 0.4f);
+                            StartCoroutine(tripleShot());
+                            /*
                             Instantiate(shot, shot_spawn.position, Quaternion.identity);
                             GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
                             GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+                             */
                             break;
                         case 3:
                             nextFire = myTime + (fireRate + 0.3f);
-                            StartCoroutine("BurstShot");
+                            StartCoroutine(BurstShot());
                             break;
                     }
                 }
@@ -335,6 +341,15 @@ public class Player : MonoBehaviour
         myTime = 0f;
     }
 
+    //Triple-shot coroutine.
+
+    public IEnumerator tripleShot()
+    {
+        Instantiate(shot, shot_spawn.position, Quaternion.identity);
+        GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
+        GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+        yield return new WaitForSeconds(0.05f);
+    }
     //Burst shot couroutine.
     public IEnumerator BurstShot()
     {
@@ -410,6 +425,7 @@ public class Player : MonoBehaviour
         //when player collides with the med kit
         if (collision.tag == "medKit")
         {
+            Instantiate(medKitParticle, transform.position, transform.rotation);
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Health_Pickup");
             PlayerHealth.health += collision.gameObject.GetComponent<medKit>().health;
             Destroy(collision.gameObject);
@@ -505,13 +521,13 @@ public class Player : MonoBehaviour
     //Animation for using the supermeter. Might not even need this if we add events to the animation.
     public IEnumerator superAni()
     {
-        
+        Instantiate(superMeterParticle, new Vector3(0,0,0), transform.rotation);
         Physics2D.IgnoreLayerCollision(0, 10, true);
         Physics2D.IgnoreLayerCollision(0, 8, true);
-        this.gameObject.GetComponent<Animator>().enabled = true;
+        //this.gameObject.GetComponent<Animator>().enabled = true;
 
 
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(1.8f);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
         for (int i = 0; i < enemies.Length; i++)
         {
@@ -525,7 +541,7 @@ public class Player : MonoBehaviour
         }
         superMeterCurrent = 0f;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
-        this.gameObject.GetComponent<Animator>().enabled = false; 
+        //this.gameObject.GetComponent<Animator>().enabled = false; 
         //Give player a moment of invincibility after animation ends so they can get their bearings.
         yield return new WaitForSeconds(0.5f);
         Physics2D.IgnoreLayerCollision(0, 10, false);

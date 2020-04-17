@@ -870,37 +870,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196371079}
   m_CullTransparentMesh: 0
---- !u!1 &253848822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4615894405718055741, guid: 0b57da39163b5244ba0c663a55bef3cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 4615894405685633606}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &253848823 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4615894405718055736, guid: 0b57da39163b5244ba0c663a55bef3cc,
     type: 3}
   m_PrefabInstance: {fileID: 4615894405685633606}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &253848824
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253848822}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ecb75a898950850478ef76d1e35cc026, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &261037225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6286,6 +6261,15 @@ PrefabInstance:
       propertyPath: meterInfoText
       value: 
       objectReference: {fileID: 1456124387}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: medKitParticle
+      value: 
+      objectReference: {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: superMeterParticle
+      value: 
+      objectReference: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c,
+        type: 3}
     - target: {fileID: 4615894405718055736, guid: 0b57da39163b5244ba0c663a55bef3cc,
         type: 3}
       propertyPath: m_LocalPosition.x
