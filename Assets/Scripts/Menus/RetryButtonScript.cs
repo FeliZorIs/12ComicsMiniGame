@@ -45,6 +45,16 @@ public class RetryButtonScript : MonoBehaviour
     {
         resetStats();
         gameObject.SetActive(false);
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+        }
         fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
         //SceneManager.LoadScene("TestMap");
         Time.timeScale = 1f;

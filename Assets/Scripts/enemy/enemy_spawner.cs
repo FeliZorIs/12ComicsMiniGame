@@ -224,20 +224,20 @@ public class enemy_spawner : MonoBehaviour
             if(musicCount == 1)
             {
                 audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
-                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+               // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
                 audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_SUNSET");
             }
             //Nighttime Music
             else if(musicCount == 2)
             {
-                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+                //audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
                 audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
                 audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_NIGHT");
             }
             //Daytime Music
             else
             {
-                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+               // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
                 audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
                 audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
             }

@@ -75,6 +75,11 @@ public class Player : MonoBehaviour
     public GameObject medKitParticle;
     public GameObject superMeterParticle;
   // public GameObject playerDeathParticle;
+
+    void Awake()
+    {
+        ScoreCount.scoreValue = 0;
+    }
     void Start()
     {
 
@@ -504,7 +509,7 @@ public class Player : MonoBehaviour
     private void superMeterUse()
     {
 
-        if (Input.GetKeyDown(KeyCode.Alpha4))
+        if (Input.GetKeyDown(KeyCode.Alpha4) && usingMeter == false)
         {
             if (superMeterCurrent >= 100f)
             {
@@ -521,11 +526,11 @@ public class Player : MonoBehaviour
     //Animation for using the supermeter. Might not even need this if we add events to the animation.
     public IEnumerator superAni()
     {
+        //Enable this as true so player can't spam '4' key and continue using meter.
+        usingMeter = true;
         Instantiate(superMeterParticle, new Vector3(0,0,0), transform.rotation);
         Physics2D.IgnoreLayerCollision(0, 10, true);
         Physics2D.IgnoreLayerCollision(0, 8, true);
-        //this.gameObject.GetComponent<Animator>().enabled = true;
-
 
         yield return new WaitForSeconds(1.8f);
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
@@ -541,14 +546,13 @@ public class Player : MonoBehaviour
         }
         superMeterCurrent = 0f;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
-        //this.gameObject.GetComponent<Animator>().enabled = false; 
+        usingMeter = false;
+       
         //Give player a moment of invincibility after animation ends so they can get their bearings.
         yield return new WaitForSeconds(0.5f);
         Physics2D.IgnoreLayerCollision(0, 10, false);
         Physics2D.IgnoreLayerCollision(0, 8, false);
-        //Reset position so glitch doesn't happen theoretically.
        
-
     }
 
 

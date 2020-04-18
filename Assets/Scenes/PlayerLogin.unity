@@ -186,7 +186,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameplayMusic_NIGHT
     clip: {fileID: 8300000, guid: 64546ccc9ed51c1459724dcb0885c939, type: 3}
-    volume: 0.219
+    volume: 0.177
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -195,7 +195,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameplayMusic_SUNSET
     clip: {fileID: 8300000, guid: 7b893ee264b46664392dd62aefbf74a2, type: 3}
-    volume: 0.357
+    volume: 0.299
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
