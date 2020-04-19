@@ -8,8 +8,22 @@ public class enemy_heavy : enemy
     public float magnitude;
     public float frequency;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
     private void Start()
     {
+        //Checking if we're in debugMode or not.
+        if (MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+
         findComponents();
         pos = this.transform.position;
     }
@@ -36,6 +50,7 @@ public class enemy_heavy : enemy
             enemy_health--;
             if (enemy_health <= 0)
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Death");
                 ScoreCount.scoreValue += (10 * multiBonus);
                 player.GetComponent<Player>().superMeterCharge(0.5f);
                 killed_by_player();
@@ -43,6 +58,7 @@ public class enemy_heavy : enemy
 
             else
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Hit");
                 StartCoroutine("flash");
             }
             Destroy(collision.gameObject);

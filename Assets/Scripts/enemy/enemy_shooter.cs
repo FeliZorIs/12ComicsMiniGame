@@ -10,9 +10,24 @@ public class enemy_shooter : enemy
     public float fireRate;
     private float myTime = 0f;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Checking if we're in debugMode or not.
+        if (MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+
         findComponents();
     }
 
@@ -51,6 +66,7 @@ public class enemy_shooter : enemy
             enemy_health--;
             if (enemy_health <= 0)
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Death");
                 ScoreCount.scoreValue += (10 * multiBonus);
                 player.GetComponent<Player>().superMeterCharge(0.5f);
                 killed_by_player();
@@ -58,6 +74,7 @@ public class enemy_shooter : enemy
 
             else
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Hit");
                 StartCoroutine("flash");
             }
             Destroy(collision.gameObject);

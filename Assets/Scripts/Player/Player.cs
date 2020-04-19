@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
     //Misc effects
     public GameObject medKitParticle;
     public GameObject superMeterParticle;
-  // public GameObject playerDeathParticle;
+    public GameObject playerDeathParticle;
 
     void Awake()
     {
@@ -385,6 +385,7 @@ public class Player : MonoBehaviour
             }
             if (PlayerHealth.health <= 0)
             {
+
                 gameOver();
             }
             Destroy(collision.gameObject);
@@ -466,18 +467,40 @@ public class Player : MonoBehaviour
     {
         PlayerHealth.health = 0;
         RetryButtonScript.score = ScoreCount.scoreValue;
-        gameOverPrefab.SetActive(true);
-        returnCustomButton.SetActive(true);
-        returnToMenuBtn.SetActive(true);
-        GameOverUI.SetActive(true);
+       
         //Destroy all player shots so there are no collisions after player dies.
         GameObject[] theShots = GameObject.FindGameObjectsWithTag("player_shot");
         for (int i = 0; i < theShots.Length; i++)
         {
             GameObject.Destroy(theShots[i]);
         }
-        Destroy(gameObject);
 
+        //Create particle effect on death.
+        Instantiate(playerDeathParticle, transform.position, transform.rotation);
+        Destroy(gameObject.GetComponent<PolygonCollider2D>());
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        usingMeter = true;
+        stopGameplayMusic();
+
+        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Death");
+        StartCoroutine(deathAni());
+
+    }
+
+    IEnumerator deathAni()
+    {
+        //Here make it so you can't pause cause you're dead!
+
+       
+
+        yield return new WaitForSeconds(2.0f);
+
+        audioManagerMusic.GetComponent<AudioManager>().Play("GameOver");
+        gameOverPrefab.SetActive(true);
+        returnCustomButton.SetActive(true);
+        returnToMenuBtn.SetActive(true);
+        GameOverUI.SetActive(true);
+        Destroy(gameObject);
     }
 
 
@@ -536,13 +559,12 @@ public class Player : MonoBehaviour
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("BasicEnemy");
         for (int i = 0; i < enemies.Length; i++)
         {
-
-
             enemies[i].GetComponent<enemy>().onDeath();
             ScoreCount.scoreValue += (5 * multiplierlvl);
             GameObject.Destroy(enemies[i]);
             enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
             enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Death");
         }
         superMeterCurrent = 0f;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
@@ -556,7 +578,20 @@ public class Player : MonoBehaviour
     }
 
 
+    //======================================
+    //        Gameplay Music control
+    //======================================
 
+    public void stopGameplayMusic()
+    {
+        audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+        audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+        audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+        audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
+        //Boss music
+      //  audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+       // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+    }
 
 
 

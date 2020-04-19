@@ -193,6 +193,15 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: GameOver
+    clip: {fileID: 8300000, guid: fde7c7b54e93ca54a8a52be3d1ec73b6, type: 3}
+    volume: 0.299
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   - name: GameplayMusic_SUNSET
     clip: {fileID: 8300000, guid: 7b893ee264b46664392dd62aefbf74a2, type: 3}
     volume: 0.299
@@ -738,6 +747,60 @@ MonoBehaviour:
   - name: Customize_DOWN
     clip: {fileID: 8300000, guid: 2cbb0e45449f3284899df915af001cdf, type: 3}
     volume: 0.578
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Hit
+    clip: {fileID: 8300000, guid: 6098f19db20fb3547a99f9491dc7f3b7, type: 3}
+    volume: 0.576
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss_Hit
+    clip: {fileID: 8300000, guid: 384a47c7272549e4aa3c009ab55c8d9d, type: 3}
+    volume: 0.56
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss_Death
+    clip: {fileID: 8300000, guid: 20f1bcf55a39287489286d2958c08b44, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Player_Death
+    clip: {fileID: 8300000, guid: 3287c06d68b6c4c409745627a4ea96bb, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Death
+    clip: {fileID: 8300000, guid: 02e1b4441f377394e8a3288e07f9ed68, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Pause
+    clip: {fileID: 8300000, guid: 1c39a5b6095076b4a90db66abc6546f1, type: 3}
+    volume: 1
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

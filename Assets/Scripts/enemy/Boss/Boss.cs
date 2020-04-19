@@ -38,8 +38,12 @@ public class Boss : MonoBehaviour
     public GameObject offenseBlock_1;
     public GameObject offenseBlock_2;
 
-    //For enemy death
+    //For Boss death
     public GameObject particleDestruct;
+
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
 
     enum BossStage
     {
@@ -52,6 +56,17 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        //Checking if we're in debugMode or not.
+        if (MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
 
         multiBonus = PlayerStats.multiLevel;
 
@@ -127,7 +142,7 @@ public class Boss : MonoBehaviour
 
             //Create particle effect on destruction.
             Instantiate(particleDestruct, transform.position, transform.rotation);
-
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Death");
             //Add destruction on particle effect after a certain time.
 
             Destroy(this.gameObject);
@@ -177,6 +192,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator flash()
     {
+        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Hit");
         renderer.material.color = Color.white;
         yield return new WaitForSeconds(.1f);
         renderer.material.color = new Color(255,255,255, 125);

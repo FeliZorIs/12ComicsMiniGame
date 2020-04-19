@@ -16,10 +16,25 @@ public class enemy : MonoBehaviour
     public GameObject medKit;
     public float odds;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     //For enemy death
     public GameObject particleDestruct;
     private void Start()
     {
+        //Checking if we're in debugMode or not.
+        if (MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+
         findComponents();
     }
 
@@ -99,6 +114,7 @@ public class enemy : MonoBehaviour
             enemy_health--;
             if (enemy_health <= 0)
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Death");
                 ScoreCount.scoreValue += (10 * multiBonus);
                 player.GetComponent<Player>().superMeterCharge(0.5f);
                 killed_by_player();

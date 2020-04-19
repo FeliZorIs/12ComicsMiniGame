@@ -142,6 +142,7 @@
      <Compile Include="Assets\Scripts\medKit.cs" />
      <Compile Include="Assets\Scripts\rotate.cs" />
      <Compile Include="Assets\Scripts\scroll.cs" />
+     <Compile Include="Assets\Zero Rare\Retro Sound Effects\Demo\Demo.cs" />
      <None Include="Assets\Knight Files\Read Me.txt" />
      <None Include="Assets\#NVJOB Alpha Flashing UI\Example Scenes\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
      <None Include="Assets\#NVJOB Alpha Flashing UI\Alpha Flashing UI\Alpha Flashing Text.shader" />

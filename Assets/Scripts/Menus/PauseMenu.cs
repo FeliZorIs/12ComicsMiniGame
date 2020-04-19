@@ -10,9 +10,25 @@ public class PauseMenu : MonoBehaviour
     public GameObject GOver;
     public GameObject H2P;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
 
     void Start()
     {
+
+        if (MenuBtnScript.debugOn == true)
+        {
+           
+        }
+        else
+        {         
+         
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");          
+        }
+
         PauseMenuUI.SetActive(false);
     }
     // Update is called once per frame
@@ -28,6 +44,7 @@ public class PauseMenu : MonoBehaviour
             {
                 Pause();
             }
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
         }
 
         if (GOver.activeSelf)

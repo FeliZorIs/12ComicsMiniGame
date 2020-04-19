@@ -51,9 +51,11 @@ public class RetryButtonScript : MonoBehaviour
         }
         else
         {
+            
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
         }
         fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
         //SceneManager.LoadScene("TestMap");
@@ -73,6 +75,7 @@ public class RetryButtonScript : MonoBehaviour
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
             audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
         }
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
@@ -93,6 +96,7 @@ public class RetryButtonScript : MonoBehaviour
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
             audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
         }
 

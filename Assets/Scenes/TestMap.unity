@@ -6291,6 +6291,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1545806602296978, guid: 9e4577abe56a95f4a91d29a0473cd30c,
         type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: playerDeathParticle
+      value: 
+      objectReference: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
     - target: {fileID: 4615894405718055736, guid: 0b57da39163b5244ba0c663a55bef3cc,
         type: 3}
       propertyPath: m_LocalPosition.x
