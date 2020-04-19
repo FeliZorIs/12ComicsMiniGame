@@ -7,6 +7,7 @@ public class City : MonoBehaviour
 {
     public int city_health = 3;
     public int city_health_Max;
+    bool didAni = false;
 
     public Text city_text;
     GameObject player;
@@ -37,7 +38,17 @@ public class City : MonoBehaviour
 
     public void city_destroyed()
     {
-        player.GetComponent<Player>().gameOver();
+        if(didAni == false)
+        {
+            player.GetComponent<Player>().gameOver();
+            didAni = true;
+        }
+        else
+        {
+
+        }
+
+        
         city_text.text = "CITY HP: 0"  + " / " + city_health_Max;
     }
 }
