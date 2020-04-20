@@ -7,8 +7,7 @@ public class Player : MonoBehaviour
 {
     //movement declarations
     public float speed;
-    float horizontal,
-                        vertical;
+    float horizontal, vertical;
     Vector2 direction;
 
     //shooting declarations
@@ -67,8 +66,8 @@ public class Player : MonoBehaviour
     public string current;
 
     //Get audioManager components!
-    GameObject audioManagerMusic;
-    GameObject audioManagerSFX;
+    public GameObject audioManagerMusic;
+    public GameObject audioManagerSFX;
 
 
     //Misc effects
@@ -82,8 +81,6 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-
-
         //Ensures that even if restarting the scene after being invincible, that the player can still take damage.
         Physics2D.IgnoreLayerCollision(0, 10, false);
         if (MenuBtnScript.debugOn == true)
@@ -373,25 +370,6 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //when player collides with a BasicEnemy
-        if (collision.gameObject.tag == "BasicEnemy")
-        {
-            collision.gameObject.GetComponent<enemy>().onDeath();
-            PlayerHealth.health -= 1;
-            StartCoroutine("PicUIDamage");
-            if (PlayerHealth.health > 0)
-            {
-                StartCoroutine("PlayerInvince");
-            }
-            if (PlayerHealth.health <= 0)
-            {
-
-                gameOver();
-            }
-            Destroy(collision.gameObject);
-
-        }
-
         //player collides with boss
         if (collision.gameObject.tag == "Boss")
         {
@@ -412,6 +390,24 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //when player collides with a BasicEnemy
+        if (collision.gameObject.tag == "BasicEnemy")
+        {
+            collision.gameObject.GetComponent<enemy>().onDeath();
+            PlayerHealth.health -= 1;
+            StartCoroutine("PicUIDamage");
+            if (PlayerHealth.health > 0)
+            {
+                StartCoroutine("PlayerInvince");
+            }
+            if (PlayerHealth.health <= 0)
+            {
+
+                gameOver();
+            }
+            Destroy(collision.gameObject);
+        }
+
         //player collides with enemy bullet
         if (collision.gameObject.tag == "enemy_shot")
         {

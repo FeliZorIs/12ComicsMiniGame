@@ -1050,6 +1050,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &371708457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1973004451862519352, guid: 6079e27dd23ea48479269713e674384a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1458767479}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &371708459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1458767479}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &414767310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1168,8 @@ Transform:
   m_Children:
   - {fileID: 692613395}
   - {fileID: 669782415}
+  - {fileID: 371708459}
+  - {fileID: 728438315}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2199,7 +2213,7 @@ MonoBehaviour:
   y_zone: 3.5
   timeInBetween: 0.75
   waveKills: 2
-  maxEnemiesOnscreen: 15
+  maxEnemiesOnscreen: 99
   boss_alive: 0
   wave_text: {fileID: 1857701158}
   backgrounds:
@@ -2329,6 +2343,18 @@ MonoBehaviour:
   active_enemies: []
   enemiesKilled_total: 0
   enemiesKilled_current: 0
+--- !u!1 &728438313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2693281791606620352, guid: 579caf87194d4aa40b05881b5155aaee,
+    type: 3}
+  m_PrefabInstance: {fileID: 820036524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &728438315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+    type: 3}
+  m_PrefabInstance: {fileID: 820036524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &749816691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2682,6 +2708,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766924691}
   m_CullTransparentMesh: 0
+--- !u!1001 &820036524
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 418770005}
+    m_Modifications:
+    - target: {fileID: 2693281791606620352, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2693281791606620383, guid: 579caf87194d4aa40b05881b5155aaee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 579caf87194d4aa40b05881b5155aaee, type: 3}
 --- !u!1 &854552576
 GameObject:
   m_ObjectHideFlags: 0
@@ -4119,6 +4214,75 @@ MonoBehaviour:
   HelpURL: nvjob.github.io/unity/alpha-flashing-text
   ReportAProblem: nvjob.github.io/support
   Patrons: nvjob.github.io/patrons
+--- !u!1001 &1458767479
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 418770005}
+    m_Modifications:
+    - target: {fileID: 1973004451862519352, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManagerSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973004451862519358, guid: 6079e27dd23ea48479269713e674384a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6079e27dd23ea48479269713e674384a, type: 3}
 --- !u!4 &1469258281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4615894407035091055, guid: 0b57da39163b5244ba0c663a55bef3cc,
@@ -6295,6 +6459,14 @@ PrefabInstance:
       propertyPath: playerDeathParticle
       value: 
       objectReference: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: audioManagerSFX
+      value: 
+      objectReference: {fileID: 371708457}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: audioManagerMusic
+      value: 
+      objectReference: {fileID: 728438313}
     - target: {fileID: 4615894405718055736, guid: 0b57da39163b5244ba0c663a55bef3cc,
         type: 3}
       propertyPath: m_LocalPosition.x

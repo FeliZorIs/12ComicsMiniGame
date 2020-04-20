@@ -26,9 +26,10 @@ public class enemy_spawner : MonoBehaviour
     public Text wave_text;
     bool wave_bool;
 
-    //background change
+    //background change, boss change
     public GameObject[] backgrounds;
     int current_background = 0;
+    int changeCount = 0;
 
     //Testing FORAUDIO!!!...
     int musicCount = 0;
@@ -145,9 +146,9 @@ public class enemy_spawner : MonoBehaviour
             {
                 int pattern_select = Random.RandomRange(1, 4);
                 if(pattern_select == 1)
-                    StartCoroutine("X_pattern_right", enemy_toSpawn);
+                    StartCoroutine("X_pattern", enemy_toSpawn);
                 if (pattern_select == 2)
-                    StartCoroutine("T_pattern_right", enemy_toSpawn);
+                    StartCoroutine("T_pattern", enemy_toSpawn);
                 if (pattern_select == 3)
                     StartCoroutine("V_pattern_left", enemy_toSpawn);
                 if (pattern_select == 4)
@@ -171,8 +172,16 @@ public class enemy_spawner : MonoBehaviour
             {
                 if (on)
                 {
-                    on = false;
-                    StartCoroutine("spawn_boss");
+                    if (wave_count ==  3 + (4 * changeCount))
+                    {
+                        changeCount++;
+                        on = false;
+                        StartCoroutine("spawn_boss");
+                    }
+                    else
+                    {
+                        waveState = WaveState.RESET;
+                    }
                 }
             }
         }
@@ -207,7 +216,7 @@ public class enemy_spawner : MonoBehaviour
     
     void changeBackground()
     {
-        if (wave_count % 3 == 0)
+        if (wave_count % 4 == 0)
         {
             musicCount++;
             current_background++;
