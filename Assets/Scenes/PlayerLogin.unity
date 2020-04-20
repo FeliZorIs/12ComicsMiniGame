@@ -168,7 +168,7 @@ MonoBehaviour:
   sounds:
   - name: MenuMusic
     clip: {fileID: 8300000, guid: 0a330d869ce951f4ab83f63eae1af487, type: 3}
-    volume: 0.187
+    volume: 0.096
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -204,7 +204,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: GameplayMusic_SUNSET
     clip: {fileID: 8300000, guid: 7b893ee264b46664392dd62aefbf74a2, type: 3}
-    volume: 0.299
+    volume: 0.243
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -790,8 +790,8 @@ MonoBehaviour:
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
   - name: Enemy_Death
-    clip: {fileID: 8300000, guid: 02e1b4441f377394e8a3288e07f9ed68, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: afcbe65d8f4c88f4d9ad809ba273c977, type: 3}
+    volume: 0.808
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -800,7 +800,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Pause
     clip: {fileID: 8300000, guid: 1c39a5b6095076b4a90db66abc6546f1, type: 3}
-    volume: 1
+    volume: 0.802
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0

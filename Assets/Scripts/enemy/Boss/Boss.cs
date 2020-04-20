@@ -192,7 +192,7 @@ public class Boss : MonoBehaviour
 
     IEnumerator flash()
     {
-        //audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Hit");
+        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Hit");
         renderer.material.color = Color.white;
         yield return new WaitForSeconds(.1f);
         renderer.material.color = new Color(255,255,255, 125);
