@@ -2376,7 +2376,7 @@ MonoBehaviour:
   x_position: 8.5
   y_zone: 3.5
   timeInBetween: 0.75
-  waveKills: 2
+  waveKills: 25
   maxEnemiesOnscreen: 99
   boss_alive: 0
   wave_text: {fileID: 1857701158}

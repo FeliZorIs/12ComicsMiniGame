@@ -102,7 +102,7 @@ public class enemy_spawner : MonoBehaviour
         enemy enemy_toSpawn;
         int chosen = Random.RandomRange(0, 100);
         int goldSpawn = Random.RandomRange(0, 15000);
-        int pattern = Random.RandomRange(0, 1000);
+        int pattern = Random.RandomRange(0, 100);
 
         if (goldSpawn >= 14999)
         {
@@ -110,7 +110,7 @@ public class enemy_spawner : MonoBehaviour
             Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
         }
 
-        //wave 1: basic enemy only
+        //wave 1: basic only
         if (wave_count == 1)
             enemy_toSpawn = Enemies[0];
 
@@ -140,10 +140,12 @@ public class enemy_spawner : MonoBehaviour
 
         if (timer >= timeInBetween)
         {
-            if (pattern <= 9999)
+            if (pattern <= 95)
                 Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + Random.RandomRange((0 - y_zone), y_zone)), Quaternion.identity);
             else 
             {
+                spawning = false;
+
                 int pattern_select = Random.RandomRange(1, 4);
                 if(pattern_select == 1)
                     StartCoroutine("X_pattern", enemy_toSpawn);
@@ -153,6 +155,8 @@ public class enemy_spawner : MonoBehaviour
                     StartCoroutine("V_pattern_left", enemy_toSpawn);
                 if (pattern_select == 4)
                     StartCoroutine("V_pattern_right", enemy_toSpawn);
+
+                StartCoroutine("RestartSpawning");
             }
             timer = 0;
         }
@@ -289,61 +293,75 @@ public class enemy_spawner : MonoBehaviour
 
     IEnumerator X_pattern(enemy enemy_toSpawn)
     {
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1), Quaternion.identity);
+        float y_spot = Random.RandomRange((-y_zone) + 1, y_zone-1);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + 1), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - 1), Quaternion.identity);
 
         yield return new WaitForSeconds(.5f);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
         yield return new WaitForSeconds(.5f);
 
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + 1), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - 1), Quaternion.identity);
     }
 
     IEnumerator T_pattern(enemy enemy_toSpawn)
     {
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        float y_spot = Random.RandomRange((-y_zone) + 1, y_zone - 1);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
 
         yield return new WaitForSeconds(.25f);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + .5f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - .5f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - 1f), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
 
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
     }
 
     IEnumerator V_pattern_left(enemy enemy_toSpawn)
     {
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        float y_spot = Random.RandomRange((-y_zone) + 1, y_zone - 1);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
 
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + .5f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - .5f), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
 
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - 1f), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
     }
 
     IEnumerator V_pattern_right(enemy enemy_toSpawn)
     {
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + 1f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - 1f), Quaternion.identity);
+        float y_spot = Random.RandomRange((-y_zone) + 1, y_zone - 1);
+
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + 1f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - 1f), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
 
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y + .5f), Quaternion.identity);
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y - .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot + .5f), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot - .5f), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
 
-        Instantiate(enemy_toSpawn, new Vector2(x_position, this.transform.position.y), Quaternion.identity);
+        Instantiate(enemy_toSpawn, new Vector2(x_position, y_spot), Quaternion.identity);
         yield return new WaitForSeconds(.25f);
+    }
+
+    IEnumerator RestartSpawning()
+    {
+        yield return new WaitForSeconds(1f);
+        spawning = true;
     }
 }

@@ -97,11 +97,12 @@ public class Boss : MonoBehaviour
         {
             case BossStage.ENTRANCE:
                 StartCoroutine("entrance_timer");
+                Debug.Log("ENTRANCE");
                 break;
 
             case BossStage.STAGE_1:
+                invince = false;
                 if (health <= stage_health * 2)
-                    invince = false;
                     bossStage = BossStage.STAGE_2;
 
                 shoot_basic();

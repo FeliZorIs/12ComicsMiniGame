@@ -94,7 +94,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -152,8 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81008838614e0b947b7a211bda16e720, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  enemy_health: 20
+  speed: 1.5
+  enemy_health: 15
   medKit: {fileID: 3206453953767894692, guid: c8fb28144004c5749a42694ecc554778, type: 3}
   odds: 0
   particleDestruct: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
