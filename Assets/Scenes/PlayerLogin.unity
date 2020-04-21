@@ -807,6 +807,42 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Button_Confirm
+    clip: {fileID: 8300000, guid: b02fd3ae09e799b42af33454fc7a5e27, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Button_Back
+    clip: {fileID: 8300000, guid: fd46e4b0ccfef6e4bbf18fabbcb77691, type: 3}
+    volume: 0.2
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Supermeter_Charged
+    clip: {fileID: 8300000, guid: 7c27933ba8f0c194b8b4cdfa576e10c5, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Player_Hit
+    clip: {fileID: 8300000, guid: 346c5602870c6a34eb318addf208a7c5, type: 3}
+    volume: 0.685
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &380592965
 Transform:
   m_ObjectHideFlags: 0

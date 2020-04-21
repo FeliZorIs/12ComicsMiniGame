@@ -114,7 +114,15 @@ public class enemy : MonoBehaviour
             enemy_health--;
             if (enemy_health <= 0)
             {
-                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Death");
+                if (MenuBtnScript.debugOn == true)
+                {
+                    //Randomness for debug purposes.
+                }
+                else
+                {
+                    audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Death");
+                }
+                
                 ScoreCount.scoreValue += (10 * multiBonus);
                 player.GetComponent<Player>().superMeterCharge(0.5f);
                 killed_by_player();

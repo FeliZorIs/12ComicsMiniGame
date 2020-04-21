@@ -342,7 +342,9 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
             audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
+
         }
       
         // SceneManager.LoadScene("TestMap");
@@ -350,6 +352,14 @@ public class PlayerStats : MonoBehaviour
 
     public void Back()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Back");
+        }
         StartCoroutine(saveToDB());
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
         // SceneManager.LoadScene("PlayerMenu");

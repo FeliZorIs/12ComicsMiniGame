@@ -142,7 +142,15 @@ public class Boss : MonoBehaviour
 
             //Create particle effect on destruction.
             Instantiate(particleDestruct, transform.position, transform.rotation);
-            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Death");
+            if (MenuBtnScript.debugOn == true)
+            {
+                //Randomness for debug purposes.
+            }
+            else
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Death");
+            }
+           
             //Add destruction on particle effect after a certain time.
 
             Destroy(this.gameObject);
@@ -192,7 +200,14 @@ public class Boss : MonoBehaviour
 
     IEnumerator flash()
     {
-        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Hit");
+        if (MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Hit");
+        }
         renderer.material.color = Color.white;
         yield return new WaitForSeconds(.1f);
         renderer.material.color = new Color(255,255,255, 125);

@@ -178,6 +178,7 @@ public class MenuBtnScript : MonoBehaviour
         }
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
             audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
            
         }
@@ -188,32 +189,72 @@ public class MenuBtnScript : MonoBehaviour
 
     public void CustomizeBtn()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
+        }
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
         //SceneManager.LoadScene("PlayerCustomization");
     }
 
     public void LeaderboardsBtn()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
+        }
         fader.GetComponent<Scene_Fade>().FadeToLevel("Leaderboards");
         //SceneManager.LoadScene("Leaderboards");
     }
 
     public void LogoutBtn()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Back");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
+        }
         onLogin = true;
-        audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
         // SceneManager.LoadScene("PlayerLogin");
     }
 
     public void BackBtn()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Back");
+        }
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
         // SceneManager.LoadScene("PlayerMenu");
     }
 
     public void CreditsBtn()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
+        }
         fader.GetComponent<Scene_Fade>().FadeToLevel("Credits");
     }
 

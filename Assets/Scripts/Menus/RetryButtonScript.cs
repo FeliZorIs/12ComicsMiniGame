@@ -51,7 +51,7 @@ public class RetryButtonScript : MonoBehaviour
         }
         else
         {
-            
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
@@ -72,6 +72,7 @@ public class RetryButtonScript : MonoBehaviour
         }
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
@@ -93,6 +94,7 @@ public class RetryButtonScript : MonoBehaviour
         }
         else
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");

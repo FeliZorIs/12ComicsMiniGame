@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
     public SupermeterBar superBar;
     bool usingMeter = false;
     public GameObject meterInfoText;
+    bool meterFull = false;
 
     //Shake on City Hit vars
     public City city;
@@ -122,13 +123,21 @@ public class Player : MonoBehaviour
         current_cityHealth = city.city_health;
 
         superBar.SetMaxSuper(100);
+
     }
 
 
     void Update()
     {
+        shoot();
+        superMeterUse();
         if (superMeterCurrent >= 100)
         {
+            if(meterFull == false)
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Supermeter_Charged");
+                meterFull = true;
+            }
             meterInfoText.SetActive(true);
         }
         else
@@ -140,8 +149,7 @@ public class Player : MonoBehaviour
     {
         //superMeterCurrent = 100f;
         Movement();
-        shoot();
-        superMeterUse();
+        
 
         superBar.SetSuper(superMeterCurrent);
 
@@ -394,10 +402,11 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "BasicEnemy")
         {
             collision.gameObject.GetComponent<enemy>().onDeath();
-            PlayerHealth.health -= 1;
+            PlayerHealth.health -= 1;         
             StartCoroutine("PicUIDamage");
             if (PlayerHealth.health > 0)
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Hit");
                 StartCoroutine("PlayerInvince");
             }
             if (PlayerHealth.health <= 0)
@@ -415,6 +424,7 @@ public class Player : MonoBehaviour
             StartCoroutine("PicUIDamage");
             if (PlayerHealth.health > 0)
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Hit");
                 StartCoroutine("PlayerInvince");
             }
             if (PlayerHealth.health <= 0)
@@ -461,6 +471,7 @@ public class Player : MonoBehaviour
 
     public void gameOver()
     {
+        PauseMenu.canPause = false;
         PlayerHealth.health = 0;
         RetryButtonScript.score = ScoreCount.scoreValue;
        
@@ -565,6 +576,7 @@ public class Player : MonoBehaviour
         superMeterCurrent = 0f;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         usingMeter = false;
+        meterFull = false;
        
         //Give player a moment of invincibility after animation ends so they can get their bearings.
         yield return new WaitForSeconds(0.5f);

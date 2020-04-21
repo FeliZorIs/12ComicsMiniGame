@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool GameIsPaused = false;
+    public static bool canPause = true;
     public GameObject PauseMenuUI;
     public GameObject GOver;
     public GameObject H2P;
@@ -17,6 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
+        canPause = true;
 
         if (MenuBtnScript.debugOn == true)
         {
@@ -35,7 +37,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause == true)
         {
             if (GameIsPaused)
             {
