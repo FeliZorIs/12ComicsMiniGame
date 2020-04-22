@@ -226,35 +226,35 @@ public class enemy_spawner : MonoBehaviour
             current_background++;
             if (current_background > backgrounds.Length - 1)
                 current_background = 0;
-           
+
             for (int i = 0; i < backgrounds.Length; i++)
             {
                 backgrounds[i].gameObject.SetActive(false);
             }
             //This if is just a test, remove when editing in the future!!!!
-           
+
             //Sunset Music
-            if(musicCount == 1)
+            if (musicCount == 1)
             {
-                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
-               // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
                 audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_SUNSET");
             }
             //Nighttime Music
-            else if(musicCount == 2)
+            else if (musicCount == 2)
             {
                 //audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
-                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
                 audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_NIGHT");
             }
             //Daytime Music
             else
             {
-               // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
-                audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+                //  audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
                 audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
             }
-            if(musicCount == 3)
+            if (musicCount == 3)
             {
                 musicCount = 0;
             }

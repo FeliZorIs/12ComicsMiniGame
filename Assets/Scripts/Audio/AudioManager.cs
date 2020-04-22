@@ -1,6 +1,7 @@
 ﻿using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup mixerGroup;
 
     public Sound[] sounds;
+
+    private Sound sound;
+
+
 
     void Awake()
     {
@@ -33,14 +38,30 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    //Testing for menu music, take out this function.
-
     void Start()
     {
-        
+
     }
 
-    public void Play(string sound)
+    public void Play(string name)
+    {
+        StopAllCoroutines();
+        if (sound != null)
+        {
+            StartCoroutine(EndSound());
+        }
+            
+
+        sound = Array.Find(sounds, s => s.name == name);
+        if (sound == null)
+        {
+            Debug.LogWarning("Music " + name + " not found.");
+            return;
+        }
+        StartCoroutine(StartSound());
+    }
+
+    public void Play2(string sound)
     {
         Sound s = Array.Find(sounds, item => item.name == sound);
         if (s == null)
@@ -53,6 +74,32 @@ public class AudioManager : MonoBehaviour
         s.source.pitch = s.pitch * (1f + UnityEngine.Random.Range(-s.pitchVariance / 2f, s.pitchVariance / 2f));
 
         s.source.Play();
+    }
+
+    private IEnumerator EndSound()
+    {
+        AudioSource oldSound = sound.source;
+        while (oldSound.volume > 0)
+        {
+            oldSound.volume -= 0.02f;
+            //yield return null;
+            yield return new WaitForSeconds(0.2f);
+        }
+        oldSound.Stop();
+
+    }
+
+    private IEnumerator StartSound()
+    {
+        sound.source.Play();
+        float volume = 0f;
+        do
+        {
+            sound.source.volume = volume;
+            volume += 0.02f;
+            //yield return null;
+            yield return new WaitForSeconds(0.2f);
+        } while (sound.source.volume <= sound.volume);
     }
 
     public void Stop(string sound)
@@ -93,5 +140,7 @@ public class AudioManager : MonoBehaviour
         }
         s.source.UnPause();
     }
+
+
 
 }

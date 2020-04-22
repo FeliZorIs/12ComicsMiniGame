@@ -8,8 +8,22 @@ public class enemy_golden : enemy
     public float magnitude;
     public float frequency;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
     private void Start()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+            //Randomness for debug purposes.
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+
+
         findComponents();
         pos = this.transform.position;
     }
@@ -46,6 +60,14 @@ public class enemy_golden : enemy
 
             else
             {
+                if (MenuBtnScript.debugOn == true)
+                {
+                    //Randomness for debug purposes.
+                }
+                else
+                {
+                    audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Hit");
+                }
                 StartCoroutine("flash");
             }
             Destroy(collision.gameObject);

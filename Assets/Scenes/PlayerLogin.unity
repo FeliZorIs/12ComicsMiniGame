@@ -843,6 +843,33 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Supermeter_Use
+    clip: {fileID: 8300000, guid: 3f8400d2da980974883f1dd850cb61ef, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Medkit_hit
+    clip: {fileID: 8300000, guid: b155dbf28eb73884bb1cc8b41bda62db, type: 3}
+    volume: 0.893
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: City_Hit
+    clip: {fileID: 8300000, guid: 2842792c81f64804b822a57c3424b1d6, type: 3}
+    volume: 0.718
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &380592965
 Transform:
   m_ObjectHideFlags: 0

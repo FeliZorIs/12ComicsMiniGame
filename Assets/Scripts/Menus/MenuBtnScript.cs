@@ -38,9 +38,10 @@ public class MenuBtnScript : MonoBehaviour
 
     //Debug mode for testing check.
     static public bool debugOn = true;
+    int counter = 0;
     void Start()
     {
-       
+
         if (onLogin == true)
         {
             userInput.GetComponent<InputField>().Select();
@@ -59,7 +60,7 @@ public class MenuBtnScript : MonoBehaviour
 
         }
 
-        
+
     }
     public void LoadMenu()
     {
@@ -93,10 +94,10 @@ public class MenuBtnScript : MonoBehaviour
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Login_Button");
             fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
             yield return new WaitForSeconds(0.5f);
-            audioManagerMusic.GetComponent<AudioManager>().Play("MenuMusic");
+            audioManagerMusic.GetComponent<AudioManager>().Play2("MenuMusic");
             // SceneManager.LoadScene("PlayerMenu"); //Loads PlayerMenu Scene
             Debug.Log("Login successful! PHP: " + www.text);
-
+            counter += 1;
         }
         else
         {
@@ -172,23 +173,6 @@ public class MenuBtnScript : MonoBehaviour
 
     public void PlayBtn()
     {
-        if(MenuBtnScript.debugOn == true)
-        {
-
-        }
-        else
-        {
-            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
-            audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
-           
-        }
-       
-        StartCoroutine(grabStats());
-
-    }
-
-    public void CustomizeBtn()
-    {
         if (MenuBtnScript.debugOn == true)
         {
 
@@ -196,7 +180,17 @@ public class MenuBtnScript : MonoBehaviour
         else
         {
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
+
         }
+
+        StartCoroutine(grabStats());
+
+    }
+
+    public void CustomizeBtn()
+    {
+        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerCustomization");
         //SceneManager.LoadScene("PlayerCustomization");
     }
@@ -223,10 +217,11 @@ public class MenuBtnScript : MonoBehaviour
         }
         else
         {
-            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Back");
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
             audioManagerMusic.GetComponent<AudioManager>().Stop("MenuMusic");
         }
         onLogin = true;
+       
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerLogin");
         // SceneManager.LoadScene("PlayerLogin");
     }

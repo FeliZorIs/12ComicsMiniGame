@@ -160,6 +160,7 @@ public class Player : MonoBehaviour
 
         if (city.city_health < current_cityHealth)
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("City_Hit");
             StartCoroutine(cameraShake.Shake(.15f, .4f));
             current_cityHealth = city.city_health;
         }
@@ -363,7 +364,7 @@ public class Player : MonoBehaviour
     //Burst shot couroutine.
     public IEnumerator BurstShot()
     {
-        for (int i = 0; i <= 3; i++)
+        for (int i = 0; i < 3; i++)
         {
             Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
             yield return new WaitForSeconds(0.05f);
@@ -415,6 +416,11 @@ public class Player : MonoBehaviour
                 gameOver();
             }
             Destroy(collision.gameObject);
+        }
+        else if (collision.gameObject.tag == "Gold_enemy")
+        {
+            collision.gameObject.GetComponent<enemy>().onDeath();
+            //Gold enemy does no damage to player.
         }
 
         //player collides with enemy bullet
@@ -559,6 +565,7 @@ public class Player : MonoBehaviour
         //Enable this as true so player can't spam '4' key and continue using meter.
         usingMeter = true;
         Instantiate(superMeterParticle, new Vector3(0,0,0), transform.rotation);
+        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Supermeter_Use");
         Physics2D.IgnoreLayerCollision(0, 10, true);
         Physics2D.IgnoreLayerCollision(0, 8, true);
 

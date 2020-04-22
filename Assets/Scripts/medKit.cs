@@ -10,8 +10,22 @@ public class medKit : MonoBehaviour
     int count;
     Rigidbody2D rb;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     private void Start()
     {
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+
         count = 0;
     }
 
@@ -23,6 +37,7 @@ public class medKit : MonoBehaviour
     {
         if (collision.tag == "player_shot")
         {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Medkit_hit");
             count++;
             speed += (drop + (.5f * count));
         }
