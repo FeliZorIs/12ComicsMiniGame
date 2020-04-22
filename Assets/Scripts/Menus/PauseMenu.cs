@@ -41,12 +41,14 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
                 Resume();
             } else
             {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
                 Pause();
             }
-            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
+            
         }
 
         if (GOver.activeSelf)
@@ -62,6 +64,7 @@ public class PauseMenu : MonoBehaviour
 
     void Resume()
     {
+        
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
@@ -70,6 +73,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+       
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

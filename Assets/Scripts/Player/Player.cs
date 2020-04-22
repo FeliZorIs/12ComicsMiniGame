@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
 
     //Figuring out who currentUser is and getting ready to change images based on that.
     public string current;
+  
 
     //Get audioManager components!
     public GameObject audioManagerMusic;
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         ScoreCount.scoreValue = 0;
+        
     }
     void Start()
     {
@@ -144,6 +146,8 @@ public class Player : MonoBehaviour
         {
             meterInfoText.SetActive(false);
         }
+
+       
     }
     void FixedUpdate()
     {
@@ -505,14 +509,14 @@ public class Player : MonoBehaviour
         //Here make it so you can't pause cause you're dead!
 
        
-
         yield return new WaitForSeconds(2.0f);
-
-        audioManagerMusic.GetComponent<AudioManager>().Play("GameOver");
+        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Gameover_Voice");
         gameOverPrefab.SetActive(true);
         returnCustomButton.SetActive(true);
         returnToMenuBtn.SetActive(true);
         GameOverUI.SetActive(true);
+        yield return new WaitForSeconds(0.7f);
+        audioManagerMusic.GetComponent<AudioManager>().Play("GameOver");
         Destroy(gameObject);
     }
 
@@ -602,6 +606,7 @@ public class Player : MonoBehaviour
         audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
         audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
         audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+        audioManagerMusic.GetComponent<AudioManager>().Stop("Boss_Fight");
         audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
         //Boss music
       //  audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");

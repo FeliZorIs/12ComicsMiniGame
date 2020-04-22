@@ -58,6 +58,8 @@ public class RetryButtonScript : MonoBehaviour
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
              */
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
+            audioManagerMusic.GetComponent<AudioManager>().Play("In_between");
+
         }
         fader.GetComponent<Scene_Fade>().FadeToLevel("TestMap");
         //SceneManager.LoadScene("TestMap");
@@ -119,6 +121,7 @@ public class RetryButtonScript : MonoBehaviour
         if (score > currentHigh)
         {
             StartCoroutine(saveScore());
+            LoginDisp.highScore = score;
         }
         ScoreCount.scoreValue = 0;
         PlayerHealth.health = PlayerStats.healthLevel;
@@ -136,6 +139,6 @@ public class RetryButtonScript : MonoBehaviour
         WWW www = new WWW("https://web.njit.edu/~rp553/saveScore.php", form);
         yield return www;
 
-        LoginDisp.highScore = score;
+       
     }
 }

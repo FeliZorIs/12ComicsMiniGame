@@ -270,6 +270,17 @@ public class enemy_spawner : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         boss_alive = true;
+
+        //For debug mode check.
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerMusic.GetComponent<AudioManager>().Play("Boss_Fight");
+        }
+        
         Instantiate(Boss, new Vector2(0, 0), Quaternion.identity);
         waveState = WaveState.BOSS;
     }

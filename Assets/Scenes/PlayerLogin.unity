@@ -211,6 +211,24 @@ MonoBehaviour:
     loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: In_between
+    clip: {fileID: 8300000, guid: c29c38a058bb8a0498eb13efb373e3b7, type: 3}
+    volume: 0.003
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss_Fight
+    clip: {fileID: 8300000, guid: 79aa7a7026173854496f04c9cc2af926, type: 3}
+    volume: 0.52
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!1 &103631832
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,6 +882,24 @@ MonoBehaviour:
   - name: City_Hit
     clip: {fileID: 8300000, guid: 2842792c81f64804b822a57c3424b1d6, type: 3}
     volume: 0.718
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: New_High_Score
+    clip: {fileID: 8300000, guid: 9c9e06ab666704742a3ec5a97ca84827, type: 3}
+    volume: 0.347
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Gameover_Voice
+    clip: {fileID: 8300000, guid: 12f956dc2769133449c1c0c2e1b2d2e1, type: 3}
+    volume: 0.304
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
