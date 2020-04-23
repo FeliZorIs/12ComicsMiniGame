@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     Vector3 bullet_rotation1;
     Vector3 bullet_rotation2;
     public Text shot_Text;
+    bool canShoot = true;
 
     //Invincibility after hit & Player UI image damage
     Renderer rend;
@@ -84,6 +85,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        canShoot = true;
         //Ensures that even if restarting the scene after being invincible, that the player can still take damage.
         Physics2D.IgnoreLayerCollision(0, 10, false);
         if (MenuBtnScript.debugOn == true)
@@ -131,7 +133,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        shoot();
+        if(canShoot == true)
+        {
+            shoot();
+        }
         superMeterUse();
         if (superMeterCurrent >= 100)
         {
@@ -181,7 +186,6 @@ public class Player : MonoBehaviour
     //Who are we playing as. Change UI images, shot graphics, etc.
     void userInitialize()
     {
-        //This will be an SQL statement when we get the DB up.
         if (Resources.Load<Sprite>("Hero_UI_Images/" + current) != null)
         {
             playerImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/" + current);
@@ -466,10 +470,39 @@ public class Player : MonoBehaviour
     //Invincibility state when getting hit.
     public IEnumerator PlayerInvince()
     {
+        canShoot = false;
+        //Change to hurt sprite for a moment.
+        if (Resources.Load<Sprite>("Hero_Gameplay_Sprites/Hurt/" + current + "Hurt") != null)
+        {
+
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/Hurt/" + current + "Hurt");
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/Hurt/katheryneHurt");
+        }
+
         Physics2D.IgnoreLayerCollision(0, 10, true);
         color.a = 0.5f;
         rend.material.color = color;
-        yield return new WaitForSeconds(2.4f);
+        yield return new WaitForSeconds(0.8f);
+
+        canShoot = true;
+        //Change back to regular sprite.
+        if (Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current) != null)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/" + current);
+        }
+        else
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/katheryne");
+        }
+        /*
+        Physics2D.IgnoreLayerCollision(0, 10, true);
+        color.a = 0.5f;
+        rend.material.color = color;
+        */
+        yield return new WaitForSeconds(1.6f);
         Physics2D.IgnoreLayerCollision(0, 10, false);
         color.a = 1f;
         rend.material.color = color;
