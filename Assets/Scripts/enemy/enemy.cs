@@ -156,6 +156,8 @@ public class enemy : MonoBehaviour
 
             else
             {
+
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Hit");
                 StartCoroutine("flash");
             }
             Destroy(collision.gameObject);
