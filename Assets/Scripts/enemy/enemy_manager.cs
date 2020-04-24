@@ -8,4 +8,6 @@ public class enemy_manager : MonoBehaviour
 
     public int enemiesKilled_total = 0;
     public int enemiesKilled_current = 0;
+
+
 }

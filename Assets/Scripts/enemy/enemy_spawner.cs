@@ -22,7 +22,7 @@ public class enemy_spawner : MonoBehaviour
     public bool boss_alive = false;
 
     //wave count declarations
-    int wave_count;
+    public int wave_count;
     public Text wave_text;
     bool wave_bool;
 
@@ -87,6 +87,8 @@ public class enemy_spawner : MonoBehaviour
                 on = true;
                 wave_bool = true;
                 spawning = true;
+                if (wave_count % 4 == 0)
+                    timeInBetween -= .05f;
 
                 waveState = WaveState.WAVE;
                 break;
@@ -122,7 +124,7 @@ public class enemy_spawner : MonoBehaviour
         else if (wave_count == 3)
             enemy_toSpawn = Enemies[1];
 
-        //wave 4 and over
+        //wave 4 and over: everything
         else
         {
             if (chosen <= 80)
@@ -132,12 +134,12 @@ public class enemy_spawner : MonoBehaviour
             else
                 enemy_toSpawn = Enemies[2];
         }
-        //
-
+        
+        //once too many enemies spawn, it stops
         if (spawning && enemyManager.GetComponent<enemy_manager>().active_enemies.Count <= maxEnemiesOnscreen)
             timer += Time.deltaTime;
 
-
+        //actual act of spawning
         if (timer >= timeInBetween)
         {
             if (pattern <= 95)

@@ -10,7 +10,7 @@ public class enemy : MonoBehaviour
     protected GameObject enemyManager;
     protected GameObject player;
     protected GameObject city;
-    protected Renderer renderer;
+    [SerializeField]protected Renderer renderer;
 
     //health kit drop declarations
     public GameObject medKit;
@@ -22,6 +22,10 @@ public class enemy : MonoBehaviour
 
     //For enemy death
     public GameObject particleDestruct;
+
+    //for difficulty progression
+    GameObject WaveManager;
+    int wave_count;
     private void Start()
     {
         //Checking if we're in debugMode or not.
@@ -36,6 +40,7 @@ public class enemy : MonoBehaviour
         }
 
         findComponents();
+        difficulty_progression();
     }
 
     // Update is called once per frame
@@ -55,10 +60,11 @@ public class enemy : MonoBehaviour
         multiBonus = PlayerStats.multiLevel;
         city = GameObject.Find("Despawn_Enemy");
         renderer = GetComponent<Renderer>();
+        WaveManager = GameObject.Find("WaveManager");
+        wave_count = WaveManager.GetComponent<enemy_spawner>().wave_count;
+
         if (this.tag != "Gold_enemy")
             enemyManager.GetComponent<enemy_manager>().active_enemies.Add(this);
-
-
     }
     public void onDeath()
     {
@@ -95,6 +101,26 @@ public class enemy : MonoBehaviour
         enemyManager.GetComponent<enemy_manager>().enemiesKilled_total += 1;
         enemyManager.GetComponent<enemy_manager>().enemiesKilled_current += 1;
         onDeath();
+    }
+
+    public void progressive_difficulty()
+    {
+        enemy_health += 1;
+    }
+
+    public void difficulty_progression()
+    {
+        //adding progressive difficuly by adding health... kind of bullshit tbh
+        int progression_rate = wave_count / 4;
+        if (progression_rate == 0)
+        {
+            //do nothing
+        }
+        else
+        {
+            enemy_health += progression_rate;
+            speed += .1f * progression_rate;
+        }      
     }
 
     //================================

@@ -2376,10 +2376,11 @@ MonoBehaviour:
   Boss: {fileID: 3111868435304163217, guid: f21e9b0bf667ab54fb20898885cf9dd0, type: 3}
   x_position: 8.5
   y_zone: 3.5
-  timeInBetween: 0.75
+  timeInBetween: 1
   waveKills: 25
   maxEnemiesOnscreen: 99
   boss_alive: 0
+  wave_count: 3
   wave_text: {fileID: 1857701158}
   backgrounds:
   - {fileID: 515699057}
@@ -5703,6 +5704,8 @@ MonoBehaviour:
   scoreText: {fileID: 854552579}
   multiplierText: {fileID: 678491394}
   highScoreText: {fileID: 690366899}
+  audioManagerMusic: {fileID: 0}
+  audioManagerSFX: {fileID: 0}
 --- !u!114 &1713074431
 MonoBehaviour:
   m_ObjectHideFlags: 0
