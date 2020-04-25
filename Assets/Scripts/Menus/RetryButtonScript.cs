@@ -58,6 +58,7 @@ public class RetryButtonScript : MonoBehaviour
             audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
              */
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Button_Confirm");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameOver");
             audioManagerMusic.GetComponent<AudioManager>().Play("In_between");
 
         }

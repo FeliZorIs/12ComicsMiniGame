@@ -41,13 +41,14 @@ public class PauseMenu : MonoBehaviour
         {
             if (GameIsPaused)
             {
-                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
+               
                 Resume();
             } else
             {
-                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
+              
                 Pause();
             }
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
             
         }
 

@@ -30,9 +30,8 @@ public class enemy_spawner : MonoBehaviour
     public GameObject[] backgrounds;
     int current_background = 0;
     int changeCount = 0;
-
-    //Testing FORAUDIO!!!...
     int musicCount = 0;
+
     //Get audioManager components!
     GameObject audioManagerMusic;
     GameObject audioManagerSFX;
@@ -233,28 +232,25 @@ public class enemy_spawner : MonoBehaviour
             {
                 backgrounds[i].gameObject.SetActive(false);
             }
-            //This if is just a test, remove when editing in the future!!!!
+            //Telling the game when to fade the music into the next time of day.
 
             //Sunset Music
             if (musicCount == 1)
             {
-                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
-                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
-                audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_SUNSET");
+              
+                StartCoroutine(fadeMusic());
             }
             //Nighttime Music
             else if (musicCount == 2)
             {
-                //audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
-                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
-                audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_NIGHT");
+             
+                StartCoroutine(fadeMusic());
             }
             //Daytime Music
             else
             {
-                // audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
-                //  audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
-                audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
+              
+                StartCoroutine(fadeMusic());
             }
             if (musicCount == 3)
             {
@@ -280,11 +276,44 @@ public class enemy_spawner : MonoBehaviour
         }
         else
         {
-            audioManagerMusic.GetComponent<AudioManager>().Play("Boss_Fight");
+            StartCoroutine(fadeMusic());
         }
         
         Instantiate(Boss, new Vector2(0, 0), Quaternion.identity);
         waveState = WaveState.BOSS;
+    }
+
+    //Makeshift audo fader...Yeah probably should do something better than this in the future lol.
+    IEnumerator fadeMusic()
+    {
+        if(musicCount == 1 && boss_alive == false)
+        {
+            audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_SUNSET");
+            yield return new WaitForSeconds(1.0f);
+            audioManagerMusic.GetComponent<AudioManager>().Stop("Boss_Fight");
+        }
+        else if(musicCount == 2 && boss_alive == false)
+        {
+            audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_NIGHT");
+            yield return new WaitForSeconds(1.0f);
+            audioManagerMusic.GetComponent<AudioManager>().Stop("Boss_Fight");
+        }
+        else if(musicCount == 3 && boss_alive == false)
+        {
+            audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
+            yield return new WaitForSeconds(1.0f);
+            audioManagerMusic.GetComponent<AudioManager>().Stop("Boss_Fight");
+        }
+        else
+        {
+            audioManagerMusic.GetComponent<AudioManager>().Play("In_between");
+            yield return new WaitForSeconds(1.0f);
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_DAY");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_SUNSET");
+            audioManagerMusic.GetComponent<AudioManager>().Stop("GameplayMusic_NIGHT");
+            audioManagerMusic.GetComponent<AudioManager>().Play("Boss_Fight");
+        }
+       
     }
 
     IEnumerator wave_show()

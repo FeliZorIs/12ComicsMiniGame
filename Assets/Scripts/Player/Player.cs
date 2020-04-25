@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     Renderer rend;
     Color color;
     public Image playerImg;
+    bool gameOverAni = false;
 
     //For gameOver Buttons
     public GameObject gameOverPrefab;
@@ -88,6 +89,7 @@ public class Player : MonoBehaviour
         canShoot = true;
         //Ensures that even if restarting the scene after being invincible, that the player can still take damage.
         Physics2D.IgnoreLayerCollision(0, 10, false);
+
         if (MenuBtnScript.debugOn == true)
         {
             current = "Katheryne";
@@ -99,6 +101,8 @@ public class Player : MonoBehaviour
             audioManagerMusic = GameObject.FindWithTag("MusicManager");
             audioManagerSFX = GameObject.FindWithTag("SFXManager");
 
+            audioManagerMusic.GetComponent<AudioManager>().Stop("Boss_Fight");
+
             audioManagerMusic.GetComponent<AudioManager>().Play("GameplayMusic_DAY");
         }
 
@@ -108,8 +112,8 @@ public class Player : MonoBehaviour
         supermeterlvl = PlayerStats.superMeterLevel;
         superCast = (float)supermeterlvl;
         multiplierlvl = PlayerStats.multiLevel;
-        superMeterCurrent = 100f;
-        //superMeterCurrent = 0;
+        //superMeterCurrent = 100f;
+        superMeterCurrent = 0;
         superMeterText.text = "SUPERMETER: " + superMeterCurrent + "%";
         rend = GetComponent<Renderer>();
         color = rend.material.color;
@@ -152,11 +156,19 @@ public class Player : MonoBehaviour
             meterInfoText.SetActive(false);
         }
 
+        //City damage.
+        if (city.city_health < current_cityHealth)
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("City_Hit");
+            StartCoroutine(cameraShake.Shake(.15f, .4f));
+            current_cityHealth = city.city_health;
+        }
+
        
     }
     void FixedUpdate()
     {
-        //superMeterCurrent = 100f;
+       // superMeterCurrent = 100f;
         Movement();
         
 
@@ -166,13 +178,6 @@ public class Player : MonoBehaviour
             Mathf.Clamp(transform.position.x, -7.7f, 4.9f),
             Mathf.Clamp(transform.position.y, -3.3f, 3.6f)
             );
-
-        if (city.city_health < current_cityHealth)
-        {
-            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("City_Hit");
-            StartCoroutine(cameraShake.Shake(.15f, .4f));
-            current_cityHealth = city.city_health;
-        }
     }
 
     //====================================
@@ -453,8 +458,11 @@ public class Player : MonoBehaviour
         {
             Instantiate(medKitParticle, transform.position, transform.rotation);
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Health_Pickup");
+            //Let medkit give score so there's still incentive even if your health is full to go for it. Base it on their current health and multiplyer level.
+            ScoreCount.scoreValue += ((PlayerHealth.health * 10) * multiplierlvl);
             PlayerHealth.health += collision.gameObject.GetComponent<medKit>().health;
             Destroy(collision.gameObject);
+           
         }
 
     }
@@ -526,21 +534,25 @@ public class Player : MonoBehaviour
         }
 
         //Create particle effect on death.
-        Instantiate(playerDeathParticle, transform.position, transform.rotation);
-        Destroy(gameObject.GetComponent<PolygonCollider2D>());
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        usingMeter = true;
-        stopGameplayMusic();
+        if(gameOverAni == false)
+        {
+            Instantiate(playerDeathParticle, transform.position, transform.rotation);
+            Destroy(gameObject.GetComponent<PolygonCollider2D>());
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            usingMeter = true;
+            stopGameplayMusic();
 
-        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Death");
-        StartCoroutine(deathAni());
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Death");
+            gameOverAni = true;
+            StartCoroutine(deathAni());
+        }
+        
+        
 
     }
 
     IEnumerator deathAni()
     {
-        //Here make it so you can't pause cause you're dead!
-
        
         yield return new WaitForSeconds(2.0f);
         audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Gameover_Voice");
