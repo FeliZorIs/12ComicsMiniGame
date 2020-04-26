@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuUI;
     public GameObject GOver;
     public GameObject H2P;
+
+    public GameObject PanelCustomize;
+    public GameObject PanelMenu;
+
 
     //Get audioManager components!
     GameObject audioManagerMusic;
@@ -32,6 +38,7 @@ public class PauseMenu : MonoBehaviour
         }
 
         PauseMenuUI.SetActive(false);
+        
     }
     // Update is called once per frame
     void Update()
@@ -39,6 +46,9 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape) && canPause == true)
         {
+            PanelMenu.SetActive(false);
+            PanelCustomize.SetActive(false);
+
             if (GameIsPaused)
             {
                
@@ -50,6 +60,7 @@ public class PauseMenu : MonoBehaviour
             }
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
             
+
         }
 
         if (GOver.activeSelf)
@@ -61,6 +72,7 @@ public class PauseMenu : MonoBehaviour
         {
             Pause();
         }
+
     }
 
     void Resume()
