@@ -14,6 +14,7 @@ public class MenuBtnScript : MonoBehaviour
     public Button logoutButton;
     public Button backButton;
 
+    public GameObject gameSettings;
 
     //Check for login.
     public string username;
@@ -21,6 +22,7 @@ public class MenuBtnScript : MonoBehaviour
     public GameObject userInput;
     public GameObject passInput;
     public GameObject failText;
+
     bool validLogin = false;
 
     //Get audioManager components!
@@ -41,6 +43,7 @@ public class MenuBtnScript : MonoBehaviour
     int counter = 0;
     void Start()
     {
+        gameSettings.SetActive(false);
 
         if (onLogin == true)
         {

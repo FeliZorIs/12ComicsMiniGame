@@ -50,8 +50,10 @@ public class LoginDisp : MonoBehaviour
         else
         {
             heroImg.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
-            UserIco.GetComponent<Image>().sprite = Resources.Load<Sprite>("UserICON/Template");
+            UserIco.GetComponent<Image>().sprite = Resources.Load<Sprite>("Hero_UI_Images/12Comics_Logo");
         }
+
+        if (Resources.Load<Sprite>("Hero_UI_Images/" + curr) != null)
 
         StartCoroutine(display());
     }
