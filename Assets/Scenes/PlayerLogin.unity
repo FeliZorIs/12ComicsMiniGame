@@ -907,6 +907,15 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Change_Shot
+    clip: {fileID: 8300000, guid: 35b50641c1ebc384790cfd32d77cb741, type: 3}
+    volume: 0.32
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &380592965
 Transform:
   m_ObjectHideFlags: 0

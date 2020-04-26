@@ -265,13 +265,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LEAVING WILL RESULT IN THE LOSS OF ANY
-
-    UNSAVED PROGRESS
-
-
-    DO
-    YOU WANT TO CONTINUE?'
+  m_Text: "YOUR HIGH SCORE WILL NOT BE SAVED IF \nYOU LEAVE THE GAME EARLY.\n\nDO
+    YOU WANT TO CONTINUE?"
 --- !u!222 &20340193
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2451,9 +2446,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LEAVING WILL RESULT IN THE LOSS OF ANY
+  m_Text: 'YOUR HIGH SCORE WILL NOT BE SAVED IF YOU
 
-    UNSAVED PROGRESS
+    LEAVE THE GAME EARLY.
 
 
     DO

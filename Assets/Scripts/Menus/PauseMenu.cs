@@ -58,7 +58,16 @@ public class PauseMenu : MonoBehaviour
               
                 Pause();
             }
-            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
+            if (MenuBtnScript.debugOn == true)
+            {
+
+            }
+            else
+            {
+
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
+            }
+           
             
 
         }

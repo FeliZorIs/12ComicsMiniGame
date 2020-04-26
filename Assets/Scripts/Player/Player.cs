@@ -267,14 +267,40 @@ public class Player : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    bultype = 1;
+                    if(bultype != 1)
+                    {
+                        bultype = 1;
+                        //For debug mode.
+                        if (MenuBtnScript.debugOn == true)
+                        {
+
+                        }
+                        else
+                        {
+                            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Change_Shot");
+                        }
+                    }
+                   
+                   
                     //shot_Text.text = "Shot Type: Basic";
                     single.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                     split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    bultype = 2;
+                    if (bultype != 2)
+                    {
+                        bultype = 2;
+                        //For debug mode.
+                        if (MenuBtnScript.debugOn == true)
+                        {
+
+                        }
+                        else
+                        {
+                            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Change_Shot");
+                        }
+                    }
                     //shot_Text.text = "Shot Type: 3 Split";
                     single.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                     split.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
@@ -290,7 +316,7 @@ public class Player : MonoBehaviour
                             break;
 
                         case 2:
-                           nextFire = myTime + (fireRate+ 0.4f);
+                            nextFire = myTime + (fireRate + 0.25f);
                            StartCoroutine(tripleShot());
                             break;
                     }
@@ -309,7 +335,19 @@ public class Player : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Alpha1))
                 {
-                    bultype = 1;
+                    if (bultype != 1)
+                    {
+                        bultype = 1;
+                        //For debug mode.
+                        if (MenuBtnScript.debugOn == true)
+                        {
+
+                        }
+                        else
+                        {
+                            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Change_Shot");
+                        }
+                    }
                     //shot_Text.text = "Shot Type: Basic";
                     single.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
                     split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
@@ -318,7 +356,19 @@ public class Player : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha2))
                 {
-                    bultype = 2;
+                    if (bultype != 2)
+                    {
+                        bultype = 2;
+                        //For debug mode.
+                        if (MenuBtnScript.debugOn == true)
+                        {
+
+                        }
+                        else
+                        {
+                            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Change_Shot");
+                        }
+                    }
                     //shot_Text.text = "Shot Type: 3 Split";
                     single.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                     split.GetComponent<Image>().color = new Color32(255, 0, 0, 255);
@@ -326,7 +376,19 @@ public class Player : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.Alpha3))
                 {
-                    bultype = 3;
+                    if (bultype != 3)
+                    {
+                        bultype = 3;
+                        //For debug mode.
+                        if (MenuBtnScript.debugOn == true)
+                        {
+
+                        }
+                        else
+                        {
+                            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Change_Shot");
+                        }
+                    }
                     //shot_Text.text = "Shot Type: Burst";
                     single.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
                     split.GetComponent<Image>().color = new Color32(55, 55, 55, 255);
@@ -343,7 +405,7 @@ public class Player : MonoBehaviour
                             break;
 
                         case 2:
-                            nextFire = myTime + (fireRate+ 0.4f);
+                            nextFire = myTime + (fireRate + 0.25f);
                             StartCoroutine(tripleShot());
                             /*
                             Instantiate(shot, shot_spawn.position, Quaternion.identity);
@@ -523,6 +585,7 @@ public class Player : MonoBehaviour
     public void gameOver()
     {
         PauseMenu.canPause = false;
+        canShoot = false;
         PlayerHealth.health = 0;
         RetryButtonScript.score = ScoreCount.scoreValue;
        
