@@ -43,7 +43,6 @@ public class MenuBtnScript : MonoBehaviour
     int counter = 0;
     void Start()
     {
-        gameSettings.SetActive(false);
 
         if (onLogin == true)
         {
