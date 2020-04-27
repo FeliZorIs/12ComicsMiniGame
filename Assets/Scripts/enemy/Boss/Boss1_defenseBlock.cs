@@ -7,6 +7,10 @@ public class Boss1_defenseBlock : MonoBehaviour
     public float speed;
     public bool up_down; //true = up, false = down
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
     enum Direction
     { 
         UP,
@@ -15,6 +19,18 @@ public class Boss1_defenseBlock : MonoBehaviour
 
     void Start()
     {
+        //Debug mode check.
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
+
+
         if (up_down)
             direction = Direction.UP;
         else
@@ -61,6 +77,17 @@ public class Boss1_defenseBlock : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player_shot")
+        {
+            //Check for debug mode to play sound or not.
+            if (MenuBtnScript.debugOn == true)
+            {
+
+            }
+            else
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_shield_hit");
+            }
             Destroy(collision.gameObject);
+        }
     }
 }

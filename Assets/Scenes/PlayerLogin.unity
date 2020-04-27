@@ -222,11 +222,11 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Boss_Fight
     clip: {fileID: 8300000, guid: 79aa7a7026173854496f04c9cc2af926, type: 3}
-    volume: 0.52
+    volume: 0.441
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
-    loop: 0
+    loop: 1
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
 --- !u!1 &103631832
@@ -911,6 +911,60 @@ MonoBehaviour:
   - name: Change_Shot
     clip: {fileID: 8300000, guid: 35b50641c1ebc384790cfd32d77cb741, type: 3}
     volume: 0.32
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss_shield_hit
+    clip: {fileID: 8300000, guid: d51307f5b84133f429bb39886977a30f, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Enemy_Shoot
+    clip: {fileID: 8300000, guid: 988afc23077f8d449953dd44789e8496, type: 3}
+    volume: 0.789
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Ready_Voice
+    clip: {fileID: 8300000, guid: 519b1a15ec267134b9e3c714f25de8ee, type: 3}
+    volume: 0.304
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Player_Shot
+    clip: {fileID: 8300000, guid: c1439349d6c32214c9b27e73fda3983e, type: 3}
+    volume: 0.254
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss_Shot
+    clip: {fileID: 8300000, guid: 758352d3816e8d24a993fea486696374, type: 3}
+    volume: 0.159
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Go_Voice
+    clip: {fileID: 8300000, guid: 1761e606aa473824b80c9b52a734d433, type: 3}
+    volume: 0.304
     volumeVariance: 0
     pitch: 1
     pitchVariance: 0
@@ -2211,6 +2265,7 @@ MonoBehaviour:
   LeaderboardsButton: {fileID: 0}
   logoutButton: {fileID: 0}
   backButton: {fileID: 0}
+  gameSettings: {fileID: 0}
   username: 
   password: 
   userInput: {fileID: 1713208727}

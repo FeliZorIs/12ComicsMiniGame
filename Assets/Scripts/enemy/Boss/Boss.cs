@@ -191,6 +191,14 @@ public class Boss : MonoBehaviour
         {
             //Debug.Log(Enemy.name + "has spawned");
             Instantiate(bullet, bullet_spawn, Quaternion.identity);
+            if (MenuBtnScript.debugOn == true)
+            {
+
+            }
+            else
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_Shot");
+            }
             myTime = 0;
         }
     }

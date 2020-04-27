@@ -251,6 +251,14 @@ public class Player : MonoBehaviour
                 {
                     nextFire = myTime + fireRate;
                     Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                    if (MenuBtnScript.debugOn == true)
+                    {
+
+                    }
+                    else
+                    {
+                        audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+                    }
                     break;
                 }
                 break;
@@ -313,6 +321,14 @@ public class Player : MonoBehaviour
                         case 1:
                             nextFire = myTime + fireRate;
                             Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                            if (MenuBtnScript.debugOn == true)
+                            {
+
+                            }
+                            else
+                            {
+                                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+                            }
                             break;
 
                         case 2:
@@ -402,16 +418,19 @@ public class Player : MonoBehaviour
                         case 1:
                             nextFire = myTime + fireRate;
                             Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                            if (MenuBtnScript.debugOn == true)
+                            {
+
+                            }
+                            else
+                            {
+                                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+                            }
                             break;
 
                         case 2:
                             nextFire = myTime + (fireRate + 0.25f);
                             StartCoroutine(tripleShot());
-                            /*
-                            Instantiate(shot, shot_spawn.position, Quaternion.identity);
-                            GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
-                            GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
-                             */
                             break;
                         case 3:
                             nextFire = myTime + (fireRate + 0.3f);
@@ -432,6 +451,16 @@ public class Player : MonoBehaviour
     public IEnumerator tripleShot()
     {
         Instantiate(shot, shot_spawn.position, Quaternion.identity);
+        if (MenuBtnScript.debugOn == true)
+        {
+
+        }
+        else
+        {
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+        }
         GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
         GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
         yield return new WaitForSeconds(0.05f);
@@ -442,6 +471,14 @@ public class Player : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+            if (MenuBtnScript.debugOn == true)
+            {
+
+            }
+            else
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
+            }
             yield return new WaitForSeconds(0.05f);
         }
 

@@ -48,6 +48,14 @@ public class enemy_shooter : enemy
         {
             //Debug.Log(Enemy.name + "has spawned");
             Instantiate(bullet, bullet_spawn, Quaternion.identity);
+            if (MenuBtnScript.debugOn == true)
+            {
+                //Randomness for debug purposes.
+            }
+            else
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Enemy_Shoot");
+            }
             myTime = 0;
         }
     }

@@ -324,9 +324,17 @@ public class enemy_spawner : MonoBehaviour
             wave_count++;
             wave_text.text = "Wave: " + wave_count;
             wave_text.gameObject.SetActive(true);
-
+            if (wave_count == 1)
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Ready_Voice");
+            }
+            
             yield return new WaitForSeconds(2);
 
+            if (wave_count == 1)
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Go_Voice");
+            }
             changeBackground();
             wave_text.gameObject.SetActive(false);
             waveState = WaveState.ENEMY;
