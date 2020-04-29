@@ -13,7 +13,6 @@ public class Boss : MonoBehaviour
     Animator anim;
     GameObject eSpawn;
 
-
     //City vars 
     public City city;
     public int cityMax;
@@ -42,8 +41,8 @@ public class Boss : MonoBehaviour
     public GameObject particleDestruct;
 
     //Get audioManager components!
-    [SerializeField]GameObject audioManagerMusic;
-    [SerializeField]GameObject audioManagerSFX;
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
 
     enum BossStage
     {
@@ -257,6 +256,4 @@ public class Boss : MonoBehaviour
             }
         }
     }
-
-
 }
