@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class Player : MonoBehaviour
 {
@@ -17,11 +18,17 @@ public class Player : MonoBehaviour
     private float nextFire;
     private float myTime = 0f;
 
+
     int bultype = 1;
     Vector3 bullet_rotation1;
     Vector3 bullet_rotation2;
     public Text shot_Text;
     bool canShoot = true;
+
+    //This list can be expanded in the inspector for whenever we add new characters to the game!!!!
+    public List<GameObject>shots = new List<GameObject>();
+    public List<string> names = new List<string>();
+    int whichShot;
 
     //Invincibility after hit & Player UI image damage
     Renderer rend;
@@ -209,6 +216,22 @@ public class Player : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Hero_Gameplay_Sprites/katheryne");
         }
 
+        int numList;
+        string currentName;
+        //Find out what current player's rank is.
+        string lowerName = current.ToLower();
+        numList = names.Count();
+        List<string> lowerNames = new List<string>();
+
+        for (int m = 0; m < numList; m++)
+        {
+            currentName = names[m].ToLower();
+            lowerNames.Add(currentName);
+        }
+        //Figure out which shot graphic to use.
+        whichShot = (lowerNames.IndexOf(lowerName));
+        Debug.Log("Shot we will use is: " + whichShot);
+
         Destroy(this.GetComponent<PolygonCollider2D>());
         this.gameObject.AddComponent<PolygonCollider2D>();
     }
@@ -250,7 +273,8 @@ public class Player : MonoBehaviour
                 if (Input.GetKey(KeyCode.Space) && myTime > nextFire)
                 {
                     nextFire = myTime + fireRate;
-                    Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                    Instantiate(shots[whichShot], shot_spawn.position, shot_spawn.rotation);
+                    
                     if (MenuBtnScript.debugOn == true)
                     {
 
@@ -320,7 +344,7 @@ public class Player : MonoBehaviour
                     {
                         case 1:
                             nextFire = myTime + fireRate;
-                            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                            Instantiate(shots[whichShot], shot_spawn.position, shot_spawn.rotation);
                             if (MenuBtnScript.debugOn == true)
                             {
 
@@ -417,7 +441,7 @@ public class Player : MonoBehaviour
                     {
                         case 1:
                             nextFire = myTime + fireRate;
-                            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+                            Instantiate(shots[whichShot], shot_spawn.position, shot_spawn.rotation);
                             if (MenuBtnScript.debugOn == true)
                             {
 
@@ -450,7 +474,7 @@ public class Player : MonoBehaviour
 
     public IEnumerator tripleShot()
     {
-        Instantiate(shot, shot_spawn.position, Quaternion.identity);
+        Instantiate(shots[whichShot], shot_spawn.position, Quaternion.identity);
         if (MenuBtnScript.debugOn == true)
         {
 
@@ -461,8 +485,8 @@ public class Player : MonoBehaviour
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Shot");
         }
-        GameObject ex1 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
-        GameObject ex2 = (GameObject)(Instantiate(shot, shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
+        GameObject ex1 = (GameObject)(Instantiate(shots[whichShot], shot_spawn.position, Quaternion.EulerAngles(bullet_rotation1)));
+        GameObject ex2 = (GameObject)(Instantiate(shots[whichShot], shot_spawn.position, Quaternion.EulerAngles(bullet_rotation2)));
         yield return new WaitForSeconds(0.05f);
     }
     //Burst shot couroutine.
@@ -470,7 +494,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            Instantiate(shot, shot_spawn.position, shot_spawn.rotation);
+            Instantiate(shots[whichShot], shot_spawn.position, shot_spawn.rotation);
             if (MenuBtnScript.debugOn == true)
             {
 

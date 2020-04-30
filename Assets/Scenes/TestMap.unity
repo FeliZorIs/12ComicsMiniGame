@@ -8134,6 +8134,14 @@ PrefabInstance:
       value: -0.1386106
       objectReference: {fileID: 0}
     - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: shots.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: names.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
@@ -8263,6 +8271,42 @@ PrefabInstance:
       propertyPath: highScoreText
       value: 
       objectReference: {fileID: 690366896}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: shots.Array.data[0]
+      value: 
+      objectReference: {fileID: 7942463679322254508, guid: 2a71684b9af83424d9f366b4d66221f3,
+        type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: shots.Array.data[1]
+      value: 
+      objectReference: {fileID: 7942463679322254508, guid: 792a2dfdfcec34c4887d5470cbd0d9c4,
+        type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: shots.Array.data[2]
+      value: 
+      objectReference: {fileID: 7942463679322254508, guid: 26499f9b962d65c41a91243c3ca9a67a,
+        type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: shots.Array.data[3]
+      value: 
+      objectReference: {fileID: 7942463679322254508, guid: 06d4a67696ae09144b5d8a8989bf8634,
+        type: 3}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: names.Array.data[0]
+      value: Katheryne
+      objectReference: {fileID: 0}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: names.Array.data[1]
+      value: Kelsey
+      objectReference: {fileID: 0}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: names.Array.data[2]
+      value: Lisa
+      objectReference: {fileID: 0}
+    - target: {fileID: 101939583, guid: 0b57da39163b5244ba0c663a55bef3cc, type: 3}
+      propertyPath: names.Array.data[3]
+      value: Mark
+      objectReference: {fileID: 0}
     - target: {fileID: 4615894405718055736, guid: 0b57da39163b5244ba0c663a55bef3cc,
         type: 3}
       propertyPath: m_LocalPosition.x
