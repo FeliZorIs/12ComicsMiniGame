@@ -7,6 +7,14 @@ using UnityEngine.SceneManagement;
 public class PanelManager : MonoBehaviour
 {
     public GameObject Panel;
+
+    void Update()
+    {
+        if (Input.GetKeyDown("escape"))
+        {
+            Panel.SetActive(false);
+        }
+    }
     
     public void OpenPanel()
     {
@@ -15,7 +23,10 @@ public class PanelManager : MonoBehaviour
             bool isActive = Panel.activeSelf;
 
             Panel.SetActive(!isActive);
+            
+            
         }
+
     }
 
     

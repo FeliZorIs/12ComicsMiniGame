@@ -2278,6 +2278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0736769e9b85f0f45ba9b6192c5aab79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OffSprite: {fileID: 21300000, guid: 12fd1b516f35c5b498df8cd2f0e6f33a, type: 3}
+  OnSprite: {fileID: 21300000, guid: 1e4bf3b8ab66838459c3ee859b43e8f0, type: 3}
+  mute: {fileID: 308079042}
+  volSlide: {fileID: 2127217212}
 --- !u!1 &1043543387
 GameObject:
   m_ObjectHideFlags: 0

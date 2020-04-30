@@ -101,6 +101,11 @@ public class HowToPlay : MonoBehaviour
                 LeftBtn.onClick.AddListener(PG4);
             }
             XBtn.onClick.AddListener(iEsc);
+
+            if (Input.GetKeyDown("escape"))
+            {
+                iEsc();
+            }
         }
     }
 
