@@ -38,8 +38,12 @@ public class Boss2 : MonoBehaviour
     public GameObject mid_ship;
     public GameObject bot_ship;
 
-    //Stage 3
+    //Stage 3_setup
+    public GameObject bubble;
     public GameObject PE_ShootUP;
+    ParticleSystem ps;
+
+    //Stage 3
     public GameObject bulletShower;
     bool Stage3_coroutine = true;
 
@@ -52,6 +56,7 @@ public class Boss2 : MonoBehaviour
         ENTRANCE,
         STAGE_1,
         STAGE_2,
+        STAGE_3_SETUP,
         STAGE_3
     }
     BossStage bossStage;
@@ -59,6 +64,11 @@ public class Boss2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ps = PE_ShootUP.GetComponent<ParticleSystem>();
+        bubble.SetActive(false);
+        PE_ShootUP.SetActive(false);
+        bulletShower.SetActive(false);
+
         bullet_spawn = new Vector2(this.transform.position.x - .03f, this.transform.position.y + .98f);
         //Checking if we're in debugMode or not.
         if (MenuBtnScript.debugOn == true)
@@ -112,11 +122,15 @@ public class Boss2 : MonoBehaviour
 
             case BossStage.STAGE_2:
                 if (health <= stage_health)
-                    bossStage = BossStage.STAGE_3;
+                    bossStage = BossStage.STAGE_3_SETUP;
+                break;
+
+            case BossStage.STAGE_3_SETUP:
+                StartCoroutine("stage3_blast");
                 break;
 
             case BossStage.STAGE_3:
-                StartCoroutine("stage3_blast");
+                shoot_basic();
                 break;
         }
 
@@ -220,15 +234,29 @@ public class Boss2 : MonoBehaviour
         if (Stage3_coroutine == true)
         {
             Stage3_coroutine = false;
+
+            bubble.SetActive(true);
+            invince = true;
             anim.SetTrigger("stationary");
             PE_ShootUP.SetActive(true);
             Debug.Log("Before");
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(5f);
+
             Debug.Log("After");
-            PE_ShootUP.SetActive(false);
+            //PE_ShootUP.SetActive(false);
+            var emission = ps.emission;
+            emission.rateOverTime = 0f;
+
+            yield return new WaitForSeconds(2f);
+
             anim.SetTrigger("pattern");
+            bulletShower.SetActive(true);
+            invince = false;
+            bubble.SetActive(false);
             Stage3_coroutine = true;
+            fireRate *= 2;
+            bossStage = BossStage.STAGE_3;
         }
     }
 
