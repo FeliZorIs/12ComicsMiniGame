@@ -541,8 +541,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -342.3, y: -51.1}
-  m_SizeDelta: {x: 684.6, y: 651.8}
+  m_AnchoredPosition: {x: -342.3, y: -246}
+  m_SizeDelta: {x: 684.6, y: 1041.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464950732
 MonoBehaviour:
@@ -606,7 +606,18 @@ MonoBehaviour:
 
 
     BACKGROUND
-    MUSIC'
+    MUSIC
+
+
+
+
+
+    SPECIAL EFFECT SOUNDS
+
+
+
+
+    MISCELLANEOUS ARTWORK'
 --- !u!222 &464950733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -900,8 +911,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 357, y: -51.1}
-  m_SizeDelta: {x: 684.6, y: 651.8}
+  m_AnchoredPosition: {x: 357, y: -246}
+  m_SizeDelta: {x: 684.6, y: 1041.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1059607718
 MonoBehaviour:
@@ -965,7 +976,26 @@ MonoBehaviour:
     Mark Hair & 12Comics
 
 
-    Patrick de Arteaga'
+    Patrick de Arteaga
+
+    Alexandr
+    Zhelanov | Soundcloud
+
+    Cleyton Kauffman | Soundcloud
+
+    DontMind8 | OpenGameArt
+
+
+    ViRiX
+    | OpenGameArt
+
+    Gumichan01 | OpenGameArt
+
+    CleytonKauffman | OpenGameArt
+
+
+    Lorc
+    | OpenGameArt'
 --- !u!222 &1059607719
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1167,7 +1197,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 451.7, y: 18.5}
+  m_AnchoredPosition: {x: 544, y: 0}
   m_SizeDelta: {x: 462.6, y: 265}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1946220481

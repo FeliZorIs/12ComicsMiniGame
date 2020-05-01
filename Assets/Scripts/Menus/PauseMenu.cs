@@ -16,6 +16,9 @@ public class PauseMenu : MonoBehaviour
     public GameObject PanelCustomize;
     public GameObject PanelMenu;
 
+    //Game Settings vars
+    public GameObject settingsMenu;
+    public Button settingsExit;
 
     //Get audioManager components!
     GameObject audioManagerMusic;
@@ -38,50 +41,55 @@ public class PauseMenu : MonoBehaviour
         }
 
         PauseMenuUI.SetActive(false);
+        settingsMenu.SetActive(false);
         
     }
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.Escape) && canPause == true)
-        {
-            PanelMenu.SetActive(false);
-            PanelCustomize.SetActive(false);
+        if (PauseMenuUI.activeSelf) {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                settingsMenu.SetActive(false);
+            }
+        }
 
-            if (GameIsPaused)
+       if (Input.GetKeyDown(KeyCode.Escape) && canPause == true)
+             {
+                PanelMenu.SetActive(false);
+                PanelCustomize.SetActive(false);
+
+                if (GameIsPaused)
+                {
+
+                    Resume();
+                }
+                else
+                {
+
+                    Pause();
+                }
+                if (MenuBtnScript.debugOn == true)
+                {
+
+                }
+                else
+                {
+
+                    audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
+                }
+            }
+
+            if (GOver.activeSelf)
             {
-               
                 Resume();
-            } else
+            }
+
+            if (H2P.activeSelf)
             {
-              
                 Pause();
             }
-            if (MenuBtnScript.debugOn == true)
-            {
-
-            }
-            else
-            {
-
-                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Pause");
-            }
-           
-            
-
-        }
-
-        if (GOver.activeSelf)
-        {
-            Resume();
-        }
-        
-        if (H2P.activeSelf)
-        {
-            Pause();
-        }
-
     }
 
     void Resume()
@@ -99,5 +107,23 @@ public class PauseMenu : MonoBehaviour
         PauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+    }
+
+    public void gameSettings()
+    {
+        if (settingsMenu != null)
+        {
+            bool isActive = settingsMenu.activeSelf;
+
+            settingsMenu.SetActive(!isActive);
+        }
+    }
+
+    public void closeSettings()
+    {
+        if (settingsMenu.activeSelf)
+        {
+            settingsMenu.SetActive(false);
+        }
     }
 }

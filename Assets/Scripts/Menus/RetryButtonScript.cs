@@ -16,6 +16,10 @@ public class RetryButtonScript : MonoBehaviour
     static public int currentHigh;
 
 
+    //Game Settings vars
+    public GameObject settingsMenu;
+    public Button settingsExit;
+
     //For scene fade.
     public GameObject fader;
 
@@ -114,6 +118,24 @@ public class RetryButtonScript : MonoBehaviour
         fader.GetComponent<Scene_Fade>().FadeToLevel("PlayerMenu");
         // SceneManager.LoadScene("PlayerMenu");
         Time.timeScale = 1f;
+    }
+
+    public void gameSettings()
+    {
+        if (settingsMenu != null)
+        {
+            bool isActive = settingsMenu.activeSelf;
+
+            settingsMenu.SetActive(!isActive);
+        }
+    }
+
+    public void closeSettings()
+    {
+        if (settingsMenu.activeSelf)
+        {
+            settingsMenu.SetActive(false);
+        }
     }
 
 

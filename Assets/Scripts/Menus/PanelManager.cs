@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PanelManager : MonoBehaviour
 {
     public GameObject Panel;
+    public Button closePanel;
 
     void Update()
     {
@@ -27,6 +28,14 @@ public class PanelManager : MonoBehaviour
             
         }
 
+    }
+
+    public void exitPanel()
+    {
+        if (Panel.activeSelf)
+        {
+            Panel.SetActive(false);
+        }
     }
 
     
