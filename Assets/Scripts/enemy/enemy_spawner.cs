@@ -28,6 +28,10 @@ public class enemy_spawner : MonoBehaviour
     public Text wave_text;
     bool wave_bool;
 
+    //specific waves
+    int heavy_count = 0;
+    int shooter_count = 0;
+
     //background change, boss change
     public GameObject[] backgrounds;
     int current_background = 0;
@@ -56,7 +60,7 @@ public class enemy_spawner : MonoBehaviour
         spawning = true;
         timer = 0;
 
-        //wave_count = 0;
+        wave_count = 0;
         wave_bool = true;
         wave_text.gameObject.SetActive(false);
 
@@ -119,11 +123,33 @@ public class enemy_spawner : MonoBehaviour
 
         //wave 2: heavy only
         else if (wave_count == 2)
-            enemy_toSpawn = Enemies[2];
+        {
+            if (heavy_count < 2)
+            {
+                heavy_count++;
+                enemy_toSpawn = Enemies[2];
+            }
+            else 
+            {
+                enemy_toSpawn = Enemies[0];
+                heavy_count = 0;
+            }
+        }
 
         //wave 3: shooter only
         else if (wave_count == 3)
-            enemy_toSpawn = Enemies[1];
+        {
+            if (shooter_count < 2)
+            {
+                shooter_count++;
+                enemy_toSpawn = Enemies[1];
+            }
+            else
+            {
+                enemy_toSpawn = Enemies[0];
+                shooter_count = 0;
+            }
+        }
 
         //wave 4 and over: everything
         else

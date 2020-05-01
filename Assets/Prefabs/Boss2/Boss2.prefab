@@ -481,7 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c27b343d725d76e4dbc5d7a781412e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 60
   city: {fileID: 0}
   cityMax: 0
   bullet: {fileID: 7264856450548316008, guid: f0342a397e6fa7340a5baf986b58d491, type: 3}

@@ -38,6 +38,7 @@ public class enemy_shooter : enemy
         transform.Translate(Vector2.left * speed * Time.deltaTime);
 
         shoot_basic();
+        MaxHealth();
     }
 
     void shoot_basic()

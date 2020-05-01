@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class enemy_golden : enemy
 {
-    Vector3 pos;
-    public float magnitude;
-    public float frequency;
+
 
     //Get audioManager components!
     GameObject audioManagerMusic;
@@ -25,16 +23,11 @@ public class enemy_golden : enemy
 
 
         findComponents();
-        pos = this.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*
-        pos -= transform.right * Time.deltaTime * speed;
-        transform.position = pos + transform.up * Mathf.Sin(Time.time * frequency) * magnitude;
-         */
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 

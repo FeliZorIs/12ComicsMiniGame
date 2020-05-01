@@ -33,6 +33,7 @@ public class enemy_heavy : enemy
     {
         pos -= transform.right * Time.deltaTime * speed;
         transform.position = pos + transform.up * Mathf.Sin(Time.time * frequency) * magnitude;
+        MaxHealth();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

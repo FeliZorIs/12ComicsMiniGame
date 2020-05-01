@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 677896434432950335}
   - component: {fileID: 677896434432950720}
   - component: {fileID: 677896434432950721}
+  - component: {fileID: 7924042670576556343}
   m_Layer: 10
   m_Name: enemy_shooter
   m_TagString: BasicEnemy
@@ -155,9 +156,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   enemy_health: 2
-  renderer: {fileID: 0}
+  enemy_MaxHealth: 4
   medKit: {fileID: 3206453953767894692, guid: c8fb28144004c5749a42694ecc554778, type: 3}
   odds: 1
   particleDestruct: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
   bullet: {fileID: 5741041961586929825, guid: e1c6755cdb531884fbf5bf2f9f6a0c5a, type: 3}
   fireRate: 2.5
+--- !u!95 &7924042670576556343
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677896434432950724}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5ced820e3c42ac84e85afa04dd7cac00, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

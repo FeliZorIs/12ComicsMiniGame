@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffb4aed0a83b3145b6dee4665de426e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 20
+  health: 42
   city: {fileID: 0}
   cityMax: 0
   bullet: {fileID: 7333550665432318456, guid: 8b9c1f4e695505a47aac3d5337ced3e9, type: 3}
@@ -231,8 +231,6 @@ MonoBehaviour:
   offenseBlock_1: {fileID: 9189825609700281556}
   offenseBlock_2: {fileID: 2767179025398431262}
   particleDestruct: {fileID: 139366, guid: b185c1a9cf067374586d095111b15bd1, type: 3}
-  audioManagerMusic: {fileID: 0}
-  audioManagerSFX: {fileID: 0}
 --- !u!1 &3547545207601753599
 GameObject:
   m_ObjectHideFlags: 0

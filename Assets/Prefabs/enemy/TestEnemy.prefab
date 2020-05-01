@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1683641235131697447}
   - component: {fileID: 3991131611248330856}
   - component: {fileID: 8378619110630911376}
+  - component: {fileID: 7665439010965265366}
   m_Layer: 10
   m_Name: TestEnemy
   m_TagString: BasicEnemy
@@ -153,7 +154,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   enemy_health: 1
-  renderer: {fileID: 0}
+  enemy_MaxHealth: 2
   medKit: {fileID: 3206453953767894692, guid: c8fb28144004c5749a42694ecc554778, type: 3}
   odds: 1
   particleDestruct: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
+--- !u!95 &7665439010965265366
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5184283475834509901}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42710636d47c32547851daafaa324894, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

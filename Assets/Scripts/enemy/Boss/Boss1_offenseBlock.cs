@@ -54,19 +54,17 @@ public class Boss1_offenseBlock : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "player_shot")
-            if (collision.gameObject.tag == "player_shot")
+        {
+            //Check for debug mode to play sound or not.
+            if (MenuBtnScript.debugOn == true)
             {
-                //Check for debug mode to play sound or not.
-                if (MenuBtnScript.debugOn == true)
-                {
 
-                }
-                else
-                {
-                    audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_shield_hit");
-                }
-                Destroy(collision.gameObject);
+            }
+            else
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss_shield_hit");
             }
             Destroy(collision.gameObject);
+        }
     }
 }

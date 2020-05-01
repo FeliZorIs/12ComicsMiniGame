@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7264856450548316012}
   - component: {fileID: 24272213446839029}
   - component: {fileID: 7264856450548316009}
+  - component: {fileID: 6662538516887942738}
   m_Layer: 10
   m_Name: boss1_shot_2
   m_TagString: enemy_shot
@@ -136,3 +137,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   target: {fileID: 0}
+--- !u!95 &6662538516887942738
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7264856450548316008}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e3c13890073c43448d1c45c48ee06bb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

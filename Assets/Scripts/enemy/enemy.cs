@@ -6,6 +6,7 @@ public class enemy : MonoBehaviour
 {
     public float speed = 2;
     public int enemy_health;
+    public int enemy_MaxHealth;
     static public int multiBonus;
     protected GameObject enemyManager;
     protected GameObject player;
@@ -47,6 +48,7 @@ public class enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.left * speed * Time.deltaTime);
+        MaxHealth();
     }
 
     //===============================
@@ -121,6 +123,14 @@ public class enemy : MonoBehaviour
             enemy_health += progression_rate;
             speed += .1f * progression_rate;
         }      
+    }
+
+    protected void MaxHealth()
+    {
+        if (enemy_health > enemy_MaxHealth)
+        {
+            enemy_health = enemy_MaxHealth;
+        }
     }
 
     //================================

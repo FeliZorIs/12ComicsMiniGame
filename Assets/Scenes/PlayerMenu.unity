@@ -4907,7 +4907,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   How2Play: {fileID: 2064885335}
-  h2p_button: {fileID: 2069813601}
   P1: {fileID: 869732992}
   P2: {fileID: 167450204}
   P3: {fileID: 1811445584}

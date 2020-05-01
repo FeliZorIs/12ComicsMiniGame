@@ -9,7 +9,7 @@ public class HowToPlay : MonoBehaviour
 {
 
     public GameObject How2Play;
-    public Button h2p_button;
+    //public Button h2p_button;
 
     public GameObject P1;
     public GameObject P2;
@@ -112,6 +112,7 @@ public class HowToPlay : MonoBehaviour
     public void H2P()
     {
         How2Play.SetActive(true);
+        Debug.Log("Pressed");
     }
 
 
