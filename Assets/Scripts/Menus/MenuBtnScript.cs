@@ -69,6 +69,7 @@ public class MenuBtnScript : MonoBehaviour
         username = userInput.GetComponent<InputField>().text;
         password = passInput.GetComponent<InputField>().text;
         //Call this function to check the DB for valid credentials.
+
         StartCoroutine(Login(username, password));
 
 

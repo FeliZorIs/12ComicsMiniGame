@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class muteSound : MonoBehaviour
 {
-    static public float theVolume;
+    static public float theVolume = 1f;
     static public bool muted = false;
 
     public Sprite OffSprite;
@@ -14,16 +14,19 @@ public class muteSound : MonoBehaviour
     public Button mute;
 
     public Slider volSlide;
+    
 
-
+    
     void Update()
     {
-        AudioListener.volume = theVolume;
+
         volSlide.value = theVolume;
+        AudioListener.volume = theVolume;
 
 
         //Get a reference to the slider. If we mute the volume, make the slider value = to 0.
     }
+
     public void Mute()
     {
         if (theVolume == 1f)
@@ -38,7 +41,7 @@ public class muteSound : MonoBehaviour
             theVolume = 1f;
             mute.image.sprite = OnSprite;
         }
-        // AudioListener.volume = yourVolume;
+        //AudioListener.volume = yourVolume;
 
         //AudioListener.pause = !AudioListener.pause;
     }
@@ -57,6 +60,10 @@ public class muteSound : MonoBehaviour
             mute.image.sprite = OnSprite;
         }
         theVolume = slideVolume;
+
+        Debug.Log("Volume is now: " + theVolume);
+
     }
+
 
 }

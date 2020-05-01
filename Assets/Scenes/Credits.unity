@@ -592,27 +592,34 @@ MonoBehaviour:
     ADDITIONAL PROGRAMMER
 
 
+    SOUND PROGRAMMER
+
+
+    COMBAT
+    PROGRAMMER
+
+
     HERO SPRITE DESIGNS
 
 
-    ENEMY
-    SPRITE DESIGNS
+    ENEMY SPRITE DESIGNS
 
 
-    BACKGROUND SPRITES & SOUNDS
+    BACKGROUND
+    SPRITES & SOUNDS
 
 
     ORIGINAL CHARACTER DESIGNS
 
 
-    BACKGROUND
-    MUSIC
+    BACKGROUND MUSIC
 
 
 
 
 
-    SPECIAL EFFECT SOUNDS
+    SPECIAL
+    EFFECT SOUNDS
 
 
 
@@ -963,39 +970,45 @@ MonoBehaviour:
     Nicolas Alves
 
 
+    Krishan Patel
+
+
+    Oris Feliz
+
+
     Timour Khan
 
 
-    3rd Party Designer
+    3rd
+    Party Designer
 
 
-    Unity
-    Asset Store
+    Unity Asset Store
 
 
     Mark Hair & 12Comics
 
 
-    Patrick de Arteaga
+    Patrick
+    de Arteaga
 
-    Alexandr
-    Zhelanov | Soundcloud
+    Alexandr Zhelanov | Soundcloud
 
     Cleyton Kauffman | Soundcloud
 
-    DontMind8 | OpenGameArt
-
-
-    ViRiX
+    DontMind8
     | OpenGameArt
+
+
+    ViRiX | OpenGameArt
 
     Gumichan01 | OpenGameArt
 
-    CleytonKauffman | OpenGameArt
+    CleytonKauffman
+    | OpenGameArt
 
 
-    Lorc
-    | OpenGameArt'
+    Lorc | OpenGameArt'
 --- !u!222 &1059607719
 CanvasRenderer:
   m_ObjectHideFlags: 0
