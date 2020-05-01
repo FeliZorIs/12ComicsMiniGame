@@ -10,7 +10,7 @@ public class enemy : MonoBehaviour
     protected GameObject enemyManager;
     protected GameObject player;
     protected GameObject city;
-    [SerializeField]protected Renderer renderer;
+    protected Renderer renderer;
 
     //health kit drop declarations
     public GameObject medKit;

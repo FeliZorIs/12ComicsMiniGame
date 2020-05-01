@@ -9,6 +9,8 @@ public class enemy_spawner : MonoBehaviour
     public GameObject enemyManager;
     public enemy[] Enemies;
     public GameObject Boss;
+    public GameObject Boss2;
+    int bossCount = 0;
 
     public float x_position;
     public float y_zone;
@@ -54,7 +56,7 @@ public class enemy_spawner : MonoBehaviour
         spawning = true;
         timer = 0;
 
-        wave_count = 0;
+        //wave_count = 0;
         wave_bool = true;
         wave_text.gameObject.SetActive(false);
 
@@ -179,9 +181,16 @@ public class enemy_spawner : MonoBehaviour
                 {
                     if (wave_count ==  3 + (4 * changeCount))
                     {
+                        bossCount++;
+                        GameObject Boss_to_Spawn;
+                        if (bossCount % 2 == 0)
+                            Boss_to_Spawn = Boss2;
+                        else
+                            Boss_to_Spawn = Boss;
+
                         changeCount++;
                         on = false;
-                        StartCoroutine("spawn_boss");
+                        StartCoroutine("spawn_boss", Boss_to_Spawn);
                     }
                     else
                     {
@@ -264,7 +273,7 @@ public class enemy_spawner : MonoBehaviour
     //          Coroutines
     //============================
 
-    IEnumerator spawn_boss()
+    IEnumerator spawn_boss(GameObject Boss)
     {
         yield return new WaitForSeconds(1);
         boss_alive = true;

@@ -34,9 +34,17 @@ public class Boss2 : MonoBehaviour
     public GameObject shot;
 
     //Stage 2
+    float stage2_timer = 0;
+    float action_time;
     public GameObject top_ship;
     public GameObject mid_ship;
     public GameObject bot_ship;
+    Animator shipT_anim;
+    Animator shipM_anim;
+    Animator shipB_anim;
+    bool stage2_coroutine = true;
+    bool stage2_shooting = true;
+    int noBeam;
 
     //Stage 3_setup
     public GameObject bubble;
@@ -55,6 +63,7 @@ public class Boss2 : MonoBehaviour
     {
         ENTRANCE,
         STAGE_1,
+        STAGE_2_SETUP,
         STAGE_2,
         STAGE_3_SETUP,
         STAGE_3
@@ -91,13 +100,14 @@ public class Boss2 : MonoBehaviour
         maxHealth = health;
         stage_health = maxHealth / 3;
 
-        top_ship.SetActive(false);
-        mid_ship.SetActive(false);
-        bot_ship.SetActive(false);
-
         bossStage = BossStage.ENTRANCE;
 
         cityMax = city.city_health_Max;
+
+        action_time = 10f;
+        shipT_anim = top_ship.GetComponent<Animator>();
+        shipM_anim = mid_ship.GetComponent<Animator>();
+        shipB_anim = bot_ship.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -109,18 +119,31 @@ public class Boss2 : MonoBehaviour
         {
             case BossStage.ENTRANCE:
                 StartCoroutine("entrance_timer");
-                Debug.Log("ENTRANCE");
                 break;
 
             case BossStage.STAGE_1:
                 invince = false;
                 if (health <= stage_health * 2)
-                    bossStage = BossStage.STAGE_2;
+                    bossStage = BossStage.STAGE_2_SETUP;
 
                 shoot_basic();
                 break;
 
+            case BossStage.STAGE_2_SETUP:
+                StartCoroutine("stage2_beams");
+                break;
+
             case BossStage.STAGE_2:
+                stage2_timer += Time.deltaTime;
+                noBeam = Random.Range(1, 3);
+                if (stage2_timer > action_time)
+                {
+                    StartCoroutine("stage2_beams");
+                }
+
+                if (stage2_shooting)
+                    shoot_basic();
+
                 if (health <= stage_health)
                     bossStage = BossStage.STAGE_3_SETUP;
                 break;
@@ -136,7 +159,6 @@ public class Boss2 : MonoBehaviour
 
         if (health <= 0)
         {
-
             if (city.city_health < cityMax)
             {
                 city.city_health += 1;
@@ -161,7 +183,7 @@ public class Boss2 : MonoBehaviour
 
             //Add destruction on particle effect after a certain time.
 
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
     }
 
@@ -229,31 +251,133 @@ public class Boss2 : MonoBehaviour
         }
     }
 
+    IEnumerator stage2_beams()
+    {
+        if (stage2_coroutine)
+        {
+            stage2_coroutine = false;
+            stage2_shooting = false;
+            
+            //setup
+            Animator shipT_anim = top_ship.GetComponent<Animator>();
+            Animator shipM_anim = mid_ship.GetComponent<Animator>();
+            Animator shipB_anim = bot_ship.GetComponent<Animator>();
+
+            //becomes invincible as to not mess up coroutine, and flies up
+            invince = true;
+            anim.SetTrigger("up");
+            yield return new WaitForSeconds(1.5f);
+
+            //the beam ships fade in
+            shipT_anim.SetTrigger("Fade_In");
+            shipM_anim.SetTrigger("Fade_In");
+            shipB_anim.SetTrigger("Fade_In");
+
+            yield return new WaitForSeconds(.5f);
+
+            //set up warning lights to stay away from
+            if (noBeam == 1)
+            {
+                mid_ship.transform.GetChild(0).gameObject.SetActive(true);
+                bot_ship.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else if (noBeam == 2)
+            {
+                top_ship.transform.GetChild(0).gameObject.SetActive(true);
+                bot_ship.transform.GetChild(0).gameObject.SetActive(true);
+            }
+            else
+            {
+                mid_ship.transform.GetChild(0).gameObject.SetActive(true);
+                top_ship.transform.GetChild(0).gameObject.SetActive(true);
+            }
+
+            yield return new WaitForSeconds(2f);
+            
+            //The Beams are in full effect and damaging
+            if (noBeam == 1)
+            {
+                mid_ship.transform.GetChild(1).gameObject.SetActive(true);
+                bot_ship.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else if (noBeam == 2)
+            {
+                top_ship.transform.GetChild(1).gameObject.SetActive(true);
+                bot_ship.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            else
+            {
+                mid_ship.transform.GetChild(1).gameObject.SetActive(true);
+                top_ship.transform.GetChild(1).gameObject.SetActive(true);
+            }
+            
+            yield return new WaitForSeconds(2f);
+
+            //turns off the damaging beams and leaves the warning ones on
+            mid_ship.transform.GetChild(1).gameObject.SetActive(false);
+            top_ship.transform.GetChild(1).gameObject.SetActive(false);
+            bot_ship.transform.GetChild(1).gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(1f);
+
+            //warning ones now fade
+            mid_ship.transform.GetChild(0).gameObject.SetActive(false);
+            top_ship.transform.GetChild(0).gameObject.SetActive(false);
+            bot_ship.transform.GetChild(0).gameObject.SetActive(false);
+
+            yield return new WaitForSeconds(.5f);
+            
+            //ships now fade out
+            shipT_anim.SetTrigger("Fade_Out");
+            shipM_anim.SetTrigger("Fade_Out");
+            shipB_anim.SetTrigger("Fade_Out");
+
+            yield return new WaitForSeconds(1f);
+
+            //ship comes back into screen
+            anim.SetTrigger("stationary");
+
+            yield return new WaitForSeconds(1f);
+
+            //no longer invincible, and goes back to moving in its normal pattern
+            invince = false;
+            anim.SetTrigger("pattern");
+            stage2_coroutine = true;
+            stage2_shooting = true;
+            stage2_timer = 0;
+            if (bossStage == BossStage.STAGE_2_SETUP)
+                bossStage = BossStage.STAGE_2;
+        }
+    }
+
     IEnumerator stage3_blast()
     {
         if (Stage3_coroutine == true)
         {
             Stage3_coroutine = false;
-
+            //activates bubble to be invincible
             bubble.SetActive(true);
             invince = true;
+
+            //returns to origin quickly and sprays shots upward
             anim.SetTrigger("stationary");
             PE_ShootUP.SetActive(true);
-            Debug.Log("Before");
+            yield return new WaitForSeconds(3f);
 
-            yield return new WaitForSeconds(5f);
-
-            Debug.Log("After");
-            //PE_ShootUP.SetActive(false);
+            //stops shooting upwards and stays still
             var emission = ps.emission;
             emission.rateOverTime = 0f;
+            yield return new WaitForSeconds(1f);
 
-            yield return new WaitForSeconds(2f);
-
+            //moves like normal but now fire rains from the sky
             anim.SetTrigger("pattern");
             bulletShower.SetActive(true);
+
+            //no more bubble, no more invincibility
             invince = false;
             bubble.SetActive(false);
+
+            //stage 3 begins with slower fire rate because hell is already raining
             Stage3_coroutine = true;
             fireRate *= 2;
             bossStage = BossStage.STAGE_3;
