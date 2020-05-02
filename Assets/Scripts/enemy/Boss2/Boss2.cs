@@ -59,6 +59,9 @@ public class Boss2 : MonoBehaviour
     GameObject audioManagerMusic;
     GameObject audioManagerSFX;
 
+    //Death particle
+    public GameObject particleDestruct;
+
     enum BossStage
     {
         ENTRANCE,
@@ -171,7 +174,7 @@ public class Boss2 : MonoBehaviour
             //this.gameObject.SetActive(false);
 
             //Create particle effect on destruction.
-            //Instantiate(particleDestruct, transform.position, transform.rotation);
+            Instantiate(particleDestruct, transform.position, transform.rotation);
             if (MenuBtnScript.debugOn == true)
             {
                 //Randomness for debug purposes.
@@ -291,6 +294,7 @@ public class Boss2 : MonoBehaviour
                 mid_ship.transform.GetChild(0).gameObject.SetActive(true);
                 top_ship.transform.GetChild(0).gameObject.SetActive(true);
             }
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss2_Laser_Charge");
 
             yield return new WaitForSeconds(2f);
             
@@ -310,7 +314,8 @@ public class Boss2 : MonoBehaviour
                 mid_ship.transform.GetChild(1).gameObject.SetActive(true);
                 top_ship.transform.GetChild(1).gameObject.SetActive(true);
             }
-            
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss2_Laser_Fire");
+
             yield return new WaitForSeconds(2f);
 
             //turns off the damaging beams and leaves the warning ones on

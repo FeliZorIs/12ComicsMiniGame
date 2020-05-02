@@ -13,10 +13,23 @@ public class Boss2_BulletShower : MonoBehaviour
 
     public GameObject laser;
 
+    //Get audioManager components!
+    GameObject audioManagerMusic;
+    GameObject audioManagerSFX;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (MenuBtnScript.debugOn == true)
+        {
+          
+        }
+        else
+        {
+            audioManagerMusic = GameObject.FindWithTag("MusicManager");
+            audioManagerSFX = GameObject.FindWithTag("SFXManager");
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +43,7 @@ public class Boss2_BulletShower : MonoBehaviour
         {
             //Debug.Log(Enemy.name + "has spawned");
             Instantiate(laser, laser_spawn, Quaternion.identity);
+            audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss2_Laser_Drop");
             time = 0;
         }
     }

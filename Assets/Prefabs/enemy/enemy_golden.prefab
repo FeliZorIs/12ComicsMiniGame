@@ -154,13 +154,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  enemy_health: 15
-  renderer: {fileID: 0}
+  enemy_health: 10
+  enemy_MaxHealth: 0
   medKit: {fileID: 3206453953767894692, guid: c8fb28144004c5749a42694ecc554778, type: 3}
   odds: 0
   particleDestruct: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
-  magnitude: 0
-  frequency: 0
 --- !u!108 &1290752876504305629
 Light:
   m_ObjectHideFlags: 0

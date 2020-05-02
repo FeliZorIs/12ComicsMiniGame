@@ -971,6 +971,33 @@ MonoBehaviour:
     loop: 0
     mixerGroup: {fileID: 0}
     source: {fileID: 0}
+  - name: Boss2_Laser_Fire
+    clip: {fileID: 8300000, guid: ca38b6ade640de842adcd84f3f79652c, type: 3}
+    volume: 0.734
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss2_Laser_Charge
+    clip: {fileID: 8300000, guid: cc6d9fbe7c7777a4ab27e1110b7aa6a5, type: 3}
+    volume: 0.734
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: Boss2_Laser_Drop
+    clip: {fileID: 8300000, guid: 6a7a2d24611a0bb42b358f3669a484cc, type: 3}
+    volume: 0.427
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &380592965
 Transform:
   m_ObjectHideFlags: 0
