@@ -60,7 +60,7 @@ public class enemy_spawner : MonoBehaviour
         spawning = true;
         timer = 0;
 
-        wave_count = 0;
+        //wave_count = 0;
         wave_bool = true;
         wave_text.gameObject.SetActive(false);
 
@@ -210,9 +210,9 @@ public class enemy_spawner : MonoBehaviour
                         bossCount++;
                         GameObject Boss_to_Spawn;
                         if (bossCount % 2 == 0)
-                            Boss_to_Spawn = Boss2;
-                        else
                             Boss_to_Spawn = Boss;
+                        else
+                            Boss_to_Spawn = Boss2;
 
                         changeCount++;
                         on = false;

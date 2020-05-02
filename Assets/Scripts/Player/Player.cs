@@ -584,10 +584,23 @@ public class Player : MonoBehaviour
             //Let medkit give score so there's still incentive even if your health is full to go for it. Base it on their current health and multiplyer level.
             ScoreCount.scoreValue += ((PlayerHealth.health * 10) * multiplierlvl);
             PlayerHealth.health += collision.gameObject.GetComponent<medKit>().health;
-            Destroy(collision.gameObject);
-           
+            Destroy(collision.gameObject); 
         }
 
+        if (collision.gameObject.tag == "Laser_Beam")
+        {
+            PlayerHealth.health -= 1;
+            StartCoroutine("PicUIDamage");
+            if (PlayerHealth.health > 0)
+            {
+                audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Player_Hit");
+                StartCoroutine("PlayerInvince");
+            }
+            if (PlayerHealth.health <= 0)
+            {
+                gameOver();
+            }
+        }
     }
 
     //Player U.I. turns red during damage.

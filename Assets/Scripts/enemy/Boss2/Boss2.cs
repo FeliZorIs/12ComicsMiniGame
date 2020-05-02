@@ -45,6 +45,12 @@ public class Boss2 : MonoBehaviour
     bool stage2_coroutine = true;
     bool stage2_shooting = true;
     int noBeam;
+    public GameObject top_light,
+                      mid_light,
+                      bot_light;
+    public GameObject top_Beam, 
+                      mid_Beam, 
+                      bot_Beam;
 
     //Stage 3_setup
     public GameObject bubble;
@@ -138,7 +144,6 @@ public class Boss2 : MonoBehaviour
 
             case BossStage.STAGE_2:
                 stage2_timer += Time.deltaTime;
-                noBeam = Random.Range(1, 3);
                 if (stage2_timer > action_time)
                 {
                     StartCoroutine("stage2_beams");
@@ -260,7 +265,15 @@ public class Boss2 : MonoBehaviour
         {
             stage2_coroutine = false;
             stage2_shooting = false;
-            
+            noBeam = Random.Range(1, 3);
+
+            if (noBeam == 0)
+                Debug.Log("Top and Mid");
+            if (noBeam == 1)
+                Debug.Log("Mid and Bottom");
+            if (noBeam == 2)
+                Debug.Log("Top and Bottom");
+
             //setup
             Animator shipT_anim = top_ship.GetComponent<Animator>();
             Animator shipM_anim = mid_ship.GetComponent<Animator>();
@@ -281,18 +294,19 @@ public class Boss2 : MonoBehaviour
             //set up warning lights to stay away from
             if (noBeam == 1)
             {
-                mid_ship.transform.GetChild(0).gameObject.SetActive(true);
-                bot_ship.transform.GetChild(0).gameObject.SetActive(true);
+                mid_light.SetActive(true);
+                bot_light.SetActive(true);
             }
             else if (noBeam == 2)
             {
-                top_ship.transform.GetChild(0).gameObject.SetActive(true);
-                bot_ship.transform.GetChild(0).gameObject.SetActive(true);
+                top_light.SetActive(true);
+                bot_light.SetActive(true);
             }
             else
             {
-                mid_ship.transform.GetChild(0).gameObject.SetActive(true);
-                top_ship.transform.GetChild(0).gameObject.SetActive(true);
+
+                mid_light.SetActive(true);
+                top_light.SetActive(true);
             }
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss2_Laser_Charge");
 
@@ -301,27 +315,28 @@ public class Boss2 : MonoBehaviour
             //The Beams are in full effect and damaging
             if (noBeam == 1)
             {
-                mid_ship.transform.GetChild(1).gameObject.SetActive(true);
-                bot_ship.transform.GetChild(1).gameObject.SetActive(true);
+                mid_Beam.SetActive(true);
+                bot_Beam.SetActive(true);
             }
             else if (noBeam == 2)
             {
-                top_ship.transform.GetChild(1).gameObject.SetActive(true);
-                bot_ship.transform.GetChild(1).gameObject.SetActive(true);
+                top_Beam.SetActive(true);
+                bot_Beam.SetActive(true);
             }
             else
             {
-                mid_ship.transform.GetChild(1).gameObject.SetActive(true);
-                top_ship.transform.GetChild(1).gameObject.SetActive(true);
+
+                mid_Beam.SetActive(true);
+                top_Beam.SetActive(true);
             }
             audioManagerSFX.GetComponent<AudioManagerSFX>().Play("Boss2_Laser_Fire");
 
             yield return new WaitForSeconds(2f);
 
             //turns off the damaging beams and leaves the warning ones on
-            mid_ship.transform.GetChild(1).gameObject.SetActive(false);
-            top_ship.transform.GetChild(1).gameObject.SetActive(false);
-            bot_ship.transform.GetChild(1).gameObject.SetActive(false);
+            top_Beam.SetActive(false);
+            mid_Beam.SetActive(false);
+            bot_Beam.SetActive(false);
 
             yield return new WaitForSeconds(1f);
 
@@ -384,7 +399,7 @@ public class Boss2 : MonoBehaviour
 
             //stage 3 begins with slower fire rate because hell is already raining
             Stage3_coroutine = true;
-            fireRate *= 2;
+            fireRate += 1;
             bossStage = BossStage.STAGE_3;
         }
     }

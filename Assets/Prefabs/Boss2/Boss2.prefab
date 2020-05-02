@@ -485,11 +485,17 @@ MonoBehaviour:
   city: {fileID: 0}
   cityMax: 0
   bullet: {fileID: 7264856450548316008, guid: f0342a397e6fa7340a5baf986b58d491, type: 3}
-  fireRate: 1
+  fireRate: 0.75
   shot: {fileID: 0}
   top_ship: {fileID: 61196750190490276}
   mid_ship: {fileID: 61196749513926039}
   bot_ship: {fileID: 61196750694450166}
+  top_light: {fileID: 1132899999}
+  mid_light: {fileID: 1994477168}
+  bot_light: {fileID: 1513535564}
+  top_Beam: {fileID: 61196751196117980}
+  mid_Beam: {fileID: 61196750009489508}
+  bot_Beam: {fileID: 61196749627751637}
   bubble: {fileID: 61196751122672237}
   PE_ShootUP: {fileID: 61196751170323274}
   bulletShower: {fileID: 457533456255567323}
@@ -670,7 +676,7 @@ GameObject:
   - component: {fileID: 7270675906574364174}
   m_Layer: 10
   m_Name: MeagaLaser_9
-  m_TagString: enemy_shot
+  m_TagString: Laser_Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -779,7 +785,7 @@ GameObject:
   - component: {fileID: 7465931885883609952}
   m_Layer: 10
   m_Name: MeagaLaser_10
-  m_TagString: enemy_shot
+  m_TagString: Laser_Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6005,7 +6011,7 @@ GameObject:
   - component: {fileID: 7598802642006099577}
   m_Layer: 10
   m_Name: MeagaLaser_11
-  m_TagString: enemy_shot
+  m_TagString: Laser_Beam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
